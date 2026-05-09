@@ -165,7 +165,7 @@ a { text-decoration: none; color: inherit; }
    НАВИГАЦИЯ
 ════════════════════════════════════════════ */
 .nav {
-  position: fixed; top: 3px; left: 0; right: 0; z-index: 1000;
+  position: fixed; top: 37px; left: 0; right: 0; z-index: 1000;
   background: rgba(7,21,42,.94); backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid rgba(255,255,255,.07);
@@ -224,7 +224,7 @@ a { text-decoration: none; color: inherit; }
    ГЕРОЙ
 ════════════════════════════════════════════ */
 .hero {
-  background: var(--navy); padding-top: 69px; min-height: 100vh;
+  background: var(--navy); padding-top: 103px; min-height: 100vh;
   display: flex; align-items: center; position: relative; overflow: hidden;
 }
 .hero-bg-grid {
@@ -1034,7 +1034,7 @@ a { text-decoration: none; color: inherit; }
   .nav-cta { padding: 8px 16px; font-size: 10px; }
   .nav-burger { display: flex; }
 
-  .hero { padding-top: 60px; }
+  .hero { padding-top: 97px; }
   .hero-inner { padding: 40px 20px 60px; gap: 36px; }
   .hero-title { font-size: clamp(28px, 7vw, 40px); }
   .hero-trust { gap: 20px; padding-top: 24px; margin-top: 28px; }
@@ -1139,8 +1139,8 @@ a { text-decoration: none; color: inherit; }
 }
 .float-ring-text {
   font-family: 'Raleway', sans-serif;
-  font-size: 10.5px; font-weight: 700;
-  fill: rgba(184,137,42,.75); letter-spacing: 1.8px;
+  font-size: 9px; font-weight: 700;
+  fill: rgba(184,137,42,.75); letter-spacing: 0;
 }
 @keyframes fc-spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 .float-center {
@@ -1275,7 +1275,7 @@ a { text-decoration: none; color: inherit; }
 .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 
 /* ════════════════════════════════════════════
-   SPOTLIGHT EFFECT (tip cards)
+   SPOTLIGHT EFFECT — все карточки
 ════════════════════════════════════════════ */
 .tip-card::after {
   content: '';
@@ -1287,6 +1287,63 @@ a { text-decoration: none; color: inherit; }
   transition: opacity .35s;
 }
 .tip-card:hover::after { opacity: 1; }
+
+
+/* Stat cells */
+.stat-cell::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(circle at var(--sx, -300px) var(--sy, -300px), rgba(184,137,42,.15) 0%, transparent 55%);
+  pointer-events: none; opacity: 0;
+  transition: opacity .35s;
+}
+.stat-cell:hover::after { opacity: 1; }
+
+/* Service cards — перезаписываем статичный угловой декор на интерактивный */
+.service-card::after {
+  inset: 0; width: auto; height: auto;
+  background: radial-gradient(circle at var(--sx, -300px) var(--sy, -300px), rgba(184,137,42,.10) 0%, transparent 55%);
+  opacity: 0; transition: opacity .35s;
+}
+.service-card:hover::after { opacity: 1; }
+
+/* Win cards — золотое свечение поверх */
+.win-card {
+  --sx: -300px; --sy: -300px;
+}
+.win-card::before {
+  content: '';
+  position: absolute; inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(circle at var(--sx) var(--sy), rgba(184,137,42,.09) 0%, transparent 55%);
+  pointer-events: none; opacity: 0;
+  transition: opacity .35s; z-index: 0;
+}
+.win-card:hover::before { opacity: 1; }
+.win-card > * { position: relative; z-index: 1; }
+
+/* Review cards */
+.review-card::after {
+  content: '';
+  position: absolute; inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(circle at var(--sx, -300px) var(--sy, -300px), rgba(184,137,42,.08) 0%, transparent 55%);
+  pointer-events: none; opacity: 0;
+  transition: opacity .35s;
+}
+.review-card:hover::after { opacity: 1; }
+
+/* Why-item cards (::after used by ghost number, use ::before for spotlight) */
+.why-item::before {
+  content: '';
+  position: absolute; inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(circle at var(--sx, -300px) var(--sy, -300px), rgba(184,137,42,.14) 0%, transparent 60%);
+  pointer-events: none; opacity: 0;
+  transition: opacity .35s; z-index: 0;
+}
+.why-item:hover::before { opacity: 1; }
+.why-item > * { position: relative; z-index: 1; }
 
 /* ════════════════════════════════════════════
    V2: SVG ICON SIZING
@@ -1387,7 +1444,7 @@ a { text-decoration: none; color: inherit; }
 }
 
 /* ════════════════════════════════════════════
-   V2: REVIEWS CAROUSEL
+   V2: REVIEWS — desktop grid / mobile carousel
 ════════════════════════════════════════════ */
 .reviews-carousel-wrap { overflow: hidden; }
 .reviews-track {
@@ -1412,10 +1469,22 @@ a { text-decoration: none; color: inherit; }
 .carousel-dot.active {
   background: var(--gold2); transform: scale(1.35);
 }
-@media (max-width: 1023px) {
-  .reviews-track .review-card { flex: 0 0 calc(50% - 11px); }
+
+/* Desktop: всегда показываем все 6 сеткой */
+@media (min-width: 769px) {
+  .reviews-carousel-wrap { overflow: visible; }
+  .reviews-track {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr);
+    transform: none !important;
+    transition: none !important;
+    will-change: auto;
+  }
+  .reviews-track .review-card { flex: none; }
+  .carousel-dots { display: none; }
 }
-@media (max-width: 680px) {
+
+@media (max-width: 768px) {
   .reviews-track .review-card { flex: 0 0 100%; }
 }
 
@@ -1557,12 +1626,369 @@ a { text-decoration: none; color: inherit; }
   .tw-cursor { animation: none !important; }
 }
 
+/* ════════════════════════════════════════════
+   WHY SECTION — REDESIGN (dark)
+════════════════════════════════════════════ */
+.why {
+  background: linear-gradient(160deg, var(--navy) 0%, var(--navy2) 100%);
+  padding: 90px 0;
+  border-top: none; border-bottom: none;
+  position: relative; overflow: hidden;
+}
+.why::before {
+  content: ''; position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.02) 1px, transparent 1px);
+  background-size: 60px 60px; pointer-events: none;
+}
+.why-inner {
+  display: flex; flex-direction: column; gap: 52px;
+  position: relative;
+}
+.why-header { text-align: center; }
+.why-heading {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(28px, 3.4vw, 46px);
+  font-weight: 800; line-height: 1.15; color: var(--white);
+  letter-spacing: -.02em;
+}
+.why-heading em { font-style: italic; color: var(--gold2); }
+.why-items { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.why-item {
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.09);
+  border-radius: 16px; padding: 30px 26px;
+  display: flex; flex-direction: column; gap: 14px;
+  align-items: flex-start;
+  backdrop-filter: blur(4px);
+  transition: background .3s, transform .28s cubic-bezier(.4,0,.2,1), box-shadow .28s;
+  position: relative; overflow: hidden;
+}
+.why-item::after {
+  content: attr(data-n);
+  position: absolute; bottom: -12px; right: 16px;
+  font-family: 'Playfair Display', serif;
+  font-size: 80px; font-weight: 800; line-height: 1;
+  color: rgba(184,137,42,.08); pointer-events: none;
+  user-select: none;
+}
+.why-item:hover {
+  background: rgba(255,255,255,.09);
+  transform: translateY(-5px);
+  box-shadow: 0 24px 52px rgba(0,0,0,.3);
+}
+.why-item-num {
+  font-family: 'Raleway', sans-serif;
+  font-size: 10px; font-weight: 700; letter-spacing: .32em;
+  text-transform: uppercase; color: var(--gold); display: block;
+}
+.why-icon {
+  width: 46px; height: 46px; flex-shrink: 0;
+  background: linear-gradient(135deg, rgba(184,137,42,.18), rgba(184,137,42,.07));
+  border-radius: 12px; display: flex; align-items: center; justify-content: center;
+  border: 1px solid rgba(184,137,42,.22); color: var(--gold2);
+}
+.why-icon svg { width: 22px; height: 22px; }
+.why-text strong {
+  display: block; font-family: 'Raleway', sans-serif;
+  font-size: 14px; font-weight: 700; color: var(--white); margin-bottom: 4px;
+}
+.why-text span { font-size: 13px; font-weight: 300; color: rgba(255,255,255,.48); line-height: 1.65; }
+@media (max-width: 1024px) { .why-inner { gap: 40px; } }
+@media (max-width: 768px) {
+  .why { padding: 64px 0; }
+  .why-items { grid-template-columns: 1fr 1fr; gap: 12px; }
+}
+@media (max-width: 480px) { .why-items { grid-template-columns: 1fr; } }
+
+
+/* ── Booking modal ── */
+.bm-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(7,21,42,.75);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  z-index: 2000;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.bm-overlay.open { display: flex; }
+.bm-modal {
+  background: #151d2e;
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 16px;
+  padding: 36px 32px 28px;
+  width: 100%;
+  max-width: 480px;
+  position: relative;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+.bm-close {
+  position: absolute;
+  top: 14px; right: 18px;
+  background: none;
+  border: none;
+  color: rgba(255,255,255,.35);
+  font-size: 26px;
+  line-height: 1;
+  cursor: pointer;
+  transition: color .2s;
+  padding: 2px 6px;
+}
+.bm-close:hover { color: rgba(255,255,255,.8); }
+.bm-badge {
+  display: inline-block;
+  font-family: 'Raleway', sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  background: rgba(184,137,42,.12);
+  border: 1px solid rgba(184,137,42,.3);
+  border-radius: 4px;
+  padding: 4px 10px;
+  margin-bottom: 14px;
+}
+.bm-title {
+  font-family: 'Raleway', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 6px;
+  line-height: 1.25;
+}
+.bm-sub {
+  font-size: 13px;
+  color: rgba(255,255,255,.45);
+  margin-bottom: 24px;
+  line-height: 1.6;
+}
+.bm-form { display: flex; flex-direction: column; gap: 14px; }
+.bm-group { display: flex; flex-direction: column; gap: 5px; }
+.bm-group label {
+  font-size: 10px;
+  font-weight: 700;
+  font-family: 'Raleway', sans-serif;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.4);
+}
+.bm-input, .bm-select, .bm-textarea {
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 8px;
+  padding: 11px 14px;
+  font-size: 14px;
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  outline: none;
+  transition: border-color .2s, background .2s;
+  width: 100%;
+  -webkit-appearance: none;
+}
+.bm-input::placeholder, .bm-textarea::placeholder { color: rgba(255,255,255,.2); }
+.bm-input:focus, .bm-select:focus, .bm-textarea:focus {
+  border-color: var(--gold);
+  background: rgba(255,255,255,.07);
+}
+.bm-select { cursor: pointer; }
+.bm-select option { background: #151d2e; color: #fff; }
+.bm-textarea { resize: vertical; min-height: 88px; }
+.bm-submit {
+  margin-top: 4px;
+  padding: 13px;
+  background: var(--grad-gold);
+  border: none;
+  border-radius: 8px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: #0c0c0c;
+  cursor: pointer;
+  transition: opacity .2s, transform .2s, box-shadow .2s;
+}
+.bm-submit:hover { opacity: .88; transform: translateY(-1px); box-shadow: var(--shadow-gold); }
+.bm-privacy {
+  font-size: 11px;
+  color: rgba(255,255,255,.25);
+  text-align: center;
+  line-height: 1.55;
+}
+@media (max-width: 480px) {
+  .bm-modal { padding: 28px 18px 22px; }
+  .bm-title { font-size: 20px; }
+}
+
+/* ── Accessibility bar (ГОСТ Р 52872-2012) ── */
+.a11y-bar {
+  background: #efefef;
+  border-bottom: 1px solid #d0d0d0;
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1100;
+}
+.a11y-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 5px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.a11y-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-family: Arial, sans-serif;
+  color: #333;
+  background: none;
+  border: 1px solid #999;
+  padding: 4px 12px;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all .15s;
+  white-space: nowrap;
+  line-height: 1.4;
+}
+.a11y-btn:hover { background: #e0e0e0; }
+.a11y-btn.active { background: #1a1a1a; color: #fff; border-color: #1a1a1a; }
+.a11y-controls {
+  display: none;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.a11y-controls.visible { display: flex; }
+.a11y-ctrl-label { font-size: 10px; color: #777; font-family: Arial, sans-serif; }
+.a11y-sz {
+  width: 30px; height: 26px;
+  background: none;
+  border: 1px solid #aaa;
+  border-radius: 3px;
+  cursor: pointer;
+  font-family: Arial, sans-serif;
+  color: #444;
+  font-weight: 700;
+  transition: all .15s;
+  line-height: 1;
+  display: flex; align-items: center; justify-content: center;
+}
+.a11y-sz:hover { background: #ddd; }
+.a11y-sz.on { background: #1a1a1a; color: #fff; border-color: #1a1a1a; }
+.a11y-sz[data-sz="large"]  { font-size: 14px; }
+.a11y-sz[data-sz="xlarge"] { font-size: 17px; }
+.a11y-bar-close {
+  font-size: 14px;
+  background: none;
+  border: none;
+  color: #888;
+  cursor: pointer;
+  line-height: 1;
+  padding: 2px 4px;
+}
+.a11y-bar-close:hover { color: #333; }
+
+/* High contrast (ГОСТ Р 52872-2012) */
+html.hc { filter: invert(1) hue-rotate(180deg); }
+html.hc img,
+html.hc video,
+html.hc iframe { filter: invert(1) hue-rotate(180deg); }
+html.hc .a11y-bar { filter: invert(1) hue-rotate(180deg); }
+
+/* Font size overrides */
+html.fs-lg  { font-size: 110% !important; }
+html.fs-xl  { font-size: 125% !important; }
+
+/* ── Consent + policy ── */
+.bm-consent-group { margin-top: 2px; }
+.bm-consent-lbl {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  cursor: pointer;
+}
+.bm-consent-input {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  margin-top: 2px;
+  accent-color: var(--gold);
+  cursor: pointer;
+}
+.bm-consent-lbl span {
+  font-size: 12px;
+  color: rgba(255,255,255,.45);
+  line-height: 1.55;
+}
+.bm-policy-link {
+  background: none;
+  border: none;
+  color: var(--gold);
+  font-size: 12px;
+  font-family: inherit;
+  text-decoration: underline;
+  cursor: pointer;
+  padding: 0;
+  display: inline;
+}
+.bm-policy-link:hover { color: var(--gold2); }
+
+/* Policy modal body */
+.policy-body {
+  max-height: 55vh;
+  overflow-y: auto;
+  font-size: 12.5px;
+  color: rgba(255,255,255,.6);
+  line-height: 1.75;
+  padding-right: 10px;
+}
+.policy-body h3 {
+  font-family: 'Raleway', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.8);
+  margin: 16px 0 5px;
+}
+.policy-body h3:first-child { margin-top: 0; }
+.policy-body p { margin-bottom: 8px; }
+.policy-body::-webkit-scrollbar { width: 4px; }
+.policy-body::-webkit-scrollbar-thumb { background: rgba(255,255,255,.15); border-radius: 2px; }
 </style>
 </head>
 <body>
 
 <!-- Scroll progress -->
 <div class="scroll-progress"><div class="scroll-progress-bar" id="scrollBar"></div></div>
+
+<!-- ══ ДОСТУПНОСТЬ ══ -->
+<div class="a11y-bar" id="a11yBar">
+  <div class="a11y-inner">
+    <button class="a11y-btn" id="a11yBtn" aria-pressed="false">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M2 12s4-8 10-8 10 8 10 8-4 8-10 8-10-8-10-8z"/></svg>
+      Версия для слабовидящих
+    </button>
+    <div class="a11y-controls" id="a11yCtrl">
+      <span class="a11y-ctrl-label">Шрифт:</span>
+      <button class="a11y-sz on" data-sz="normal">А</button>
+      <button class="a11y-sz" data-sz="large">А+</button>
+      <button class="a11y-sz" data-sz="xlarge">А++</button>
+      <button class="a11y-bar-close" id="a11yClose" aria-label="Закрыть панель">×</button>
+    </div>
+  </div>
+</div>
 
 <!-- ══ НАВИГАЦИЯ ══ -->
 <nav class="nav" id="mainNav">
@@ -1600,11 +2026,11 @@ a { text-decoration: none; color: inherit; }
         <span class="next-reception-dot"></span>
         Ближайший приём — вторая среда месяца
       </div>
-      <div class="hero-kicker">Юрист ЛДПР · Приморский район СПб · Бесплатно</div>
+      <div class="hero-kicker">Юрист ЛДПР · Приморский район СПб</div>
       <h1 class="hero-title">
         <span class="hero-glow-name">Антон Пыхтеев</span> —<br>
         юрист, который знает<br>
-        <em>ваш район изнутри</em>
+        <em>наш район изнутри</em>
       </h1>
       <div class="hero-typewriter" aria-hidden="true">
         <span class="tw-prefix">Помогаю с:</span>
@@ -1612,10 +2038,10 @@ a { text-decoration: none; color: inherit; }
       </div>
       <p class="hero-sub">
         Управляющая компания обманывает? Уволили незаконно? Проблемы с алиментами?<br>
-        <strong>Помогу разобраться бесплатно</strong> — и при необходимости направлю депутатский запрос в ведомство.
+        <strong>Помогу разобраться</strong> с ЖКХ и управляющими компаниями, трудовыми спорами, семейными и имущественными вопросами.
       </p>
       <div class="hero-actions">
-        <a href="#contact" class="btn btn-primary">Получить бесплатную консультацию</a>
+        <a href="#contact" class="btn btn-primary">Получить консультацию</a>
         <a href="https://t.me/ursreda" target="_blank" class="btn btn-outline">Написать в Telegram</a>
       </div>
       <div class="hero-trust">
@@ -1657,8 +2083,8 @@ a { text-decoration: none; color: inherit; }
           <span class="hcr-val">2-я и 4-я среда</span>
         </div>
         <div class="hero-card-row">
-          <span class="hcr-label">Консультация</span>
-          <span class="hcr-val gold">Бесплатно</span>
+          <span class="hcr-label">MAX</span>
+          <span class="hcr-val"><a href="https://max.ru/ursreda" target="_blank" style="color:var(--gold2)">@ursreda</a></span>
         </div>
         <div class="hero-card-row">
           <span class="hcr-label">Telegram</span>
@@ -1773,33 +2199,33 @@ a { text-decoration: none; color: inherit; }
 <div class="why">
   <div class="container">
     <div class="why-inner">
-      <div>
+      <div class="why-header">
         <span class="section-label">Моё преимущество</span>
-        <div class="why-heading">Почему<br>обращаются <em>ко мне</em></div>
+        <div class="why-heading">Почему обращаются <em>ко мне</em></div>
         <div class="gold-bar"></div>
       </div>
       <div class="why-items">
-        <div class="why-item reveal">
+        <div class="why-item reveal" data-n="01">
           <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
           <div class="why-text"><strong>Конкретный план, не общие слова</strong><span>На консультации получите пошаговую стратегию, а не советы «обратитесь в суд».</span></div>
         </div>
-        <div class="why-item reveal">
+        <div class="why-item reveal" data-n="02">
           <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
-          <div class="why-text"><strong>Знаю район изнутри</strong><span>Работаю в Приморском с 2002 года. Знаю местные УК, суды и прецеденты.</span></div>
+          <div class="why-text"><strong>Знаю район изнутри</strong><span>Работаю в Приморском районе с 2002 года. Знаю местные УК, суды и прецеденты.</span></div>
         </div>
-        <div class="why-item reveal">
+        <div class="why-item reveal" data-n="03">
           <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg></div>
-          <div class="why-text"><strong>Оплата только за результат</strong><span>Консультация всегда бесплатна. Дальнейшая работа — только если есть перспектива.</span></div>
+          <div class="why-text"><strong>Работа только на результат</strong><span>Берусь за дело только если есть реальная перспектива. Работаю до конца.</span></div>
         </div>
-        <div class="why-item reveal">
+        <div class="why-item reveal" data-n="04">
           <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.82 19.79 19.79 0 016 2.18 2 2 0 018 2h2.09a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L11.91 9a16 16 0 006.08 6.09l.41-.41a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg></div>
           <div class="why-text"><strong>Прямой контакт без посредников</strong><span>Пишете напрямую мне. Без секретарей, без перезвонов через три дня.</span></div>
         </div>
-        <div class="why-item reveal">
+        <div class="why-item reveal" data-n="05">
           <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 7 12 2 22 7"/><line x1="2" y1="7" x2="22" y2="7"/><line x1="2" y1="21" x2="22" y2="21"/><line x1="7" y1="7" x2="7" y2="21"/><line x1="12" y1="7" x2="12" y2="21"/><line x1="17" y1="7" x2="17" y2="21"/></svg></div>
           <div class="why-text"><strong>Опыт в госструктурах</strong><span>Работал в госсекторе — понимаю, как думает чиновник и где у системы слабые места.</span></div>
         </div>
-        <div class="why-item reveal">
+        <div class="why-item reveal" data-n="06">
           <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
           <div class="why-text"><strong>Понятный язык</strong><span>Объясняю без юридического жаргона. Вы поймёте ситуацию и сможете принять решение.</span></div>
         </div>
@@ -1879,7 +2305,7 @@ a { text-decoration: none; color: inherit; }
       <div class="step reveal">
         <div class="step-num">01</div>
         <div class="step-title">Запишитесь</div>
-        <p class="step-text">Позвоните по номеру +7(812)223-14-78, напишите в Telegram или оставьте заявку. Выберите удобное время — вторая или четвёртая среда месяца.</p>
+        <p class="step-text">Заполните форму обратной связи или напишите нам. Выберите удобное время — вторая или четвёртая среда месяца.</p>
       </div>
       <div class="step reveal">
         <div class="step-num">02</div>
@@ -1904,7 +2330,7 @@ a { text-decoration: none; color: inherit; }
         <span class="section-label">Только у меня</span>
         <div class="deputy-title">Инструмент, которого нет у <em>обычного юриста</em></div>
         <div class="gold-bar"></div>
-        <div class="deputy-sub">Как депутат ЛДПР, я могу направить официальный депутатский запрос в любое ведомство. Государственный орган обязан ответить в письменной форме в течение 30 дней. Нередко этого достаточно — без суда.</div>
+        <div class="deputy-sub">Как юрист ЛДПР, я могу направить официальный депутатский запрос в любое ведомство. Государственный орган обязан ответить в письменной форме в течение 30 дней. Нередко этого достаточно — без суда.</div>
       </div>
       <div class="deputy-right">
         <div class="deputy-badge">🏛 Депутатский запрос</div>
@@ -1960,7 +2386,7 @@ a { text-decoration: none; color: inherit; }
             <div class="win-ba-text">Возврат 61 000 ₽ + проценты</div>
           </div>
         </div>
-        <div class="win-date">Май 2025</div>
+        <div class="win-date">Май 2026</div>
       </div>
       <div class="win-card reveal">
         <span class="win-category">Труд · Увольнение</span>
@@ -1976,7 +2402,7 @@ a { text-decoration: none; color: inherit; }
             <div class="win-ba-text">Восстановлен на работе + 90 000 ₽ взыскано</div>
           </div>
         </div>
-        <div class="win-date">Апрель 2025</div>
+        <div class="win-date">Апрель 2026</div>
       </div>
       <div class="win-card reveal">
         <span class="win-category">Семья · Алименты</span>
@@ -1992,7 +2418,7 @@ a { text-decoration: none; color: inherit; }
             <div class="win-ba-text">Полный долг за 36 месяцев + неустойка</div>
           </div>
         </div>
-        <div class="win-date">Март 2025</div>
+        <div class="win-date">Март 2026</div>
       </div>
     </div>
   </div>
@@ -2011,7 +2437,8 @@ a { text-decoration: none; color: inherit; }
         <span class="rrb-text">4.9 из 5 · 6 отзывов</span>
       </div>
     </div>
-    <div class="reviews-grid">
+    <div class="reviews-carousel-wrap">
+      <div class="reviews-track">
 
       <div class="review-card">
         <div class="review-stars">★★★★★</div>
@@ -2079,7 +2506,9 @@ a { text-decoration: none; color: inherit; }
         </div>
       </div>
 
-    </div><!-- /reviews-grid -->
+      </div><!-- /reviews-track -->
+    </div><!-- /reviews-carousel-wrap -->
+    <div class="carousel-dots"></div>
   </div>
 </section>
 
@@ -2124,8 +2553,7 @@ a { text-decoration: none; color: inherit; }
         <span class="section-label">Частые вопросы</span>
         <h2 class="section-title">Отвечаю на главные</h2>
         <div class="gold-bar"></div>
-        <p>Если вашего вопроса здесь нет — напишите напрямую. Отвечаю в Telegram в течение суток.</p>
-        <a href="https://t.me/ursreda" target="_blank" class="faq-tg"><span>✈️</span> Telegram @ursreda</a>
+        <p>Если вашего вопроса здесь нет — заполните форму обратной связи.</p>
       </div>
       <div class="faq-list">
         <div class="faq-item">
@@ -2138,15 +2566,11 @@ a { text-decoration: none; color: inherit; }
         </div>
         <div class="faq-item">
           <button class="faq-q" onclick="toggleFaq(this)">Как часто проходит приём?<span class="faq-arrow">+</span></button>
-          <div class="faq-a">Приём проходит каждую вторую и четвёртую среду месяца с 18:00 до 20:00. Для записи на конкретное время позвоните по номеру +7(812)223-14-78 или напишите в Telegram.</div>
+          <div class="faq-a">Приём проходит каждую вторую и четвёртую среду месяца. Для записи заполните форму обратной связи.</div>
         </div>
         <div class="faq-item">
           <button class="faq-q" onclick="toggleFaq(this)">Работаете ли с жителями других районов?<span class="faq-arrow">+</span></button>
-          <div class="faq-a">Да. Хотя моя основная деятельность сосредоточена в Приморском районе, помогаю всем жителям Санкт-Петербурга. Для онлайн-консультации — пишите в Telegram.</div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-q" onclick="toggleFaq(this)">Можно ли получить консультацию онлайн?<span class="faq-arrow">+</span></button>
-          <div class="faq-a">Да, пишите в Telegram @ursreda. Для простых вопросов ответ приходит в течение суток. Для сложных ситуаций рекомендую очную встречу — так удобнее работать с документами.</div>
+          <div class="faq-a">Да. Хотя моя основная деятельность сосредоточена в Приморском районе, помогаю всем жителям Санкт-Петербурга.</div>
         </div>
         <div class="faq-item">
           <button class="faq-q" onclick="toggleFaq(this)">Уголовными делами занимаетесь?<span class="faq-arrow">+</span></button>
@@ -2154,7 +2578,7 @@ a { text-decoration: none; color: inherit; }
         </div>
         <div class="faq-item">
           <button class="faq-q" onclick="toggleFaq(this)">Нужно ли записываться заранее?<span class="faq-arrow">+</span></button>
-          <div class="faq-a">Рекомендую записаться — тогда вас ждут в конкретное время и вы не ждёте в очереди. Для записи: +7(812)223-14-78 или Telegram @ursreda.</div>
+          <div class="faq-a">Рекомендую записаться — тогда вас ждут в конкретное время и вы не ждёте в очереди. Для записи заполните форму обратной связи или напишите на почту.</div>
         </div>
       </div>
     </div>
@@ -2171,18 +2595,23 @@ a { text-decoration: none; color: inherit; }
         <h2 class="contact-title">Запишитесь<br>на приём</h2>
         <p class="contact-sub">Первый шаг ничего не стоит. Консультация бесплатна — просто выберите удобный способ связи.</p>
         <div class="contact-actions">
-          <a href="https://t.me/ursreda" target="_blank" class="contact-btn cbtn-tg">
-            <span class="cbtn-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></span>
-            <div><div class="cbtn-main">Написать в Telegram</div><div class="cbtn-hint">@ursreda · Отвечаю в течение суток</div></div>
-          </a>
-          <a href="tel:+78122231478" class="contact-btn cbtn-phone">
-            <span class="cbtn-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.82 19.79 19.79 0 016 2.18 2 2 0 018 2h2.09a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L11.91 9a16 16 0 006.08 6.09l.41-.41a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg></span>
-            <div><div class="cbtn-main">+7 (812) 223-14-78</div><div class="cbtn-hint">Звонки · Пн–Пт, рабочее время</div></div>
-          </a>
-          <a href="mailto:spb@ldpr.ru" class="contact-btn cbtn-email">
+          <a href="mailto:spb@ldpr.ru" class="contact-btn cbtn-tg">
             <span class="cbtn-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span>
-            <div><div class="cbtn-main" style="font-size:13px">spb@ldpr.ru</div></div>
+            <div><div class="cbtn-main">Задать вопрос</div><div class="cbtn-hint">spb@ldpr.ru · отвечаю за сутки</div></div>
           </a>
+        </div>
+        <div class="social-follow" style="margin-top:20px;">
+          <div style="font-family:'Raleway',sans-serif;font-size:10px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:12px;">Подписывайтесь на мои социальные сети</div>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;">
+            <a href="https://vk.com/pykhteevas" target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:8px;padding:10px 16px;font-family:'Raleway',sans-serif;font-size:11px;font-weight:700;color:rgba(255,255,255,.75);letter-spacing:.06em;transition:all .2s;text-decoration:none;" onmouseover="this.style.background='rgba(255,255,255,.14)'" onmouseout="this.style.background='rgba(255,255,255,.08)'">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M15.07 2H8.93C3.33 2 2 3.33 2 8.93v6.14C2 20.67 3.33 22 8.93 22h6.14C20.67 22 22 20.67 22 15.07V8.93C22 3.33 20.67 2 15.07 2zm3.08 13.5h-1.68c-.64 0-.84-.51-1.98-1.66-1-.98-1.44-.84-1.97.17-.53 1.01-.78 1.49-1.69 1.49H9.52c-2.17 0-4.1-1.99-4.1-4.36 0-2.38 1.7-4.64 4.36-4.64h.87c.2 0 .37.14.41.33l.32 1.5c.04.2-.04.4-.19.52L9.8 9.71c.45 1.09 1.38 1.97 2.48 2.41l1.27-1.55c.15-.18.38-.25.58-.19l1.49.48c.2.06.33.26.33.47v.87c0 1.3-.73 2.3-1.8 2.3z"/></svg>
+              ВКонтакте
+            </a>
+            <a href="https://dzen.ru/ursreda" target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:8px;padding:10px 16px;font-family:'Raleway',sans-serif;font-size:11px;font-weight:700;color:rgba(255,255,255,.75);letter-spacing:.06em;transition:all .2s;text-decoration:none;" onmouseover="this.style.background='rgba(255,255,255,.14)'" onmouseout="this.style.background='rgba(255,255,255,.08)'">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
+              Дзен
+            </a>
+          </div>
         </div>
         <div class="privacy-note">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
@@ -2199,7 +2628,14 @@ a { text-decoration: none; color: inherit; }
             <div class="schedule-row"><span class="srow-key">Адрес</span><span class="srow-val">Богатырский пр. д.7 корп.10<br><span style="opacity:.45;font-size:11px">Вход под аркой</span></span></div>
             <div class="schedule-row"><span class="srow-key">Консультация</span><span class="srow-val gold">Бесплатно</span></div>
           </div>
-          <a href="https://t.me/ursreda" target="_blank" class="btn btn-primary" style="width:100%;justify-content:center">Получить бесплатную консультацию</a>
+          <button type="button" class="btn btn-primary" style="width:100%;justify-content:center" onclick="openBookingModal()">Записаться на приём</button>
+          <div style="margin-top:14px;padding-top:14px;border-top:1px solid rgba(255,255,255,.08);">
+            <div style="font-family:'Raleway',sans-serif;font-size:9px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:10px;">Мои социальные сети</div>
+            <div style="display:flex;gap:8px;">
+              <a href="https://vk.com/pykhteevas" target="_blank" style="flex:1;text-align:center;padding:8px 12px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:8px;font-family:'Raleway',sans-serif;font-size:11px;font-weight:700;color:rgba(255,255,255,.7);text-decoration:none;transition:all .2s;" onmouseover="this.style.background='rgba(255,255,255,.12)'" onmouseout="this.style.background='rgba(255,255,255,.07)'">ВКонтакте</a>
+              <a href="https://dzen.ru/ursreda" target="_blank" style="flex:1;text-align:center;padding:8px 12px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:8px;font-family:'Raleway',sans-serif;font-size:11px;font-weight:700;color:rgba(255,255,255,.7);text-decoration:none;transition:all .2s;" onmouseover="this.style.background='rgba(255,255,255,.12)'" onmouseout="this.style.background='rgba(255,255,255,.07)'">Дзен</a>
+            </div>
+          </div>
         </div>
         <div class="map-embed">
           <iframe
@@ -2224,8 +2660,9 @@ a { text-decoration: none; color: inherit; }
       </div>
       <div class="footer-socials">
         <a href="https://t.me/ursreda" target="_blank" class="social-link" title="Telegram">TG</a>
-        <a href="https://vk.com/pykhteevas" target="_blank" class="social-link" title="ВКонтакте">VK</a>
-        <a href="https://dzen.ru/ursreda" target="_blank" class="social-link" title="Дзен">ДЗ</a>
+        <a href="https://vk.com/pykhteevas" target="_blank" class="social-link" title="ВКонтакте — районный паблик">VK</a>
+        <a href="https://dzen.ru/ursreda" target="_blank" class="social-link" title="Дзен — статьи и советы">ДЗ</a>
+        <a href="https://max.ru/ursreda" target="_blank" class="social-link" title="MAX">МХ</a>
       </div>
       <div class="footer-right">Богатырский пр., д.7 корп.10 · Приморский р-н, СПб · © 2026</div>
     </div>
@@ -2233,15 +2670,86 @@ a { text-decoration: none; color: inherit; }
 </footer>
 
 
+<!-- ══ BOOKING MODAL ══ -->
+<div id="bookingOverlay" class="bm-overlay" role="dialog" aria-modal="true" aria-labelledby="bm-title-h">
+  <div class="bm-modal">
+    <button class="bm-close" id="bmClose" aria-label="Закрыть">×</button>
+    <div class="bm-badge">Запись на приём</div>
+    <div class="bm-title" id="bm-title-h">Расскажите о вашем вопросе</div>
+    <p class="bm-sub">Антон Сергеевич ознакомится с ситуацией заранее и сможет помочь эффективнее с первой минуты встречи.</p>
+    <form class="bm-form" id="bookingForm" onsubmit="submitBooking(event)" novalidate>
+      <div class="bm-group">
+        <label for="bm-name">Ваше имя</label>
+        <input id="bm-name" class="bm-input" type="text" placeholder="Иванов Иван Иванович" autocomplete="name" required>
+      </div>
+      <div class="bm-group">
+        <label for="bm-phone">Телефон для связи</label>
+        <input id="bm-phone" class="bm-input" type="tel" placeholder="+7 (___) ___-__-__" autocomplete="tel" required>
+      </div>
+      <div class="bm-group">
+        <label for="bm-topic">Тема обращения</label>
+        <select id="bm-topic" class="bm-select" required>
+          <option value="" disabled selected>Выберите тему</option>
+          <option>ЖКХ и управляющие компании</option>
+          <option>Трудовые споры</option>
+          <option>Семейные вопросы</option>
+          <option>Имущественные споры</option>
+          <option>Депутатский запрос</option>
+          <option>Другое</option>
+        </select>
+      </div>
+      <div class="bm-group">
+        <label for="bm-desc">Кратко опишите ситуацию</label>
+        <textarea id="bm-desc" class="bm-textarea" placeholder="Например: управляющая компания выставила неверные счета, хочу написать жалобу..." required></textarea>
+      </div>
+      <div class="bm-consent-group">
+        <label class="bm-consent-lbl">
+          <input type="checkbox" class="bm-consent-input" id="bm-consent" required>
+          <span>Согласен(на) на <button type="button" class="bm-policy-link" onclick="openPolicy()">обработку персональных данных</button> в соответствии с&nbsp;Федеральным законом №&nbsp;152-ФЗ</span>
+        </label>
+      </div>
+      <button type="submit" class="bm-submit">Отправить заявку →</button>
+      <p class="bm-privacy">Данные передаются напрямую Пыхтееву А.С. и используются только для организации встречи</p>
+    </form>
+  </div>
+</div>
+
+<!-- ══ ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ ══ -->
+<div class="bm-overlay" id="policyOverlay" role="dialog" aria-modal="true" aria-labelledby="policy-title-h">
+  <div class="bm-modal">
+    <button class="bm-close" id="policyClose" aria-label="Закрыть">×</button>
+    <div class="bm-badge">Правовой документ</div>
+    <div class="bm-title" id="policy-title-h">Политика обработки персональных данных</div>
+    <div class="policy-body">
+      <h3>1. Оператор данных</h3>
+      <p>Антон Сергеевич Пыхтеев, депутат Законодательного собрания Санкт-Петербурга. Контакт: spb@ldpr.ru, тел. +7 (812) 223-14-78.</p>
+      <h3>2. Какие данные обрабатываются</h3>
+      <p>Имя, номер телефона, описание вопроса, указанные при заполнении формы записи на приём.</p>
+      <h3>3. Цели обработки</h3>
+      <p>Организация личного приёма, предварительное ознакомление с вопросом обращения, обратная связь с заявителем. Данные не используются в коммерческих целях и не передаются третьим лицам.</p>
+      <h3>4. Правовое основание</h3>
+      <p>Федеральный закон № 152-ФЗ «О персональных данных» от 27.07.2006 г., ст. 6 ч. 1 п. 1 (согласие субъекта).</p>
+      <h3>5. Способ передачи и хранения</h3>
+      <p>Данные передаются через электронную почту непосредственно Антону Сергеевичу Пыхтееву. Сайт не хранит данные на сервере — они поступают в почтовый клиент пользователя стандартным протоколом mailto.</p>
+      <h3>6. Срок хранения</h3>
+      <p>До достижения цели обработки (проведения приёма или отказа от записи), но не дольше 1 года с момента подачи заявки.</p>
+      <h3>7. Права субъекта</h3>
+      <p>Вы вправе запросить доступ к своим данным, их исправление или удаление, обратившись по адресу spb@ldpr.ru. Ответ — в течение 30 дней.</p>
+      <h3>8. Отзыв согласия</h3>
+      <p>Согласие может быть отозвано в любой момент, направив письменный запрос на spb@ldpr.ru.</p>
+    </div>
+  </div>
+</div>
+
 <!-- ══ FLOATING CONSULT BUTTON ══ -->
-<div id="floatConsult" class="float-consult" role="button" aria-label="Получить бесплатную консультацию" tabindex="0">
+<div id="floatConsult" class="float-consult" role="button" aria-label="Получить консультацию" tabindex="0">
   <div class="float-ring">
     <svg viewBox="0 0 130 130" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
       <defs>
         <path id="fc-arc" d="M 65,65 m -48,0 a 48,48 0 1,1 96,0 a 48,48 0 1,1 -96,0"/>
       </defs>
       <text class="float-ring-text">
-        <textPath href="#fc-arc" startOffset="0%">БЕСПЛАТНАЯ КОНСУЛЬТАЦИЯ · ЗАПИСАТЬСЯ ·</textPath>
+        <textPath href="#fc-arc" startOffset="0%" textLength="302" lengthAdjust="spacingAndGlyphs">ЮРИСТ · ПЫХТЕЕВ · АНТОН · СЕРГЕЕВИЧ ·</textPath>
       </text>
     </svg>
   </div>
@@ -2251,10 +2759,10 @@ a { text-decoration: none; color: inherit; }
 </div>
 <div id="floatPopup" class="float-popup" role="dialog" aria-modal="true" aria-labelledby="fp-title">
   <button id="floatPopupClose" class="popup-close" aria-label="Закрыть">×</button>
-  <div class="popup-badge">Бесплатно</div>
+  <div class="popup-badge">Консультация</div>
   <div class="popup-title" id="fp-title">30-минутная<br>консультация</div>
   <p class="popup-desc">Расскажите о вашей ситуации — ЖКХ, трудовые или семейный вопрос. Первая встреча всегда бесплатна.</p>
-  <a href="https://t.me/ursreda" target="_blank" class="popup-cta">Написать в Telegram</a>
+  <a href="mailto:spb@ldpr.ru" class="popup-cta">Задать вопрос</a>
 </div>
 
 
@@ -2462,6 +2970,16 @@ document.querySelector('.cbtn-phone')?.addEventListener('click', () => {
     if (e.key === 'ArrowLeft')  { clearInterval(tid); goTo(page - 1); startTimer(); }
     if (e.key === 'ArrowRight') { clearInterval(tid); goTo(page + 1); startTimer(); }
   });
+
+  let touchStartX = 0;
+  wrap.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+  wrap.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    if (Math.abs(dx) < 40) return;
+    clearInterval(tid);
+    goTo(dx < 0 ? page + 1 : page - 1);
+    startTimer();
+  });
 })();
 
 /* ── V2: Star rating pop-in ── */
@@ -2480,12 +2998,16 @@ document.querySelector('.cbtn-phone')?.addEventListener('click', () => {
   document.querySelectorAll('.review-stars').forEach(el => obs.observe(el));
 })();
 
-/* ── Spotlight on tip cards ── */
-document.querySelectorAll('.tip-card').forEach(card => {
+/* ── Card Spotlight — все карточки ── */
+document.querySelectorAll('.tip-card, .stat-cell, .service-card, .win-card, .review-card').forEach(card => {
   card.addEventListener('mousemove', e => {
     const r = card.getBoundingClientRect();
     card.style.setProperty('--sx', `${e.clientX - r.left}px`);
     card.style.setProperty('--sy', `${e.clientY - r.top}px`);
+  });
+  card.addEventListener('mouseleave', () => {
+    card.style.setProperty('--sx', '-300px');
+    card.style.setProperty('--sy', '-300px');
   });
 });
 
@@ -2518,6 +3040,108 @@ document.querySelectorAll('a, button, .service-card, .win-card, .review-card, .t
   }
   setTimeout(tick, 1200);
 })();
+
+/* ── Accessibility widget (ГОСТ Р 52872-2012) ── */
+(function() {
+  const html    = document.documentElement;
+  const btn     = document.getElementById('a11yBtn');
+  const ctrl    = document.getElementById('a11yCtrl');
+  const closeBtn= document.getElementById('a11yClose');
+  const szBtns  = document.querySelectorAll('.a11y-sz');
+  const LS      = localStorage;
+
+  function applyHC(on) {
+    html.classList.toggle('hc', on);
+    btn.classList.toggle('active', on);
+    btn.setAttribute('aria-pressed', String(on));
+    LS.setItem('a11y-hc', on ? '1' : '0');
+    ctrl.classList.toggle('visible', on);
+  }
+
+  function applySz(sz) {
+    html.classList.remove('fs-lg','fs-xl');
+    if (sz === 'large')  html.classList.add('fs-lg');
+    if (sz === 'xlarge') html.classList.add('fs-xl');
+    szBtns.forEach(b => b.classList.toggle('on', b.dataset.sz === sz));
+    LS.setItem('a11y-sz', sz);
+  }
+
+  btn.addEventListener('click', () => {
+    const on = !html.classList.contains('hc');
+    applyHC(on);
+    if (!on) applySz('normal');
+  });
+
+  closeBtn.addEventListener('click', () => {
+    applyHC(false);
+    applySz('normal');
+  });
+
+  szBtns.forEach(b => b.addEventListener('click', () => applySz(b.dataset.sz)));
+
+  const savedHC = LS.getItem('a11y-hc') === '1';
+  const savedSz = LS.getItem('a11y-sz') || 'normal';
+  if (savedHC) applyHC(true);
+  applySz(savedSz);
+})();
+
+/* ── Policy modal ── */
+function openPolicy() {
+  document.getElementById('policyOverlay').classList.add('open');
+}
+document.getElementById('policyClose')?.addEventListener('click', () => {
+  document.getElementById('policyOverlay').classList.remove('open');
+});
+document.getElementById('policyOverlay')?.addEventListener('click', e => {
+  if (e.target === e.currentTarget) e.currentTarget.classList.remove('open');
+});
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') document.getElementById('policyOverlay')?.classList.remove('open');
+});
+
+/* ── Booking modal ── */
+function openBookingModal() {
+  document.getElementById('bookingOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+document.getElementById('bmClose')?.addEventListener('click', () => {
+  document.getElementById('bookingOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+});
+document.getElementById('bookingOverlay')?.addEventListener('click', e => {
+  if (e.target === e.currentTarget) {
+    e.currentTarget.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+});
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    if (document.getElementById('policyOverlay').classList.contains('open')) return;
+    document.getElementById('bookingOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+});
+function submitBooking(e) {
+  e.preventDefault();
+  const name  = document.getElementById('bm-name').value.trim();
+  const phone = document.getElementById('bm-phone').value.trim();
+  const topic = document.getElementById('bm-topic').value;
+  const desc  = document.getElementById('bm-desc').value.trim();
+  const consent = document.getElementById('bm-consent').checked;
+  if (!name || !phone || !topic || !desc || !consent) return;
+  const subject = encodeURIComponent('Запись на приём — ' + topic);
+  const body = encodeURIComponent(
+    'Заявка на приём\n\n' +
+    'Имя: ' + name + '\n' +
+    'Телефон: ' + phone + '\n' +
+    'Тема: ' + topic + '\n\n' +
+    'Описание ситуации:\n' + desc
+  );
+  window.location.href = 'mailto:spb@ldpr.ru?subject=' + subject + '&body=' + body;
+  document.getElementById('bookingOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+  document.getElementById('bookingForm').reset();
+}
 </script>
 
 <div id="toast" class="toast" role="status" aria-live="polite"></div>

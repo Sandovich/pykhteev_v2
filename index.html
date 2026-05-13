@@ -26,7 +26,7 @@
       "worksFor": {"@type":"PoliticalParty","name":"ЛДПР"},
       "address": {"@type":"PostalAddress","streetAddress":"Богатырский проспект, д.7 корп.10","addressLocality":"Санкт-Петербург","addressRegion":"Приморский район","postalCode":"197372","addressCountry":"RU"},
       "telephone": "+78122231478",
-      "sameAs": ["https://t.me/ursreda","https://vk.com/pykhteevas"]
+      "sameAs": ["https://t.me/ursreda","https://vk.ru/ldprprimorskiyspb"]
     },
     {
       "@type": "LocalBusiness",
@@ -141,10 +141,11 @@ a { text-decoration: none; color: inherit; }
 .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(184,137,42,.4); }
 .btn-primary:active { transform: translateY(0); }
 .btn-outline {
-  background: transparent; color: rgba(255,255,255,.85);
-  border: 1.5px solid rgba(255,255,255,.3);
+  background: rgba(255,255,255,.07);
+  color: rgba(255,255,255,.96);
+  border: 1.5px solid rgba(255,255,255,.48);
 }
-.btn-outline:hover { border-color: var(--gold2); color: var(--gold2); transform: translateY(-2px); }
+.btn-outline:hover { background: rgba(255,255,255,.13); border-color: var(--gold2); color: var(--gold2); transform: translateY(-2px); }
 
 /* ════════════════════════════════════════════
    SCROLL PROGRESS BAR
@@ -307,13 +308,25 @@ a { text-decoration: none; color: inherit; }
 /* Hero card */
 .hero-card {
   background: linear-gradient(160deg, rgba(255,255,255,.07) 0%, rgba(255,255,255,.03) 100%);
-  border: 1px solid rgba(255,255,255,.1);
+  border: 1px solid rgba(184,137,42,.32);
   border-radius: 18px; overflow: hidden;
   backdrop-filter: blur(8px);
-  box-shadow: 0 32px 64px rgba(0,0,0,.3), inset 0 1px 0 rgba(255,255,255,.08);
+  box-shadow:
+    0 32px 64px rgba(0,0,0,.3),
+    inset 0 1px 0 rgba(255,255,255,.08),
+    0 0 0 1px rgba(184,137,42,.1),
+    0 0 36px rgba(184,137,42,.1);
   transition: transform .3s, box-shadow .3s;
+  position: relative;
 }
-.hero-card:hover { transform: translateY(-4px); box-shadow: 0 40px 80px rgba(0,0,0,.35); }
+.hero-card:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 40px 80px rgba(0,0,0,.35),
+    inset 0 1px 0 rgba(255,255,255,.08),
+    0 0 0 1px rgba(184,137,42,.22),
+    0 0 48px rgba(184,137,42,.18);
+}
 .hero-card-photo {
   min-height: 240px;
   background: linear-gradient(145deg, rgba(184,137,42,.14) 0%, rgba(7,21,42,.7) 100%);
@@ -325,6 +338,16 @@ a { text-decoration: none; color: inherit; }
   background:
     radial-gradient(ellipse at 70% 30%, rgba(184,137,42,.12) 0%, transparent 60%),
     radial-gradient(ellipse at 30% 80%, rgba(22,52,96,.4) 0%, transparent 60%);
+}
+.hero-card-photo::after {
+  content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+  height: 2px; z-index: 3;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(184,137,42,.6) 20%,
+    rgba(240,196,106,.95) 50%,
+    rgba(184,137,42,.6) 80%,
+    transparent 100%);
 }
 .hero-card-img {
   position: absolute; inset: 0;
@@ -434,23 +457,24 @@ a { text-decoration: none; color: inherit; }
    НАПРАВЛЕНИЯ РАБОТЫ
 ════════════════════════════════════════════ */
 .services { padding: 100px 0; background: var(--light); }
-.services-header { text-align: center; margin-bottom: 56px; }
+.services-header { text-align: center; margin-bottom: 40px; }
 .services-header .section-label { display: flex; justify-content: center; }
 .services-header .gold-bar { margin: 18px auto; }
 .services-header p { font-size: 15px; font-weight: 300; color: var(--mid); max-width: 480px; margin: 0 auto; line-height: 1.7; }
 .services-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
 .service-card {
   background: var(--white); border-radius: 14px; padding: 34px 26px;
-  border: 1px solid var(--border);
-  box-shadow: var(--shadow-sm);
-  transition: transform .28s cubic-bezier(.4,0,.2,1), box-shadow .28s, border-color .28s;
+  border: 1px solid rgba(14,34,68,.12);
+  box-shadow: 0 2px 10px rgba(14,34,68,.07), 0 1px 3px rgba(14,34,68,.05);
+  transition: transform .28s cubic-bezier(.4,0,.2,1), box-shadow .28s, border-color .28s, background .28s;
   position: relative; overflow: hidden;
   cursor: default;
 }
 .service-card::before {
   content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
-  background: var(--grad-gold); transform: scaleX(0); transform-origin: left;
-  transition: transform .32s cubic-bezier(.4,0,.2,1);
+  background: var(--grad-gold);
+  opacity: .38;
+  transition: opacity .28s cubic-bezier(.4,0,.2,1);
 }
 .service-card::after {
   content: ''; position: absolute; bottom: 0; right: 0;
@@ -459,11 +483,12 @@ a { text-decoration: none; color: inherit; }
   pointer-events: none;
 }
 .service-card:hover {
-  transform: translateY(-7px);
-  box-shadow: var(--shadow-lg);
-  border-color: transparent;
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(14,34,68,.13), 0 0 0 1px rgba(184,137,42,.22), 0 0 22px rgba(184,137,42,.1);
+  border-color: rgba(184,137,42,.28);
+  background: #fffdf8;
 }
-.service-card:hover::before { transform: scaleX(1); }
+.service-card:hover::before { opacity: 1; }
 .service-icon {
   width: 50px; height: 50px;
   background: linear-gradient(135deg, rgba(184,137,42,.12), rgba(184,137,42,.05));
@@ -482,7 +507,8 @@ a { text-decoration: none; color: inherit; }
 .service-tag {
   font-family: 'Raleway', sans-serif;
   font-size: 10px; font-weight: 600; letter-spacing: .08em;
-  color: var(--navy2); background: rgba(14,34,68,.07);
+  color: var(--navy2); background: rgba(14,34,68,.06);
+  border: 1px solid rgba(14,34,68,.1);
   padding: 4px 10px; border-radius: 100px;
 }
 
@@ -821,8 +847,21 @@ a { text-decoration: none; color: inherit; }
 ════════════════════════════════════════════ */
 .faq { padding: 100px 0; background: var(--white); }
 .faq-inner { display: grid; grid-template-columns: 360px 1fr; gap: 80px; align-items: start; }
+.faq-left { position: sticky; top: 100px; }
 .faq-left .section-label { display: block; }
 .faq-left p { font-size: 14px; font-weight: 300; line-height: 1.75; color: var(--mid); margin-top: 16px; }
+.faq-count {
+  display: flex; align-items: center; gap: 18px;
+  margin-top: 36px; padding-top: 28px; border-top: 1px solid var(--border);
+}
+.faq-count-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 52px; font-weight: 700; line-height: 1;
+  color: var(--gold); letter-spacing: -.02em;
+}
+.faq-count-label {
+  font-size: 12px; font-weight: 300; line-height: 1.65; color: var(--mid);
+}
 .faq-tg {
   display: inline-flex; align-items: center; gap: 10px; margin-top: 28px;
   background: #229ED9; color: var(--white);
@@ -847,8 +886,9 @@ a { text-decoration: none; color: inherit; }
 .faq-item.open {
   border-left-color: var(--gold);
   padding-left: 14px;
-  background: rgba(184,137,42,.03);
+  background: rgba(184,137,42,.05);
 }
+.faq-item.open .faq-a { color: var(--ink); }
 .faq-q {
   width: 100%; background: none; border: none; cursor: pointer;
   padding: 22px 0; display: flex; justify-content: space-between; align-items: center; gap: 24px;
@@ -859,11 +899,11 @@ a { text-decoration: none; color: inherit; }
 .faq-q:hover { color: var(--gold); }
 .faq-item:hover .faq-arrow { border-color: rgba(184,137,42,.5); color: var(--gold2); }
 .faq-arrow {
-  width: 28px; height: 28px; border-radius: 50%;
-  border: 1.5px solid var(--border);
+  width: 30px; height: 30px; border-radius: 50%;
+  border: 1.5px solid rgba(14,34,68,.2);
   display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-  font-size: 15px; color: var(--gold); font-family: 'Raleway', sans-serif;
-  transition: transform .3s ease, background .2s, border-color .2s;
+  font-size: 16px; color: var(--mid); font-family: 'Raleway', sans-serif;
+  transition: transform .3s ease, background .2s, border-color .2s, color .2s;
 }
 .faq-item.open .faq-arrow {
   transform: rotate(45deg);
@@ -1022,6 +1062,7 @@ a { text-decoration: none; color: inherit; }
   .about-photo-wrap { max-width: 360px; }
   .about-photo-card { position: relative; bottom: 0; right: 0; margin-top: 16px; width: fit-content; }
   .faq-inner { grid-template-columns: 1fr; gap: 44px; }
+  .faq-left { position: static; }
   .contact-inner { grid-template-columns: 1fr; gap: 44px; }
   .deputy-inner { grid-template-columns: 1fr; gap: 36px; }
   .why-inner { grid-template-columns: 1fr; gap: 32px; }
@@ -1210,12 +1251,48 @@ a { text-decoration: none; color: inherit; }
   transition: transform .2s, box-shadow .2s; cursor: pointer;
 }
 .popup-cta:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(184,137,42,.42); }
+.popup-cta-book {
+  display: block; width: 100%; text-align: center;
+  background: transparent; color: var(--ink);
+  font-family: 'Raleway', sans-serif; font-size: 11px; font-weight: 700;
+  letter-spacing: .12em; text-transform: uppercase;
+  padding: 12px 0; border-radius: var(--r);
+  border: 1.5px solid var(--border);
+  transition: border-color .2s, color .2s; cursor: pointer;
+  margin-top: 10px;
+}
+.popup-cta-book:hover { border-color: var(--gold); color: var(--gold); }
 
 @media (max-width: 480px) {
   .float-consult { width: 110px; height: 110px; bottom: 16px; right: 16px; }
   .float-ring-text { font-size: 9px; }
   .float-avatar { width: 66px; height: 66px; font-size: 17px; }
-  .float-popup { width: calc(100vw - 32px); right: 16px; bottom: 144px; }
+  .float-popup { width: calc(100vw - 32px); right: 16px; bottom: 158px; }
+}
+
+/* ── win-ba stacks on very small screens ── */
+@media (max-width: 360px) {
+  .win-ba { flex-direction: column; }
+  .win-ba-col { border-left: none !important; border-top: 2px solid var(--border); }
+  .win-ba-before { border-top: 2px solid rgba(100,116,139,.18) !important; border-left: none !important; }
+  .win-ba-after  { border-top: 2px solid rgba(184,137,42,.35)  !important; border-left: none !important; }
+}
+
+/* ── a11y bar compact on mobile ── */
+@media (max-width: 640px) {
+  .a11y-inner { padding: 4px 12px; gap: 6px; }
+  .a11y-btn { font-size: 10px; padding: 3px 8px; gap: 4px; }
+  .a11y-ctrl-label { font-size: 9px; }
+  .a11y-sz { width: 24px; height: 22px; }
+  .a11y-sz[data-sz="large"]  { font-size: 12px; }
+  .a11y-sz[data-sz="xlarge"] { font-size: 15px; }
+  .a11y-scheme { width: 22px; height: 22px; font-size: 10px; }
+  .a11y-bar-close { font-size: 13px; }
+}
+@media (max-width: 480px) {
+  .a11y-inner { flex-wrap: wrap; justify-content: flex-end; }
+  .a11y-btn { order: 0; }
+  .a11y-controls { order: 1; width: 100%; justify-content: flex-end; }
 }
 
 /* ════════════════════════════════════════════
@@ -1561,23 +1638,26 @@ a { text-decoration: none; color: inherit; }
   border: 1px solid var(--border); margin: 14px 0 16px;
 }
 .win-ba-col {
-  flex: 1; padding: 10px 13px;
-  display: flex; flex-direction: column; gap: 3px;
+  flex: 1; padding: 11px 14px;
+  display: flex; flex-direction: column; gap: 5px;
 }
-.win-ba-before { background: rgba(107,114,128,.05); }
+.win-ba-before {
+  background: rgba(100,116,139,.06);
+  border-left: 2px solid rgba(100,116,139,.18);
+}
 .win-ba-after {
-  background: rgba(184,137,42,.07);
-  border-left: 2px solid rgba(184,137,42,.3);
+  background: rgba(184,137,42,.08);
+  border-left: 2px solid rgba(184,137,42,.35);
 }
 .win-ba-label {
   font-family: 'Raleway', sans-serif;
-  font-size: 8.5px; font-weight: 700;
-  letter-spacing: .32em; text-transform: uppercase;
-  color: var(--mid);
+  font-size: 9px; font-weight: 700;
+  letter-spacing: .22em; text-transform: uppercase;
+  color: rgba(100,116,139,.7);
 }
 .win-ba-after .win-ba-label { color: var(--gold); }
 .win-ba-text {
-  font-size: 12px; font-weight: 400; line-height: 1.4; color: var(--mid);
+  font-size: 12.5px; font-weight: 400; line-height: 1.45; color: var(--mid);
 }
 .win-ba-after .win-ba-text { color: var(--navy2); font-weight: 700; }
 
@@ -1888,6 +1968,15 @@ a { text-decoration: none; color: inherit; }
 .a11y-sz.on { background: #1a1a1a; color: #fff; border-color: #1a1a1a; }
 .a11y-sz[data-sz="large"]  { font-size: 14px; }
 .a11y-sz[data-sz="xlarge"] { font-size: 17px; }
+.a11y-scheme {
+  width: 26px; height: 26px;
+  background: none; border: 1px solid #aaa; border-radius: 3px;
+  cursor: pointer; font-family: Arial, sans-serif; font-size: 11px;
+  font-weight: 700; color: #444; transition: all .15s;
+  display: flex; align-items: center; justify-content: center;
+}
+.a11y-scheme:hover { background: #ddd; }
+.a11y-scheme.on { background: #1a1a1a; color: #fff; border-color: #1a1a1a; }
 .a11y-bar-close {
   font-size: 14px;
   background: none;
@@ -1899,12 +1988,152 @@ a { text-decoration: none; color: inherit; }
 }
 .a11y-bar-close:hover { color: #333; }
 
-/* High contrast (ГОСТ Р 52872-2012) */
-html.hc { filter: invert(1) hue-rotate(180deg); }
-html.hc img,
-html.hc video,
-html.hc iframe { filter: invert(1) hue-rotate(180deg); }
-html.hc .a11y-bar { filter: invert(1) hue-rotate(180deg); }
+/* ── Версия для слабовидящих (ГОСТ Р 52872-2012) ──
+   3 цветовые схемы: белый · чёрный · синий/жёлтый
+   Базовый класс .hc включает режим; схема задаётся .hc-white / .hc-black / .hc-blue
+   ──────────────────────────────────────────────── */
+
+/* ╌ СХЕМА: БЕЛЫЙ ╌ */
+html.hc-white {
+  --navy:    #f0f4f8;
+  --navy2:   #e6eaf3;
+  --navy3:   #d8dfed;
+  --gold:    #1a5ea8;
+  --gold2:   #1e6bbf;
+  --gold3:   #2280d6;
+  --mid:     #333333;
+  --border:  #aaaaaa;
+  --grad-gold: linear-gradient(135deg,#1a5ea8 0%,#1e6bbf 50%,#2280d6 100%);
+  --grad-navy: linear-gradient(160deg,#f0f4f8 0%,#e6eaf3 100%);
+  --shadow-sm: 0 1px 4px rgba(0,0,0,.1);
+  --shadow-md: 0 3px 10px rgba(0,0,0,.1);
+  --shadow-lg: 0 6px 20px rgba(0,0,0,.1);
+  --shadow-gold: 0 2px 8px rgba(26,94,168,.18);
+}
+html.hc-white body { background:#fff; color:#000; }
+html.hc-white img, html.hc-white video, html.hc-white iframe { filter:none !important; }
+html.hc-white a { color:#1a5ea8; }
+
+/* Nav / Footer hardcoded backgrounds */
+html.hc-white .nav { background:#ffffff !important; border-bottom:2px solid #1a5ea8 !important; backdrop-filter:none !important; -webkit-backdrop-filter:none !important; box-shadow:none !important; }
+html.hc-white .nav.scrolled { background:#ffffff !important; }
+html.hc-white .footer { background:#eeeeee !important; border-top:1px solid #cccccc !important; }
+
+/* Force readable text in all dark sections */
+html.hc-white .nav *,
+html.hc-white .hero *,
+html.hc-white .stats-strip *,
+html.hc-white .authorities *,
+html.hc-white .process *,
+html.hc-white .tips *,
+html.hc-white .contact *,
+html.hc-white .footer * { color:#000000 !important; }
+
+/* Restore white text on coloured buttons */
+html.hc-white .btn-primary,
+html.hc-white .cbtn-tg,
+html.hc-white .popup-cta,
+html.hc-white .sticky-btn-primary { color:#ffffff !important; }
+html.hc-white .btn-outline { border-color:#1a5ea8 !important; color:#1a5ea8 !important; background:transparent !important; }
+html.hc-white .cbtn-phone { background:#f0f4f8 !important; border-color:#1a5ea8 !important; color:#000 !important; }
+html.hc-white .cbtn-tg { background:#1a5ea8 !important; }
+
+/* Hide decorative glow/grid layers */
+html.hc-white .hero-bg-grid,
+html.hc-white .hero-bg-glow,
+html.hc-white .hero-bg-glow2 { opacity:0 !important; }
+
+/* Float widget */
+html.hc-white .float-ring-text { fill:#1a5ea8; }
+html.hc-white .float-avatar { background:#f0f4f8 !important; border-color:#1a5ea8 !important; }
+
+/* ╌ СХЕМА: ЧЁРНЫЙ ╌ */
+html.hc-black {
+  --navy:    #000000;
+  --navy2:   #111111;
+  --navy3:   #1a1a1a;
+  --gold:    #ffff00;
+  --gold2:   #ffff33;
+  --gold3:   #ffff66;
+  --white:   #ffffff;
+  --cream:   #111111;
+  --light:   #1a1a1a;
+  --mid:     #cccccc;
+  --ink:     #ffffff;
+  --border:  #555555;
+  --grad-gold: linear-gradient(135deg,#ffcc00 0%,#ffff00 100%);
+  --grad-navy: linear-gradient(160deg,#000 0%,#111 100%);
+  --shadow-sm: none; --shadow-md: none; --shadow-lg: none; --shadow-gold: none;
+}
+html.hc-black body { background:#000; color:#fff; }
+html.hc-black img, html.hc-black video, html.hc-black iframe { filter:none !important; }
+html.hc-black a { color:#ffff00; }
+html.hc-black .nav { background:#000 !important; border-bottom:2px solid #ffff00 !important; backdrop-filter:none !important; -webkit-backdrop-filter:none !important; }
+html.hc-black .nav.scrolled { background:#000 !important; }
+html.hc-black .footer { background:#111 !important; border-top:1px solid #444 !important; }
+html.hc-black .btn-primary { background:#ffff00 !important; color:#000 !important; box-shadow:none !important; }
+html.hc-black .btn-outline { border-color:#ffff00 !important; color:#ffff00 !important; background:transparent !important; }
+html.hc-black .cbtn-tg { background:#ffff00 !important; color:#000 !important; }
+html.hc-black .popup-cta { background:#ffff00 !important; color:#000 !important; box-shadow:none !important; }
+html.hc-black .win-card,
+html.hc-black .service-card,
+html.hc-black .review-card,
+html.hc-black .tip-card { background:#1a1a1a !important; border:1px solid #444 !important; box-shadow:none !important; }
+html.hc-black .float-avatar { background:#000 !important; border-color:#ffff00 !important; }
+html.hc-black .float-ring-text { fill:#ffff00; }
+
+/* ╌ СХЕМА: СИНИЙ / ЖЁЛТЫЙ ╌ */
+html.hc-blue {
+  --navy:    #063259;
+  --navy2:   #09427a;
+  --navy3:   #0c529b;
+  --gold:    #ffd700;
+  --gold2:   #ffd700;
+  --gold3:   #ffe040;
+  --white:   #ffd700;
+  --cream:   #063259;
+  --light:   #09427a;
+  --mid:     #aaddff;
+  --ink:     #ffd700;
+  --border:  #2a6db5;
+  --grad-gold: linear-gradient(135deg,#ffd700 0%,#ffe040 100%);
+  --grad-navy: linear-gradient(160deg,#063259 0%,#09427a 100%);
+  --shadow-sm: none; --shadow-md: none; --shadow-lg: none; --shadow-gold: none;
+}
+html.hc-blue body { background:#063259; color:#ffd700; }
+html.hc-blue img, html.hc-blue video, html.hc-blue iframe { filter:none !important; }
+html.hc-blue a { color:#ffd700; }
+html.hc-blue .nav { background:#063259 !important; border-bottom:2px solid #ffd700 !important; backdrop-filter:none !important; -webkit-backdrop-filter:none !important; }
+html.hc-blue .nav.scrolled { background:#063259 !important; }
+html.hc-blue .footer { background:#041e38 !important; border-top:1px solid #2a6db5 !important; }
+html.hc-blue .btn-primary { background:#ffd700 !important; color:#000 !important; box-shadow:none !important; }
+html.hc-blue .btn-outline { border-color:#ffd700 !important; color:#ffd700 !important; background:transparent !important; }
+html.hc-blue .cbtn-tg { background:#ffd700 !important; color:#000 !important; }
+html.hc-blue .popup-cta { background:#ffd700 !important; color:#000 !important; box-shadow:none !important; }
+html.hc-blue .win-card,
+html.hc-blue .service-card,
+html.hc-blue .review-card,
+html.hc-blue .tip-card { background:#09427a !important; border:1px solid #2a6db5 !important; color:#ffd700 !important; box-shadow:none !important; }
+html.hc-blue .win-card *,
+html.hc-blue .service-card *,
+html.hc-blue .review-card *,
+html.hc-blue .tip-card * { color:#ffd700 !important; }
+html.hc-blue .float-avatar { background:#063259 !important; border-color:#ffd700 !important; }
+html.hc-blue .float-ring-text { fill:#ffd700; }
+
+/* a11y-bar сама остаётся нейтральной во всех схемах */
+html.hc-white .a11y-bar,
+html.hc-black .a11y-bar,
+html.hc-blue  .a11y-bar { background:#efefef !important; filter:none !important; }
+html.hc-white .a11y-bar *,
+html.hc-black .a11y-bar *,
+html.hc-blue  .a11y-bar * { color:#333333 !important; }
+html.hc-white .a11y-scheme.on,
+html.hc-black .a11y-scheme.on,
+html.hc-blue  .a11y-scheme.on,
+html.hc-white .a11y-sz.on,
+html.hc-black .a11y-sz.on,
+html.hc-blue  .a11y-sz.on { background:#1a1a1a !important; color:#fff !important; border-color:#1a1a1a !important; }
 
 /* Font size overrides */
 html.fs-lg  { font-size: 110% !important; }
@@ -1981,7 +2210,11 @@ html.fs-xl  { font-size: 125% !important; }
       Версия для слабовидящих
     </button>
     <div class="a11y-controls" id="a11yCtrl">
-      <span class="a11y-ctrl-label">Шрифт:</span>
+      <span class="a11y-ctrl-label">Цвет:</span>
+      <button class="a11y-scheme on" data-scheme="white" title="Белый фон">Б</button>
+      <button class="a11y-scheme" data-scheme="black" title="Чёрный фон">Ч</button>
+      <button class="a11y-scheme" data-scheme="blue" title="Синий фон">С</button>
+      <span class="a11y-ctrl-label" style="margin-left:6px">Шрифт:</span>
       <button class="a11y-sz on" data-sz="normal">А</button>
       <button class="a11y-sz" data-sz="large">А+</button>
       <button class="a11y-sz" data-sz="xlarge">А++</button>
@@ -2083,11 +2316,7 @@ html.fs-xl  { font-size: 125% !important; }
           <span class="hcr-val">2-я и 4-я среда</span>
         </div>
         <div class="hero-card-row">
-          <span class="hcr-label">MAX</span>
-          <span class="hcr-val"><a href="https://max.ru/ursreda" target="_blank" style="color:var(--gold2)">@ursreda</a></span>
-        </div>
-        <div class="hero-card-row">
-          <span class="hcr-label">Telegram</span>
+          <span class="hcr-label">Telegram / MAX</span>
           <span class="hcr-val"><a href="https://t.me/ursreda" target="_blank" style="color:var(--gold2)">@ursreda</a></span>
         </div>
       </div>
@@ -2170,7 +2399,7 @@ html.fs-xl  { font-size: 125% !important; }
         <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><path d="M9 22V12h6v10"/></svg></div>
         <div class="service-title">ЖКХ и благоустройство</div>
         <p class="service-text">Споры с управляющими компаниями и ТСЖ, ремонт подъездов, вывоз мусора, детские площадки, перерасчёты.</p>
-        <div class="service-tags"><span class="service-tag">УК / ТСЖ</span><span class="service-tag">Перерасчёт</span><span class="service-tag">Залив</span></div>
+        <div class="service-tags"><span class="service-tag">УК · ТСЖ</span><span class="service-tag">Перерасчёт</span><span class="service-tag">Залив</span></div>
       </div>
       <div class="service-card reveal">
         <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>
@@ -2218,7 +2447,7 @@ html.fs-xl  { font-size: 125% !important; }
           <div class="why-text"><strong>Работа только на результат</strong><span>Берусь за дело только если есть реальная перспектива. Работаю до конца.</span></div>
         </div>
         <div class="why-item reveal" data-n="04">
-          <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.82 19.79 19.79 0 016 2.18 2 2 0 018 2h2.09a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L11.91 9a16 16 0 006.08 6.09l.41-.41a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg></div>
+          <div class="why-icon"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.58.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.01L6.6 10.8z"/></svg></div>
           <div class="why-text"><strong>Прямой контакт без посредников</strong><span>Пишете напрямую мне. Без секретарей, без перезвонов через три дня.</span></div>
         </div>
         <div class="why-item reveal" data-n="05">
@@ -2276,7 +2505,7 @@ html.fs-xl  { font-size: 125% !important; }
           <div class="ct-item ct-item--current reveal">
             <div class="ct-dot"></div>
             <div class="ct-year">Сейчас</div>
-            <div class="ct-text">Депутат ЛДПР, юрист Приморского района</div>
+            <div class="ct-text">Юрист ЛДПР Приморского района</div>
           </div>
         </div>
 
@@ -2551,9 +2780,13 @@ html.fs-xl  { font-size: 125% !important; }
     <div class="faq-inner">
       <div class="faq-left">
         <span class="section-label">Частые вопросы</span>
-        <h2 class="section-title">Отвечаю на главные</h2>
+        <h2 class="section-title">Отвечаю на главные вопросы</h2>
         <div class="gold-bar"></div>
         <p>Если вашего вопроса здесь нет — заполните форму обратной связи.</p>
+        <div class="faq-count">
+          <div class="faq-count-num">6</div>
+          <div class="faq-count-label">частых вопросов<br>с прямыми ответами</div>
+        </div>
       </div>
       <div class="faq-list">
         <div class="faq-item">
@@ -2599,16 +2832,20 @@ html.fs-xl  { font-size: 125% !important; }
             <span class="cbtn-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span>
             <div><div class="cbtn-main">Задать вопрос</div><div class="cbtn-hint">spb@ldpr.ru · отвечаю за сутки</div></div>
           </a>
+          <a href="tel:+78122231478" class="contact-btn cbtn-phone">
+            <span class="cbtn-icon"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.58.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.01L6.6 10.8z"/></svg></span>
+            <div><div class="cbtn-main">Позвонить</div><div class="cbtn-hint">+7 812 223-14-78</div></div>
+          </a>
         </div>
         <div class="social-follow" style="margin-top:20px;">
           <div style="font-family:'Raleway',sans-serif;font-size:10px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:12px;">Подписывайтесь на мои социальные сети</div>
           <div style="display:flex;gap:10px;flex-wrap:wrap;">
-            <a href="https://vk.com/pykhteevas" target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:8px;padding:10px 16px;font-family:'Raleway',sans-serif;font-size:11px;font-weight:700;color:rgba(255,255,255,.75);letter-spacing:.06em;transition:all .2s;text-decoration:none;" onmouseover="this.style.background='rgba(255,255,255,.14)'" onmouseout="this.style.background='rgba(255,255,255,.08)'">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M15.07 2H8.93C3.33 2 2 3.33 2 8.93v6.14C2 20.67 3.33 22 8.93 22h6.14C20.67 22 22 20.67 22 15.07V8.93C22 3.33 20.67 2 15.07 2zm3.08 13.5h-1.68c-.64 0-.84-.51-1.98-1.66-1-.98-1.44-.84-1.97.17-.53 1.01-.78 1.49-1.69 1.49H9.52c-2.17 0-4.1-1.99-4.1-4.36 0-2.38 1.7-4.64 4.36-4.64h.87c.2 0 .37.14.41.33l.32 1.5c.04.2-.04.4-.19.52L9.8 9.71c.45 1.09 1.38 1.97 2.48 2.41l1.27-1.55c.15-.18.38-.25.58-.19l1.49.48c.2.06.33.26.33.47v.87c0 1.3-.73 2.3-1.8 2.3z"/></svg>
+            <a href="https://vk.ru/ldprprimorskiyspb" target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:8px;padding:10px 16px;font-family:'Raleway',sans-serif;font-size:11px;font-weight:700;color:rgba(255,255,255,.75);letter-spacing:.06em;transition:all .2s;text-decoration:none;" onmouseover="this.style.background='rgba(255,255,255,.14)'" onmouseout="this.style.background='rgba(255,255,255,.08)'">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.915 13.028c-.388-.49-.277-.708 0-1.146.005 0 3.841-5.354 4.232-7.167l.002-.001c.194-.643 0-1.114-.913-1.114h-3.019c-.766 0-1.12.403-1.313.851 0 0-1.532 3.679-3.705 6.063-.702.696-1.021.918-1.402.918-.194 0-.474-.222-.474-.865V4.714c0-.762-.221-1.114-.857-1.114H8.718c-.474 0-.758.349-.758.679 0 .712 1.076.877 1.186 2.883v4.354c0 .966-.176 1.143-.557 1.143-.702 0-2.41-2.693-3.425-5.777C4.953 5.768 4.67 4.6 3.899 4.6H.878C.021 4.6 0 5.003 0 5.451c0 .783.874 4.643 4.066 9.752 2.127 3.027 5.127 4.671 7.856 4.671 1.637 0 1.84-.364 1.84-.993v-2.299c0-.851.18-1.02.782-1.02.443 0 1.202.221 2.976 1.923 2.028 2.002 2.362 2.901 3.503 2.901h3.019c.857 0 1.285-.364 1.039-1.083-.273-.716-1.104-1.753-2.166-2.981z"/></svg>
               ВКонтакте
             </a>
             <a href="https://dzen.ru/ursreda" target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:8px;padding:10px 16px;font-family:'Raleway',sans-serif;font-size:11px;font-weight:700;color:rgba(255,255,255,.75);letter-spacing:.06em;transition:all .2s;text-decoration:none;" onmouseover="this.style.background='rgba(255,255,255,.14)'" onmouseout="this.style.background='rgba(255,255,255,.08)'">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 14h-2v-4H7v-2h4V6h2v4h4v2h-4v4z"/></svg>
               Дзен
             </a>
           </div>
@@ -2632,7 +2869,7 @@ html.fs-xl  { font-size: 125% !important; }
           <div style="margin-top:14px;padding-top:14px;border-top:1px solid rgba(255,255,255,.08);">
             <div style="font-family:'Raleway',sans-serif;font-size:9px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:10px;">Мои социальные сети</div>
             <div style="display:flex;gap:8px;">
-              <a href="https://vk.com/pykhteevas" target="_blank" style="flex:1;text-align:center;padding:8px 12px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:8px;font-family:'Raleway',sans-serif;font-size:11px;font-weight:700;color:rgba(255,255,255,.7);text-decoration:none;transition:all .2s;" onmouseover="this.style.background='rgba(255,255,255,.12)'" onmouseout="this.style.background='rgba(255,255,255,.07)'">ВКонтакте</a>
+              <a href="https://vk.ru/ldprprimorskiyspb" target="_blank" style="flex:1;text-align:center;padding:8px 12px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:8px;font-family:'Raleway',sans-serif;font-size:11px;font-weight:700;color:rgba(255,255,255,.7);text-decoration:none;transition:all .2s;" onmouseover="this.style.background='rgba(255,255,255,.12)'" onmouseout="this.style.background='rgba(255,255,255,.07)'">ВКонтакте</a>
               <a href="https://dzen.ru/ursreda" target="_blank" style="flex:1;text-align:center;padding:8px 12px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:8px;font-family:'Raleway',sans-serif;font-size:11px;font-weight:700;color:rgba(255,255,255,.7);text-decoration:none;transition:all .2s;" onmouseover="this.style.background='rgba(255,255,255,.12)'" onmouseout="this.style.background='rgba(255,255,255,.07)'">Дзен</a>
             </div>
           </div>
@@ -2660,7 +2897,7 @@ html.fs-xl  { font-size: 125% !important; }
       </div>
       <div class="footer-socials">
         <a href="https://t.me/ursreda" target="_blank" class="social-link" title="Telegram">TG</a>
-        <a href="https://vk.com/pykhteevas" target="_blank" class="social-link" title="ВКонтакте — районный паблик">VK</a>
+        <a href="https://vk.ru/ldprprimorskiyspb" target="_blank" class="social-link" title="ВКонтакте — районный паблик">VK</a>
         <a href="https://dzen.ru/ursreda" target="_blank" class="social-link" title="Дзен — статьи и советы">ДЗ</a>
         <a href="https://max.ru/ursreda" target="_blank" class="social-link" title="MAX">МХ</a>
       </div>
@@ -2763,10 +3000,22 @@ html.fs-xl  { font-size: 125% !important; }
   <div class="popup-title" id="fp-title">30-минутная<br>консультация</div>
   <p class="popup-desc">Расскажите о вашей ситуации — ЖКХ, трудовые или семейный вопрос. Первая встреча всегда бесплатна.</p>
   <a href="mailto:spb@ldpr.ru" class="popup-cta">Задать вопрос</a>
+  <button type="button" class="popup-cta-book" onclick="document.getElementById('floatPopup').classList.remove('open');openBookingModal()">Записаться на приём</button>
 </div>
 
 
 <script>
+/* ── Sync nav.top to actual a11y-bar height (handles mobile wrapping) ── */
+(function syncNavTop() {
+  const a11y = document.getElementById('a11yBar');
+  const nav  = document.getElementById('mainNav');
+  if (!a11y || !nav) return;
+  const update = () => { nav.style.top = a11y.offsetHeight + 'px'; };
+  update();
+  window.addEventListener('resize', update);
+  new ResizeObserver(update).observe(a11y);
+})();
+
 /* ── Scroll progress + nav + floating button visibility ── */
 window.addEventListener('scroll', () => {
   const bar = document.getElementById('scrollBar');
@@ -3043,19 +3292,34 @@ document.querySelectorAll('a, button, .service-card, .win-card, .review-card, .t
 
 /* ── Accessibility widget (ГОСТ Р 52872-2012) ── */
 (function() {
-  const html    = document.documentElement;
-  const btn     = document.getElementById('a11yBtn');
-  const ctrl    = document.getElementById('a11yCtrl');
-  const closeBtn= document.getElementById('a11yClose');
-  const szBtns  = document.querySelectorAll('.a11y-sz');
-  const LS      = localStorage;
+  const html      = document.documentElement;
+  const btn       = document.getElementById('a11yBtn');
+  const ctrl      = document.getElementById('a11yCtrl');
+  const closeBtn  = document.getElementById('a11yClose');
+  const szBtns    = document.querySelectorAll('.a11y-sz');
+  const schemeBtns= document.querySelectorAll('.a11y-scheme');
+  const LS        = localStorage;
+  const SCHEMES   = ['white','black','blue'];
+
+  function applyScheme(scheme) {
+    SCHEMES.forEach(s => html.classList.remove('hc-' + s));
+    if (scheme) html.classList.add('hc-' + scheme);
+    schemeBtns.forEach(b => b.classList.toggle('on', b.dataset.scheme === scheme));
+    LS.setItem('a11y-scheme', scheme || '');
+  }
 
   function applyHC(on) {
-    html.classList.toggle('hc', on);
     btn.classList.toggle('active', on);
     btn.setAttribute('aria-pressed', String(on));
-    LS.setItem('a11y-hc', on ? '1' : '0');
     ctrl.classList.toggle('visible', on);
+    LS.setItem('a11y-hc', on ? '1' : '0');
+    if (on) {
+      const saved = LS.getItem('a11y-scheme') || 'white';
+      applyScheme(SCHEMES.includes(saved) ? saved : 'white');
+    } else {
+      applyScheme(null);
+      applySz('normal');
+    }
   }
 
   function applySz(sz) {
@@ -3067,17 +3331,17 @@ document.querySelectorAll('a, button, .service-card, .win-card, .review-card, .t
   }
 
   btn.addEventListener('click', () => {
-    const on = !html.classList.contains('hc');
+    const on = !btn.classList.contains('active');
     applyHC(on);
-    if (!on) applySz('normal');
   });
 
-  closeBtn.addEventListener('click', () => {
-    applyHC(false);
-    applySz('normal');
-  });
+  closeBtn.addEventListener('click', () => { applyHC(false); });
 
   szBtns.forEach(b => b.addEventListener('click', () => applySz(b.dataset.sz)));
+
+  schemeBtns.forEach(b => b.addEventListener('click', () => {
+    if (btn.classList.contains('active')) applyScheme(b.dataset.scheme);
+  }));
 
   const savedHC = LS.getItem('a11y-hc') === '1';
   const savedSz = LS.getItem('a11y-sz') || 'normal';

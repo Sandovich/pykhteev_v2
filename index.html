@@ -1086,10 +1086,12 @@ a { text-decoration: none; color: inherit; }
   .auth-label { display: none; }
   .auth-items { justify-content: center; }
 
-  .stats-strip-inner { grid-template-columns: 1fr 1fr; }
-  .stat-cell { padding: 24px 16px; }
+  .stats-strip-inner { grid-template-columns: 1fr 1fr; padding: 0 20px; }
+  .stat-cell { padding: 22px 14px; }
   .stat-cell:nth-child(2) { border-right: none; }
-  .stat-value { font-size: 36px; }
+  .stat-cell:nth-child(odd):not(:last-child) { border-bottom: 1px solid rgba(255,255,255,.07); }
+  .stat-value { font-size: 34px; }
+  .stat-suffix { font-size: 22px; }
 
   .services { padding: 64px 0; }
   .services-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
@@ -1131,9 +1133,12 @@ a { text-decoration: none; color: inherit; }
   .services-grid { grid-template-columns: 1fr; }
   .hero-actions { flex-direction: column; gap: 10px; }
   .hero-actions .btn { width: 100%; }
-  .stats-strip-inner { grid-template-columns: 1fr; }
-  .stat-cell { border-right: none; border-bottom: 1px solid rgba(255,255,255,.07); }
-  .stat-cell:last-child { border-bottom: none; }
+  .stats-strip-inner { grid-template-columns: 1fr 1fr; padding: 0 12px; }
+  .stat-cell { padding: 18px 10px; border-right: none; }
+  .stat-cell:nth-child(odd) { border-right: 1px solid rgba(255,255,255,.07); }
+  .stat-cell:nth-child(1), .stat-cell:nth-child(2) { border-bottom: 1px solid rgba(255,255,255,.07); }
+  .stat-value { font-size: 30px; }
+  .stat-suffix { font-size: 18px; }
   .process-steps { grid-template-columns: 1fr; }
 }
 
@@ -2196,6 +2201,18 @@ html.fs-xl  { font-size: 125% !important; }
 .policy-body::-webkit-scrollbar { width: 4px; }
 .policy-body::-webkit-scrollbar-thumb { background: rgba(255,255,255,.15); border-radius: 2px; }
 </style>
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+    (function(m,e,t,r,i,k,a){
+        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=109053713', 'ym');
+    ym(109053713, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/109053713" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
 </head>
 <body>
 

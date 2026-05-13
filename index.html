@@ -1066,6 +1066,8 @@ a { text-decoration: none; color: inherit; }
   .about-photo-card { position: relative; bottom: 0; right: 0; margin-top: 16px; width: fit-content; }
   .faq-inner { grid-template-columns: 1fr; gap: 44px; }
   .faq-left { position: static; }
+  .faq-a { font-size: 12px; line-height: 1.65; }
+  .faq-q { font-size: 13px; padding: 18px 0; }
   .contact-inner { grid-template-columns: 1fr; gap: 44px; }
   .deputy-inner { grid-template-columns: 1fr; gap: 36px; }
   .why-inner { grid-template-columns: 1fr; gap: 32px; }
@@ -2257,7 +2259,7 @@ html.fs-xl  { font-size: 125% !important; }
       <li><a href="#faq">FAQ</a></li>
       <li><a href="#contact">Контакт</a></li>
     </ul>
-    <a href="#contact" class="nav-cta">Записаться</a>
+    <a href="#schedule" class="nav-cta">Записаться</a>
     <button class="nav-burger" id="navBurger" aria-label="Меню">
       <span></span><span></span><span></span>
     </button>
@@ -2810,7 +2812,7 @@ html.fs-xl  { font-size: 125% !important; }
       <div class="faq-list">
         <div class="faq-item">
           <button class="faq-q" onclick="toggleFaq(this)">Консультация платная?<span class="faq-arrow">+</span></button>
-          <div class="faq-a">Нет. Первичная консультация полностью бесплатна. Вы ничего не платите за встречу и разбор вашей ситуации. Дальнейшее сопровождение обсуждается отдельно, в зависимости от сложности дела.</div>
+          <div class="faq-a">Нет. Консультация полностью бесплатна — вы ничего не платите за встречу и разбор ситуации. Платное сопровождение обсуждается индивидуально.</div>
         </div>
         <div class="faq-item">
           <button class="faq-q" onclick="toggleFaq(this)">Какие документы взять на приём?<span class="faq-arrow">+</span></button>
@@ -2847,10 +2849,6 @@ html.fs-xl  { font-size: 125% !important; }
         <h2 class="contact-title">Запишитесь<br>на приём</h2>
         <p class="contact-sub">Первый шаг ничего не стоит. Консультация бесплатна — просто выберите удобный способ связи.</p>
         <div class="contact-actions">
-          <a href="mailto:spb@ldpr.ru" class="contact-btn cbtn-tg">
-            <span class="cbtn-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span>
-            <div><div class="cbtn-main">Задать вопрос</div><div class="cbtn-hint">spb@ldpr.ru · отвечаю за сутки</div></div>
-          </a>
           <a href="tel:+78122231478" class="contact-btn cbtn-phone">
             <span class="cbtn-icon"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.58.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.01L6.6 10.8z"/></svg></span>
             <div><div class="cbtn-main">Позвонить</div><div class="cbtn-hint">+7 812 223-14-78</div></div>
@@ -2876,7 +2874,3466 @@ html.fs-xl  { font-size: 125% !important; }
       </div>
 
       <div class="contact-right">
-        <div class="schedule-card">
+        <div class="schedule-card" id="schedule">
+          <div class="schedule-title">Расписание приёма</div>
+          <div class="schedule-rows">
+            <div class="schedule-row"><span class="srow-key">Дни приёма</span><span class="srow-val gold">2-я и 4-я среда</span></div>
+            <div class="schedule-row"><span class="srow-key">Время</span><span class="srow-val">18:00 — 20:00</span></div>
+            <div class="schedule-row"><span class="srow-key">Адрес</span><span class="srow-val">Богатырский пр. д.7 корп.10<br><span style="opacity:.45;font-size:11px">Вход под аркой</span></span></div>
+            <div class="schedule-row"><span class="srow-key">Консультация</span><span class="srow-val gold">Бесплатно</span></div>
+          </div>
+          <button type="button" class="btn btn-primary" style="width:100%;justify-content:center" onclick="openBookingModal()">Записаться на приём</button>
+          <div style="margin-top:14px;padding-top:14px;border-top:1px solid rgba(255,255,255,.08);">
+            <div style="font-family:'Raleway',sans-serif;font-size:9px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:10px;">Мои социальные сети</div>
+            <div style="display:flex;gap:8px;">
+              <a href="https://vk.ru/ldprprimorskiyspb" target="_blank" style="flex:1;text-align:center;padding:8px 12px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:8px;font-family:'Raleway',sans-serif;font-size:11px;font-weight:700;color:rgba(255,255,255,.7);text-decoration:none;transition:all .2s;" onmouseover="this.style.background='rgba(255,255,255,.12)'" onmouseout="this.style.background='rgba(255,255,255,.07)'">ВКонтакте</a>
+              <a href="https://dzen.ru/ursreda" target="_blank" style="flex:1;text-align:center;padding:8px 12px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:8px;font-family:'Raleway',sans-serif;font-size:11px;font-weight:700;color:rgba(255,255,255,.7);text-decoration:none;transition:all .2s;" onmouseover="this.style.background='rgba(255,255,255,.12)'" onmouseout="this.style.background='rgba(255,255,255,.07)'">Дзен</a>
+            </div>
+          </div>
+        </div>
+        <div class="map-embed">
+          <iframe
+            src="https://yandex.ru/map-widget/v1/?text=Богатырский%20проспект%207%20корп.%2010%20Санкт-Петербург&z=16&l=map"
+            allowfullscreen loading="lazy"
+            title="Адрес приёма: Богатырский пр. д.7 корп.10">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ ФУТЕР ══ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-left">
+        Антон Пыхтеев
+        <span>Юрист · ЛДПР · Приморский район · СПб</span>
+      </div>
+      <div class="footer-socials">
+        <a href="https://t.me/ursreda" target="_blank" class="social-link" title="Telegram">TG</a>
+        <a href="https://vk.ru/ldprprimorskiyspb" target="_blank" class="social-link" title="ВКонтакте — районный паблик">VK</a>
+        <a href="https://dzen.ru/ursreda" target="_blank" class="social-link" title="Дзен — статьи и советы">ДЗ</a>
+        <a href="https://max.ru/ursreda" target="_blank" class="social-link" title="MAX">МХ</a>
+      </div>
+      <div class="footer-right">Богатырский пр., д.7 корп.10 · Приморский р-н, СПб · © 2026</div>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ══ BOOKING MODAL ══ -->
+<div id="bookingOverlay" class="bm-overlay" role="dialog" aria-modal="true" aria-labelledby="bm-title-h">
+  <div class="bm-modal">
+    <button class="bm-close" id="bmClose" aria-label="Закрыть">×</button>
+    <div class="bm-badge">Запись на приём</div>
+    <div class="bm-title" id="bm-title-h">Расскажите о вашем вопросе</div>
+    <p class="bm-sub">Антон Сергеевич ознакомится с ситуацией заранее и сможет помочь эффективнее с первой минуты встречи.</p>
+    <form class="bm-form" id="bookingForm" onsubmit="submitBooking(event)" novalidate>
+      <div class="bm-group">
+        <label for="bm-name">Ваше имя</label>
+        <input id="bm-name" class="bm-input" type="text" placeholder="Иванов Иван Иванович" autocomplete="name" required>
+      </div>
+      <div class="bm-group">
+        <label for="bm-phone">Телефон для связи</label>
+        <input id="bm-phone" class="bm-input" type="tel" placeholder="+7 (___) ___-__-__" autocomplete="tel" required>
+      </div>
+      <div class="bm-group">
+        <label for="bm-topic">Тема обращения</label>
+        <select id="bm-topic" class="bm-select" required>
+          <option value="" disabled selected>Выберите тему</option>
+          <option>ЖКХ и управляющие компании</option>
+          <option>Трудовые споры</option>
+          <option>Семейные вопросы</option>
+          <option>Имущественные споры</option>
+          <option>Депутатский запрос</option>
+          <option>Другое</option>
+        </select>
+      </div>
+      <div class="bm-group">
+        <label for="bm-desc">Кратко опишите ситуацию</label>
+        <textarea id="bm-desc" class="bm-textarea" placeholder="Например: управляющая компания выставила неверные счета, хочу написать жалобу..." required></textarea>
+      </div>
+      <div class="bm-consent-group">
+        <label class="bm-consent-lbl">
+          <input type="checkbox" class="bm-consent-input" id="bm-consent" required>
+          <span>Согласен(на) на <button type="button" class="bm-policy-link" onclick="openPolicy()">обработку персональных данных</button> в соответствии с&nbsp;Федеральным законом №&nbsp;152-ФЗ</span>
+        </label>
+      </div>
+      <button type="submit" class="bm-submit">Отправить заявку →</button>
+      <p class="bm-privacy">Данные передаются напрямую Пыхтееву А.С. и используются только для организации встречи</p>
+    </form>
+  </div>
+</div>
+
+<!-- ══ ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ ══ -->
+<div class="bm-overlay" id="policyOverlay" role="dialog" aria-modal="true" aria-labelledby="policy-title-h">
+  <div class="bm-modal">
+    <button class="bm-close" id="policyClose" aria-label="Закрыть">×</button>
+    <div class="bm-badge">Правовой документ</div>
+    <div class="bm-title" id="policy-title-h">Политика обработки персональных данных</div>
+    <div class="policy-body">
+      <h3>1. Оператор данных</h3>
+      <p>Антон Сергеевич Пыхтеев, депутат Законодательного собрания Санкт-Петербурга. Контакт: spb@ldpr.ru, тел. +7 (812) 223-14-78.</p>
+      <h3>2. Какие данные обрабатываются</h3>
+      <p>Имя, номер телефона, описание вопроса, указанные при заполнении формы записи на приём.</p>
+      <h3>3. Цели обработки</h3>
+      <p>Организация личного приёма, предварительное ознакомление с вопросом обращения, обратная связь с заявителем. Данные не используются в коммерческих целях и не передаются третьим лицам.</p>
+      <h3>4. Правовое основание</h3>
+      <p>Федеральный закон № 152-ФЗ «О персональных данных» от 27.07.2006 г., ст. 6 ч. 1 п. 1 (согласие субъекта).</p>
+      <h3>5. Способ передачи и хранения</h3>
+      <p>Данные передаются через электронную почту непосредственно Антону Сергеевичу Пыхтееву. Сайт не хранит данные на сервере — они поступают в почтовый клиент пользователя стандартным протоколом mailto.</p>
+      <h3>6. Срок хранения</h3>
+      <p>До достижения цели обработки (проведения приёма или отказа от записи), но не дольше 1 года с момента подачи заявки.</p>
+      <h3>7. Права субъекта</h3>
+      <p>Вы вправе запросить доступ к своим данным, их исправление или удаление, обратившись по адресу spb@ldpr.ru. Ответ — в течение 30 дней.</p>
+      <h3>8. Отзыв согласия</h3>
+      <p>Согласие может быть отозвано в любой момент, направив письменный запрос на spb@ldpr.ru.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══ FLOATING CONSULT BUTTON ══ -->
+<div id="floatConsult" class="float-consult" role="button" aria-label="Получить консультацию" tabindex="0">
+  <div class="float-ring">
+    <svg viewBox="0 0 130 130" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <defs>
+        <path id="fc-arc" d="M 65,65 m -48,0 a 48,48 0 1,1 96,0 a 48,48 0 1,1 -96,0"/>
+      </defs>
+      <text class="float-ring-text">
+        <textPath href="#fc-arc" startOffset="0%" textLength="302" lengthAdjust="spacingAndGlyphs">ЮРИСТ · ПЫХТЕЕВ · АНТОН · СЕРГЕЕВИЧ ·</textPath>
+      </text>
+    </svg>
+  </div>
+  <div class="float-center">
+    <div class="float-avatar">АП</div>
+  </div>
+</div>
+<div id="floatPopup" class="float-popup" role="dialog" aria-modal="true" aria-labelledby="fp-title">
+  <button id="floatPopupClose" class="popup-close" aria-label="Закрыть">×</button>
+  <div class="popup-badge">Консультация</div>
+  <div class="popup-title" id="fp-title">30-минутная<br>консультация</div>
+  <p class="popup-desc">Расскажите о вашей ситуации — ЖКХ, трудовые или семейный вопрос. Первая встреча всегда бесплатна.</p>
+  <a href="mailto:spb@ldpr.ru" class="popup-cta">Задать вопрос</a>
+  <button type="button" class="popup-cta-book" onclick="document.getElementById('floatPopup').classList.remove('open');openBookingModal()">Записаться на приём</button>
+</div>
+
+
+<script>
+/* ── Sync nav.top to actual a11y-bar height (handles mobile wrapping) ── */
+(function syncNavTop() {
+  const a11y = document.getElementById('a11yBar');
+  const nav  = document.getElementById('mainNav');
+  if (!a11y || !nav) return;
+  const update = () => { nav.style.top = a11y.offsetHeight + 'px'; };
+  update();
+  window.addEventListener('resize', update);
+  new ResizeObserver(update).observe(a11y);
+})();
+
+/* ── Scroll progress + nav + floating button visibility ── */
+window.addEventListener('scroll', () => {
+  const bar = document.getElementById('scrollBar');
+  const nav = document.getElementById('mainNav');
+  const fc  = document.getElementById('floatConsult');
+  const scrolled = window.scrollY;
+  const total = document.documentElement.scrollHeight - window.innerHeight;
+  if (bar) bar.style.width = (scrolled / total * 100) + '%';
+  if (nav) {
+    nav.classList.toggle('scrolled', scrolled > 60);
+    nav.classList.toggle('past-hero', scrolled > window.innerHeight * 0.75);
+  }
+  if (fc)  fc.classList.toggle('visible', scrolled > 500);
+}, { passive: true });
+
+/* ── Reveal on scroll ── */
+const revealObserver = new IntersectionObserver(entries => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('visible'), i * 60);
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+/* ── Drum (slot-machine) counters ── */
+function buildDrum(counterEl) {
+  const target = parseInt(counterEl.dataset.target);
+  const digits = String(target).split('').map(Number);
+  const wrap = document.createElement('span');
+  wrap.className = 'drum-wrap';
+  const cols = digits.map(d => {
+    const col  = document.createElement('span');
+    col.className = 'drum-col';
+    const reel = document.createElement('span');
+    reel.className = 'drum-reel';
+    for (let i = 0; i <= 9; i++) {
+      const s = document.createElement('span');
+      s.textContent = i;
+      reel.appendChild(s);
+    }
+    col.appendChild(reel);
+    wrap.appendChild(col);
+    return { reel, digit: d };
+  });
+  counterEl.replaceWith(wrap);
+  return cols;
+}
+
+const drumObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+    const cols = buildDrum(entry.target);
+    cols.forEach(({ reel, digit }, i) => {
+      setTimeout(() => {
+        reel.style.transform = `translateY(-${digit * 10}%)`;
+      }, i * 130 + 160);
+    });
+    drumObserver.unobserve(entry.target);
+  });
+}, { threshold: 0.5 });
+document.querySelectorAll('.counter').forEach(el => drumObserver.observe(el));
+
+/* ── FAQ — smooth height animation ── */
+function toggleFaq(btn) {
+  const item   = btn.closest('.faq-item');
+  const answer = item.querySelector('.faq-a');
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(i => {
+    i.querySelector('.faq-a').style.maxHeight = '0';
+    i.classList.remove('open');
+  });
+  if (!isOpen) {
+    item.classList.add('open');
+    answer.style.maxHeight = answer.scrollHeight + 'px';
+  }
+}
+
+/* ── Floating consult button popup ── */
+const floatBtn   = document.getElementById('floatConsult');
+const floatPopup = document.getElementById('floatPopup');
+
+floatBtn?.addEventListener('click', () => floatPopup?.classList.toggle('open'));
+floatBtn?.addEventListener('keydown', e => {
+  if (e.key === 'Enter' || e.key === ' ') floatPopup?.classList.toggle('open');
+});
+document.getElementById('floatPopupClose')?.addEventListener('click', e => {
+  e.stopPropagation();
+  floatPopup?.classList.remove('open');
+});
+document.addEventListener('click', e => {
+  if (floatPopup?.classList.contains('open') &&
+      !floatPopup.contains(e.target) &&
+      !floatBtn.contains(e.target)) {
+    floatPopup.classList.remove('open');
+  }
+});
+
+/* ── Mobile menu ── */
+document.getElementById('navBurger')?.addEventListener('click', () => {
+  const links = document.querySelector('.nav-links');
+  if (!links) return;
+  const open = links.style.display === 'flex';
+  links.style.cssText = open
+    ? ''
+    : 'display:flex;flex-direction:column;position:absolute;top:60px;left:0;right:0;background:rgba(7,21,42,.98);padding:20px;gap:16px;z-index:999';
+});
+
+/* ── Active nav on scroll ── */
+(function () {
+  const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      navLinks.forEach(a => a.classList.remove('active'));
+      const match = document.querySelector(`.nav-links a[href="#${entry.target.id}"]`);
+      if (match) match.classList.add('active');
+    });
+  }, { rootMargin: '-66px 0px -52% 0px', threshold: 0 });
+  document.querySelectorAll('section[id]').forEach(s => observer.observe(s));
+})();
+
+/* ── 3D tilt on hero card ── */
+(function () {
+  const card = document.querySelector('.hero-card');
+  if (!card || !window.matchMedia('(hover: hover)').matches) return;
+  card.addEventListener('mousemove', e => {
+    const r = card.getBoundingClientRect();
+    const dx = (e.clientX - r.left - r.width  / 2) / (r.width  / 2);
+    const dy = (e.clientY - r.top  - r.height / 2) / (r.height / 2);
+    card.style.transition = 'transform .07s ease-out, box-shadow .3s';
+    card.style.transform  = `perspective(900px) rotateX(${-dy * 7}deg) rotateY(${dx * 5}deg) translateY(-4px)`;
+  });
+  card.addEventListener('mouseleave', () => {
+    card.style.transition = 'transform .5s cubic-bezier(.25,.46,.45,.94), box-shadow .3s';
+    card.style.transform  = '';
+  });
+})();
+
+/* ── Copy phone + toast ── */
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  if (!t) return;
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(t._tid);
+  t._tid = setTimeout(() => t.classList.remove('show'), 2200);
+}
+document.querySelector('.cbtn-phone')?.addEventListener('click', () => {
+  navigator.clipboard?.writeText('+78122231478').then(() => showToast('Номер скопирован ✓'));
+});
+
+/* ── V2: Reviews carousel ── */
+(function () {
+  const wrap  = document.querySelector('.reviews-carousel-wrap');
+  const track = document.querySelector('.reviews-track');
+  const dotsEl = document.querySelector('.carousel-dots');
+  if (!wrap || !track) return;
+
+  const cards = track.querySelectorAll('.review-card');
+  let page = 0, tid;
+
+  function pp() {
+    return window.innerWidth < 681 ? 1 : window.innerWidth < 1024 ? 2 : 3;
+  }
+  function totalPages() { return Math.ceil(cards.length / pp()); }
+
+  function goTo(idx) {
+    page = ((idx % totalPages()) + totalPages()) % totalPages();
+    track.style.transform = `translateX(-${page * (wrap.offsetWidth + 22)}px)`;
+    dotsEl?.querySelectorAll('.carousel-dot').forEach((d, i) =>
+      d.classList.toggle('active', i === page));
+  }
+
+  function buildDots() {
+    if (!dotsEl) return;
+    dotsEl.innerHTML = '';
+    for (let i = 0; i < totalPages(); i++) {
+      const d = document.createElement('button');
+      d.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+      d.setAttribute('aria-label', `Страница ${i + 1}`);
+      d.addEventListener('click', () => { clearInterval(tid); goTo(i); startTimer(); });
+      dotsEl.appendChild(d);
+    }
+  }
+
+  function startTimer() {
+    clearInterval(tid);
+    tid = setInterval(() => goTo(page + 1), 5000);
+  }
+
+  buildDots();
+  startTimer();
+  wrap.addEventListener('mouseenter', () => clearInterval(tid));
+  wrap.addEventListener('mouseleave', startTimer);
+  window.addEventListener('resize', () => { buildDots(); goTo(0); });
+
+  wrap.setAttribute('tabindex', '0');
+  wrap.addEventListener('keydown', e => {
+    if (e.key === 'ArrowLeft')  { clearInterval(tid); goTo(page - 1); startTimer(); }
+    if (e.key === 'ArrowRight') { clearInterval(tid); goTo(page + 1); startTimer(); }
+  });
+
+  let touchStartX = 0, touchStartY = 0;
+  wrap.addEventListener('touchstart', e => {
+    touchStartX = e.touches[0].clientX;
+    touchStartY = e.touches[0].clientY;
+  }, { passive: true });
+  wrap.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    const dy = e.changedTouches[0].clientY - touchStartY;
+    if (Math.abs(dy) > Math.abs(dx)) return; /* вертикальный скролл — не трогаем */
+    if (Math.abs(dx) < 55) return;
+    clearInterval(tid);
+    goTo(dx < 0 ? page + 1 : page - 1);
+    startTimer();
+  });
+})();
+
+/* ── Gyroscope tilt on hero card (mobile) ── */
+(function () {
+  const card = document.getElementById('heroCard');
+  if (!card || window.innerWidth > 768) return;
+  card.style.transition = 'transform .1s ease-out';
+  card.style.transformStyle = 'preserve-3d';
+  function handleOrientation(e) {
+    const x = Math.max(-12, Math.min(12, (e.beta  - 45) * 0.3));
+    const y = Math.max(-12, Math.min(12,  e.gamma        * 0.3));
+    card.style.transform = `perspective(800px) rotateX(${-x}deg) rotateY(${y}deg)`;
+  }
+  if (typeof DeviceOrientationEvent !== 'undefined' &&
+      typeof DeviceOrientationEvent.requestPermission === 'function') {
+    card.addEventListener('click', () => {
+      DeviceOrientationEvent.requestPermission().then(s => {
+        if (s === 'granted') window.addEventListener('deviceorientation', handleOrientation, true);
+      });
+    }, { once: true });
+  } else {
+    window.addEventListener('deviceorientation', handleOrientation, true);
+  }
+})();
+
+/* ── V2: Star rating pop-in ── */
+(function () {
+  document.querySelectorAll('.review-stars').forEach(el => {
+    el.innerHTML = [1,2,3,4,5].map(() => '<span>★</span>').join('');
+  });
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('stars-animated');
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.8 });
+  document.querySelectorAll('.review-stars').forEach(el => obs.observe(el));
+})();
+
+/* ── Card Spotlight — все карточки ── */
+document.querySelectorAll('.tip-card, .stat-cell, .service-card, .win-card, .review-card').forEach(card => {
+  card.addEventListener('mousemove', e => {
+    const r = card.getBoundingClientRect();
+    card.style.setProperty('--sx', `${e.clientX - r.left}px`);
+    card.style.setProperty('--sy', `${e.clientY - r.top}px`);
+  });
+  card.addEventListener('mouseleave', () => {
+    card.style.setProperty('--sx', '-300px');
+    card.style.setProperty('--sy', '-300px');
+  });
+});
+
+/* ── Cursor pointer on interactive elements ── */
+document.querySelectorAll('a, button, .service-card, .win-card, .review-card, .tip-card, .deputy-step, .why-item, .cred-item, .float-consult')
+  .forEach(el => el.style.cursor = 'pointer');
+
+
+/* ── V2: Hero typewriter ── */
+(function () {
+  const el = document.getElementById('heroTyper');
+  if (!el || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const phrases = [
+    'ЖКХ и управляющими компаниями',
+    'трудовыми спорами',
+    'семейными вопросами',
+    'имущественными делами',
+  ];
+  let pi = 0, ci = 0, deleting = false;
+  function tick() {
+    const phrase = phrases[pi];
+    if (!deleting) {
+      el.textContent = phrase.slice(0, ++ci);
+      if (ci === phrase.length) { deleting = true; setTimeout(tick, 2200); return; }
+    } else {
+      el.textContent = phrase.slice(0, --ci);
+      if (ci === 0) { deleting = false; pi = (pi + 1) % phrases.length; }
+    }
+    setTimeout(tick, deleting ? 38 : 78);
+  }
+  setTimeout(tick, 1200);
+})();
+
+/* ── Accessibility widget (ГОСТ Р 52872-2012) ── */
+(function() {
+  const html      = document.documentElement;
+  const btn       = document.getElementById('a11yBtn');
+  const ctrl      = document.getElementById('a11yCtrl');
+  const closeBtn  = document.getElementById('a11yClose');
+  const szBtns    = document.querySelectorAll('.a11y-sz');
+  const schemeBtns= document.querySelectorAll('.a11y-scheme');
+  const LS        = localStorage;
+  const SCHEMES   = ['white','black','blue'];
+
+  function applyScheme(scheme) {
+    SCHEMES.forEach(s => html.classList.remove('hc-' + s));
+    if (scheme) html.classList.add('hc-' + scheme);
+    schemeBtns.forEach(b => b.classList.toggle('on', b.dataset.scheme === scheme));
+    LS.setItem('a11y-scheme', scheme || '');
+  }
+
+  function applyHC(on) {
+    btn.classList.toggle('active', on);
+    btn.setAttribute('aria-pressed', String(on));
+    ctrl.classList.toggle('visible', on);
+    LS.setItem('a11y-hc', on ? '1' : '0');
+    if (on) {
+      const saved = LS.getItem('a11y-scheme') || 'white';
+      applyScheme(SCHEMES.includes(saved) ? saved : 'white');
+    } else {
+      applyScheme(null);
+      applySz('normal');
+    }
+  }
+
+  function applySz(sz) {
+    html.classList.remove('fs-lg','fs-xl');
+    if (sz === 'large')  html.classList.add('fs-lg');
+    if (sz === 'xlarge') html.classList.add('fs-xl');
+    szBtns.forEach(b => b.classList.toggle('on', b.dataset.sz === sz));
+    LS.setItem('a11y-sz', sz);
+  }
+
+  btn.addEventListener('click', () => {
+    const on = !btn.classList.contains('active');
+    applyHC(on);
+  });
+
+  closeBtn.addEventListener('click', () => { applyHC(false); });
+
+  szBtns.forEach(b => b.addEventListener('click', () => applySz(b.dataset.sz)));
+
+  schemeBtns.forEach(b => b.addEventListener('click', () => {
+    if (btn.classList.contains('active')) applyScheme(b.dataset.scheme);
+  }));
+
+  const savedHC = LS.getItem('a11y-hc') === '1';
+  const savedSz = LS.getItem('a11y-sz') || 'normal';
+  if (savedHC) applyHC(true);
+  applySz(savedSz);
+})();
+
+/* ── Policy modal ── */
+function openPolicy() {
+  document.getElementById('policyOverlay').classList.add('open');
+}
+document.getElementById('policyClose')?.addEventListener('click', () => {
+  document.getElementById('policyOverlay').classList.remove('open');
+});
+document.getElementById('policyOverlay')?.addEventListener('click', e => {
+  if (e.target === e.currentTarget) e.currentTarget.classList.remove('open');
+});
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') document.getElementById('policyOverlay')?.classList.remove('open');
+});
+
+/* ── Booking modal ── */
+function openBookingModal() {
+  document.getElementById('bookingOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+document.getElementById('bmClose')?.addEventListener('click', () => {
+  document.getElementById('bookingOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+});
+document.getElementById('bookingOverlay')?.addEventListener('click', e => {
+  if (e.target === e.currentTarget) {
+    e.currentTarget.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+});
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    if (document.getElementById('policyOverlay').classList.contains('open')) return;
+    document.getElementById('bookingOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+});
+function submitBooking(e) {
+  e.preventDefault();
+  const name  = document.getElementById('bm-name').value.trim();
+  const phone = document.getElementById('bm-phone').value.trim();
+  const topic = document.getElementById('bm-topic').value;
+  const desc  = document.getElementById('bm-desc').value.trim();
+  const consent = document.getElementById('bm-consent').checked;
+  if (!name || !phone || !topic || !desc || !consent) return;
+  const subject = encodeURIComponent('Запись на приём — ' + topic);
+  const body = encodeURIComponent(
+    'Заявка на приём\n\n' +
+    'Имя: ' + name + '\n' +
+    'Телефон: ' + phone + '\n' +
+    'Тема: ' + topic + '\n\n' +
+    'Описание ситуации:\n' + desc
+  );
+  window.location.href = 'mailto:spb@ldpr.ru?subject=' + subject + '&body=' + body;
+  document.getElementById('bookingOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+  document.getElementById('bookingForm').reset();
+}
+</script>
+
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Антон Пыхтеев — Юрист Приморский район СПб | Бесплатная консультация</title>
+<meta name="description" content="Бесплатная юридическая консультация в Приморском районе Санкт-Петербурга. Юрист-депутат Антон Пыхтеев: ЖКХ, трудовые споры, семья, имущество. Приём каждую 2-ю и 4-ю среду. Депутатский запрос в ведомства.">
+<meta name="keywords" content="юрист Приморский район СПб, бесплатная консультация юрист Санкт-Петербург, Антон Пыхтеев юрист, ЖКХ юрист СПб, трудовые споры Приморский район">
+<meta property="og:title" content="Антон Пыхтеев — Юрист в Приморском районе СПб">
+<meta property="og:description" content="Бесплатная консультация по ЖКХ, трудовым и семейным вопросам. Депутатский запрос в ведомства.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400;1,600&family=Raleway:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Attorney",
+      "name": "Антон Пыхтеев",
+      "jobTitle": "Юрист, депутат ЛДПР",
+      "description": "Юрист с практикой с 2002 года в Приморском районе Санкт-Петербурга. Бесплатные консультации по ЖКХ, трудовым, семейным и имущественным вопросам.",
+      "knowsAbout": ["ЖКХ","Трудовые споры","Семейное право","Имущественные споры"],
+      "worksFor": {"@type":"PoliticalParty","name":"ЛДПР"},
+      "address": {"@type":"PostalAddress","streetAddress":"Богатырский проспект, д.7 корп.10","addressLocality":"Санкт-Петербург","addressRegion":"Приморский район","postalCode":"197372","addressCountry":"RU"},
+      "telephone": "+78122231478",
+      "sameAs": ["https://t.me/ursreda","https://vk.ru/ldprprimorskiyspb"]
+    },
+    {
+      "@type": "LocalBusiness",
+      "name": "Антон Пыхтеев — Юридическая помощь",
+      "address": {"@type":"PostalAddress","streetAddress":"Богатырский проспект, д.7 корп.10","addressLocality":"Санкт-Петербург","postalCode":"197372","addressCountry":"RU"},
+      "telephone": "+78122231478",
+      "openingHours": ["We 18:00-20:00"],
+      "priceRange": "Бесплатно",
+      "aggregateRating": {"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"6","bestRating":"5"}
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {"@type":"Question","name":"Консультация платная?","acceptedAnswer":{"@type":"Answer","text":"Нет. Первичная консультация полностью бесплатна."}},
+        {"@type":"Question","name":"Как часто проходит приём?","acceptedAnswer":{"@type":"Answer","text":"Каждую вторую и четвёртую среду месяца с 18:00 до 20:00 по адресу Богатырский пр. д.7 корп.10."}},
+        {"@type":"Question","name":"Можно ли получить консультацию онлайн?","acceptedAnswer":{"@type":"Answer","text":"Да, пишите в Telegram @ursreda. Ответ в течение суток."}}
+      ]
+    }
+  ]
+}
+</script>
+
+<style>
+/* ════════════════════════════════════════════
+   DESIGN TOKENS
+════════════════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy:    #07152A;
+  --navy2:   #0E2244;
+  --navy3:   #163460;
+  --gold:    #B8892A;
+  --gold2:   #D4A840;
+  --gold3:   #F0C46A;
+  --white:   #FFFFFF;
+  --cream:   #FDFAF4;
+  --light:   #F4F7FB;
+  --mid:     #64748B;
+  --ink:     #0D1117;
+  --border:  #E2E8F0;
+  --r:       10px;
+
+  --shadow-sm:   0 2px 8px rgba(7,21,42,.07);
+  --shadow-md:   0 8px 28px rgba(7,21,42,.12);
+  --shadow-lg:   0 24px 56px rgba(7,21,42,.18);
+  --shadow-gold: 0 8px 28px rgba(184,137,42,.28);
+
+  --grad-gold: linear-gradient(135deg, var(--gold) 0%, var(--gold2) 50%, var(--gold3) 100%);
+  --grad-navy: linear-gradient(160deg, var(--navy) 0%, var(--navy2) 100%);
+}
+
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+body {
+  font-family: 'Inter', sans-serif;
+  color: var(--ink);
+  background: var(--white);
+  overflow-x: hidden;
+}
+img { display: block; max-width: 100%; }
+a { text-decoration: none; color: inherit; }
+
+.container { max-width: 1180px; margin: 0 auto; padding: 0 40px; }
+
+/* ════════════════════════════════════════════
+   ТИПОГРАФИКА
+════════════════════════════════════════════ */
+.display {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(38px, 5vw, 68px);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -.02em;
+}
+.section-label {
+  font-family: 'Raleway', sans-serif;
+  font-size: 10px; font-weight: 700;
+  letter-spacing: .48em; text-transform: uppercase;
+  color: var(--gold); display: block; margin-bottom: 14px;
+}
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(26px, 3vw, 40px);
+  font-weight: 700; line-height: 1.2;
+  color: var(--ink); letter-spacing: -.01em;
+}
+.section-title.white { color: var(--white); }
+.gold-bar { width: 40px; height: 2px; background: var(--grad-gold); border-radius: 2px; margin: 18px 0; }
+
+/* ════════════════════════════════════════════
+   КНОПКИ
+════════════════════════════════════════════ */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  font-family: 'Raleway', sans-serif; font-size: 12px; font-weight: 700;
+  letter-spacing: .12em; text-transform: uppercase;
+  padding: 17px 34px; border-radius: var(--r); cursor: pointer; border: none;
+  transition: all .24s cubic-bezier(.4,0,.2,1);
+  position: relative; overflow: hidden;
+}
+.btn::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: rgba(255,255,255,.12);
+  opacity: 0; transition: opacity .2s;
+}
+.btn:hover::after { opacity: 1; }
+.btn-primary {
+  background: var(--grad-gold); color: var(--white);
+  box-shadow: var(--shadow-gold);
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(184,137,42,.4); }
+.btn-primary:active { transform: translateY(0); }
+.btn-outline {
+  background: rgba(255,255,255,.07);
+  color: rgba(255,255,255,.96);
+  border: 1.5px solid rgba(255,255,255,.48);
+}
+.btn-outline:hover { background: rgba(255,255,255,.13); border-color: var(--gold2); color: var(--gold2); transform: translateY(-2px); }
+
+/* ════════════════════════════════════════════
+   SCROLL PROGRESS BAR
+════════════════════════════════════════════ */
+.scroll-progress {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 9999;
+  height: 3px; background: rgba(0,0,0,.08);
+  pointer-events: none;
+}
+.scroll-progress-bar {
+  height: 100%;
+  background: var(--grad-gold);
+  width: 0%;
+  transition: width .1s linear;
+}
+
+/* ════════════════════════════════════════════
+   НАВИГАЦИЯ
+════════════════════════════════════════════ */
+.nav {
+  position: fixed; top: 37px; left: 0; right: 0; z-index: 1000;
+  background: rgba(7,21,42,.94); backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(255,255,255,.07);
+  transition: background .3s;
+}
+.nav.scrolled { background: rgba(7,21,42,.98); }
+.nav-inner {
+  max-width: 1180px; margin: 0 auto; padding: 0 40px;
+  height: 66px; display: flex; align-items: center; justify-content: space-between;
+}
+.nav-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 15px; font-weight: 700; letter-spacing: .02em;
+  color: var(--white); line-height: 1.2;
+}
+.nav-logo span {
+  display: block; font-family: 'Raleway', sans-serif;
+  font-size: 9px; font-weight: 400; letter-spacing: .32em;
+  text-transform: uppercase; color: rgba(255,255,255,.38); margin-top: 2px;
+}
+.nav-links { display: flex; gap: 28px; list-style: none; }
+.nav-links a {
+  font-family: 'Raleway', sans-serif;
+  font-size: 11px; font-weight: 600; letter-spacing: .1em;
+  text-transform: uppercase; color: rgba(255,255,255,.55);
+  transition: color .2s; padding: 4px 0; position: relative;
+}
+.nav-links a::after {
+  content: ''; position: absolute; bottom: 0; left: 0;
+  width: 0; height: 1px; background: var(--gold2);
+  transition: width .25s;
+}
+.nav-links a:hover { color: var(--white); }
+.nav-links a:hover::after { width: 100%; }
+.nav-cta {
+  font-family: 'Raleway', sans-serif; font-size: 11px; font-weight: 700;
+  letter-spacing: .12em; text-transform: uppercase;
+  background: var(--grad-gold); color: var(--white);
+  padding: 10px 22px; border-radius: var(--r);
+  transition: all .22s; box-shadow: 0 4px 14px rgba(184,137,42,.3);
+}
+.nav-cta:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(184,137,42,.4); }
+
+/* hamburger */
+.nav-burger {
+  display: none; flex-direction: column; gap: 5px; cursor: pointer;
+  padding: 4px; background: none; border: none;
+}
+.nav-burger span {
+  display: block; width: 22px; height: 2px;
+  background: rgba(255,255,255,.75); border-radius: 2px;
+  transition: all .25s;
+}
+
+/* ════════════════════════════════════════════
+   ГЕРОЙ
+════════════════════════════════════════════ */
+.hero {
+  background: var(--navy); padding-top: 103px; min-height: 100vh;
+  display: flex; align-items: center; position: relative; overflow: hidden;
+}
+.hero-bg-grid {
+  position: absolute; inset: 0; pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+.hero-bg-glow {
+  position: absolute; right: -60px; top: 50%; transform: translateY(-50%);
+  width: 700px; height: 700px; pointer-events: none;
+  background: radial-gradient(circle at center, rgba(184,137,42,.10) 0%, transparent 65%);
+}
+.hero-bg-glow2 {
+  position: absolute; left: -100px; bottom: -100px;
+  width: 500px; height: 500px; pointer-events: none;
+  background: radial-gradient(circle at center, rgba(22,52,96,.6) 0%, transparent 65%);
+}
+.hero-inner {
+  max-width: 1180px; margin: 0 auto; padding: 80px 40px;
+  display: grid; grid-template-columns: 1fr 380px; gap: 80px; align-items: center;
+  position: relative; z-index: 1; width: 100%;
+}
+.hero-kicker {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: 'Raleway', sans-serif; font-size: 10px; font-weight: 700;
+  letter-spacing: .38em; text-transform: uppercase; color: var(--gold2);
+  margin-bottom: 20px;
+}
+.hero-kicker::before {
+  content: ''; display: block;
+  width: 20px; height: 1px; background: var(--gold2);
+}
+.hero-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(34px, 4.2vw, 58px);
+  font-weight: 800; line-height: 1.1;
+  color: var(--white); letter-spacing: -.02em;
+}
+.hero-title em { font-style: italic; color: var(--gold2); }
+.hero-sub {
+  font-size: 16px; font-weight: 300; line-height: 1.8;
+  color: rgba(255,255,255,.58); margin-top: 20px; max-width: 500px;
+}
+.hero-sub strong { color: rgba(255,255,255,.85); font-weight: 500; }
+.hero-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 36px; }
+.hero-trust {
+  display: flex; gap: 28px; flex-wrap: wrap; margin-top: 44px;
+  padding-top: 36px; border-top: 1px solid rgba(255,255,255,.1);
+}
+.trust-item { display: flex; flex-direction: column; gap: 3px; }
+.trust-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 26px; font-weight: 700; color: var(--white); line-height: 1;
+}
+.trust-label {
+  font-size: 10px; font-weight: 400; letter-spacing: .1em;
+  color: rgba(255,255,255,.38); text-transform: uppercase;
+}
+
+/* Next reception badge */
+.next-reception {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(184,137,42,.12); border: 1px solid rgba(184,137,42,.3);
+  border-radius: 6px; padding: 7px 14px; margin-bottom: 18px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 11px; font-weight: 600; color: var(--gold2);
+  letter-spacing: .06em;
+}
+.next-reception-dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--gold2); animation: pulse 1.8s infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: .45; transform: scale(1.5); }
+}
+
+/* Hero card */
+.hero-card {
+  background: linear-gradient(160deg, rgba(255,255,255,.07) 0%, rgba(255,255,255,.03) 100%);
+  border: 1px solid rgba(184,137,42,.32);
+  border-radius: 18px; overflow: hidden;
+  backdrop-filter: blur(8px);
+  box-shadow:
+    0 32px 64px rgba(0,0,0,.3),
+    inset 0 1px 0 rgba(255,255,255,.08),
+    0 0 0 1px rgba(184,137,42,.1),
+    0 0 36px rgba(184,137,42,.1);
+  transition: transform .3s, box-shadow .3s;
+  position: relative;
+}
+.hero-card:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 40px 80px rgba(0,0,0,.35),
+    inset 0 1px 0 rgba(255,255,255,.08),
+    0 0 0 1px rgba(184,137,42,.22),
+    0 0 48px rgba(184,137,42,.18);
+}
+.hero-card-photo {
+  min-height: 240px;
+  background: linear-gradient(145deg, rgba(184,137,42,.14) 0%, rgba(7,21,42,.7) 100%);
+  display: flex; align-items: center; justify-content: center;
+  position: relative; overflow: hidden;
+}
+.hero-card-photo::before {
+  content: ''; position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse at 70% 30%, rgba(184,137,42,.12) 0%, transparent 60%),
+    radial-gradient(ellipse at 30% 80%, rgba(22,52,96,.4) 0%, transparent 60%);
+}
+.hero-card-photo::after {
+  content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+  height: 2px; z-index: 3;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(184,137,42,.6) 20%,
+    rgba(240,196,106,.95) 50%,
+    rgba(184,137,42,.6) 80%,
+    transparent 100%);
+}
+.hero-card-img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center top;
+  z-index: 0;
+}
+.hero-photo-badge {
+  position: absolute; top: 14px; right: 14px;
+  background: var(--grad-gold); color: var(--white);
+  font-family: 'Raleway', sans-serif;
+  font-size: 9px; font-weight: 800; letter-spacing: .28em; text-transform: uppercase;
+  padding: 5px 11px; border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(184,137,42,.4);
+}
+.hero-card-body { padding: 20px 22px; display: flex; flex-direction: column; gap: 0; }
+.hero-card-row {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 11px 0; border-bottom: 1px solid rgba(255,255,255,.07);
+  font-size: 13px;
+}
+.hero-card-row:last-child { border-bottom: none; }
+.hcr-label { color: rgba(255,255,255,.4); font-weight: 300; }
+.hcr-val { color: rgba(255,255,255,.88); font-weight: 500; text-align: right; }
+.hcr-val.gold { color: var(--gold2); font-weight: 600; }
+
+/* ════════════════════════════════════════════
+   ВЗАИМОДЕЙСТВУЮ С
+════════════════════════════════════════════ */
+.authorities {
+  background: var(--navy2);
+  border-bottom: 1px solid rgba(255,255,255,.05);
+  overflow: hidden;
+}
+.authorities-inner {
+  display: flex; align-items: center; gap: 32px;
+  flex-wrap: wrap; justify-content: center;
+}
+.auth-label {
+  font-family: 'Raleway', sans-serif;
+  font-size: 9px; font-weight: 700; letter-spacing: .36em;
+  text-transform: uppercase; color: rgba(255,255,255,.25);
+  white-space: nowrap; flex-shrink: 0;
+}
+.auth-items { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.auth-item {
+  background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.08);
+  border-radius: 5px; padding: 7px 14px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 10px; font-weight: 600; letter-spacing: .06em;
+  color: rgba(255,255,255,.55); white-space: nowrap;
+  transition: background .2s, color .2s;
+}
+.auth-item:hover { background: rgba(255,255,255,.1); color: rgba(255,255,255,.9); }
+
+/* ════════════════════════════════════════════
+   СТАТИСТИКА
+════════════════════════════════════════════ */
+.stats-strip {
+  background: linear-gradient(90deg, var(--navy2) 0%, var(--navy3) 100%);
+  border-bottom: 1px solid rgba(255,255,255,.05);
+}
+.stats-strip-inner {
+  max-width: 1180px; margin: 0 auto; padding: 0 40px;
+  display: grid; grid-template-columns: repeat(4, 1fr);
+}
+.stat-cell {
+  padding: 36px 28px;
+  border-right: 1px solid rgba(255,255,255,.07);
+  display: flex; flex-direction: column; gap: 6px;
+  position: relative; overflow: hidden;
+  cursor: default;
+  transition: background .3s;
+}
+.stat-cell:last-child { border-right: none; }
+.stat-cell:hover { background: rgba(255,255,255,.03); }
+.stat-cell::before {
+  content: ''; position: absolute; bottom: 0; left: 0;
+  width: 0; height: 2px; background: var(--grad-gold);
+  transition: width .45s ease;
+}
+.stat-cell:hover::before { width: 100%; }
+.stat-value {
+  font-family: 'Playfair Display', serif;
+  font-size: 44px; font-weight: 800; color: var(--gold2); line-height: 1;
+}
+.stat-suffix { font-size: 26px; }
+.stat-desc {
+  font-size: 12px; font-weight: 300;
+  color: rgba(255,255,255,.45); letter-spacing: .04em; line-height: 1.45;
+}
+
+/* ════════════════════════════════════════════
+   СЕКЦИЯ РАЗДЕЛИТЕЛИ (diagonal)
+════════════════════════════════════════════ */
+.section-divider {
+  height: 60px; position: relative; overflow: hidden;
+  background: var(--light);
+}
+.section-divider::before {
+  content: ''; position: absolute; inset: 0;
+  background: var(--navy2);
+  clip-path: polygon(0 0, 100% 0, 100% 40%, 0 100%);
+}
+
+/* ════════════════════════════════════════════
+   НАПРАВЛЕНИЯ РАБОТЫ
+════════════════════════════════════════════ */
+.services { padding: 100px 0; background: var(--light); }
+.services-header { text-align: center; margin-bottom: 40px; }
+.services-header .section-label { display: flex; justify-content: center; }
+.services-header .gold-bar { margin: 18px auto; }
+.services-header p { font-size: 15px; font-weight: 300; color: var(--mid); max-width: 480px; margin: 0 auto; line-height: 1.7; }
+.services-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.service-card {
+  background: var(--white); border-radius: 14px; padding: 34px 26px;
+  border: 1px solid rgba(14,34,68,.12);
+  box-shadow: 0 2px 10px rgba(14,34,68,.07), 0 1px 3px rgba(14,34,68,.05);
+  transition: transform .28s cubic-bezier(.4,0,.2,1), box-shadow .28s, border-color .28s, background .28s;
+  position: relative; overflow: hidden;
+  cursor: default;
+}
+.service-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: var(--grad-gold);
+  opacity: .38;
+  transition: opacity .28s cubic-bezier(.4,0,.2,1);
+}
+.service-card::after {
+  content: ''; position: absolute; bottom: 0; right: 0;
+  width: 80px; height: 80px;
+  background: radial-gradient(circle at bottom right, rgba(184,137,42,.05), transparent);
+  pointer-events: none;
+}
+.service-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(14,34,68,.13), 0 0 0 1px rgba(184,137,42,.22), 0 0 22px rgba(184,137,42,.1);
+  border-color: rgba(184,137,42,.28);
+  background: #fffdf8;
+}
+.service-card:hover::before { opacity: 1; }
+.service-icon {
+  width: 50px; height: 50px;
+  background: linear-gradient(135deg, rgba(184,137,42,.12), rgba(184,137,42,.05));
+  border-radius: 12px; display: flex; align-items: center; justify-content: center;
+  margin-bottom: 18px;
+  border: 1px solid rgba(184,137,42,.15);
+  color: var(--gold);
+}
+.service-icon svg { width: 26px; height: 26px; }
+.service-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 16px; font-weight: 700; color: var(--ink); margin-bottom: 10px; line-height: 1.3;
+}
+.service-text { font-size: 13px; font-weight: 300; line-height: 1.75; color: var(--mid); }
+.service-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 18px; }
+.service-tag {
+  font-family: 'Raleway', sans-serif;
+  font-size: 10px; font-weight: 600; letter-spacing: .08em;
+  color: var(--navy2); background: rgba(14,34,68,.06);
+  border: 1px solid rgba(14,34,68,.1);
+  padding: 4px 10px; border-radius: 100px;
+}
+
+/* ════════════════════════════════════════════
+   ПОЧЕМУ Я
+════════════════════════════════════════════ */
+.why {
+  background: var(--white);
+  padding: 70px 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.why-inner { display: grid; grid-template-columns: 260px 1fr; gap: 64px; align-items: center; }
+.why-heading {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(22px, 2.5vw, 30px); font-weight: 700; line-height: 1.25; color: var(--ink);
+}
+.why-heading em { font-style: italic; color: var(--gold); white-space: nowrap; }
+.why-items { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.why-item {
+  display: flex; gap: 12px; align-items: flex-start;
+  padding: 16px; border-radius: 10px;
+  transition: background .2s;
+}
+.why-item:hover { background: var(--light); }
+.why-icon {
+  width: 38px; height: 38px; flex-shrink: 0;
+  background: linear-gradient(135deg, rgba(184,137,42,.12), rgba(184,137,42,.05));
+  border-radius: 9px; display: flex; align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(184,137,42,.12);
+  color: var(--gold);
+}
+.why-icon svg { width: 20px; height: 20px; }
+.why-text strong {
+  display: block; font-family: 'Raleway', sans-serif;
+  font-size: 13px; font-weight: 700; color: var(--ink); margin-bottom: 4px;
+}
+.why-text span { font-size: 12px; font-weight: 300; color: var(--mid); line-height: 1.55; }
+
+/* ════════════════════════════════════════════
+   ОБО МНЕ
+════════════════════════════════════════════ */
+.about { padding: 100px 0; background: var(--cream); }
+.about-inner { display: grid; grid-template-columns: 400px 1fr; gap: 80px; align-items: start; }
+.about-photo-wrap { position: relative; }
+.about-photo {
+  border-radius: 16px;
+  overflow: hidden; aspect-ratio: 3/4;
+  background: linear-gradient(160deg, rgba(14,34,68,.06) 0%, rgba(184,137,42,.08) 100%);
+  border: 1px solid var(--border);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 20px;
+  padding: 48px 40px; text-align: center;
+  box-shadow: var(--shadow-md);
+}
+.about-photo-card {
+  position: absolute; bottom: -18px; right: -18px;
+  background: var(--navy); color: var(--white);
+  border-radius: 12px; padding: 18px 22px; min-width: 170px;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid rgba(255,255,255,.06);
+}
+.apc-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 34px; font-weight: 700; color: var(--gold2); line-height: 1;
+}
+.apc-label { font-size: 11px; font-weight: 300; color: rgba(255,255,255,.55); margin-top: 4px; line-height: 1.4; }
+.about-text .section-label { display: block; }
+.about-body { font-size: 15px; font-weight: 300; line-height: 1.85; color: var(--mid); margin-top: 16px; }
+.about-body p + p { margin-top: 16px; }
+.about-creds { margin-top: 36px; display: flex; flex-direction: column; gap: 10px; }
+.cred-item {
+  display: flex; align-items: flex-start; gap: 14px;
+  padding: 14px 18px; background: var(--white);
+  border-radius: var(--r); border-left: 3px solid var(--gold);
+  box-shadow: var(--shadow-sm);
+  transition: transform .2s, box-shadow .2s;
+  text-decoration: none; color: inherit; cursor: pointer;
+}
+.cred-item:hover { transform: translateX(3px); box-shadow: var(--shadow-md); }
+.cred-icon { font-size: 17px; flex-shrink: 0; margin-top: 1px; }
+.cred-text { font-size: 13px; font-weight: 400; line-height: 1.5; color: var(--ink); }
+
+/* ════════════════════════════════════════════
+   КАК ПРОХОДИТ ПРИЁМ
+════════════════════════════════════════════ */
+.process {
+  padding: 100px 0; background: var(--navy); position: relative; overflow: hidden;
+}
+.process::before {
+  content: ''; position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.02) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+.process-header { text-align: center; margin-bottom: 64px; position: relative; }
+.process-header .gold-bar { margin: 18px auto; }
+.process-steps {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 0; position: relative;
+}
+.process-connector {
+  position: absolute; top: 44px;
+  left: calc(100% / 6 + 20px); right: calc(100% / 6 + 20px);
+  height: 1px;
+  background: linear-gradient(90deg, rgba(184,137,42,.5), rgba(184,137,42,.15), rgba(184,137,42,.5));
+}
+.step { padding: 0 36px; text-align: center; position: relative; }
+.step-num {
+  width: 88px; height: 88px; border-radius: 50%;
+  border: 1px solid rgba(184,137,42,.3);
+  display: flex; align-items: center; justify-content: center; margin: 0 auto 28px;
+  font-family: 'Playfair Display', serif;
+  font-size: 28px; font-weight: 700; color: var(--gold2);
+  background: rgba(184,137,42,.07);
+  position: relative; z-index: 1;
+  box-shadow: 0 0 0 8px rgba(184,137,42,.04), 0 0 32px rgba(184,137,42,.1);
+  transition: box-shadow .3s, background .3s;
+}
+.step:hover .step-num {
+  background: rgba(184,137,42,.14);
+  box-shadow: 0 0 0 8px rgba(184,137,42,.07), 0 0 32px rgba(184,137,42,.2);
+}
+.step-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 19px; font-weight: 700; color: var(--white); margin-bottom: 12px;
+}
+.step-text { font-size: 14px; font-weight: 300; line-height: 1.75; color: rgba(255,255,255,.48); }
+
+/* ════════════════════════════════════════════
+   ДЕПУТАТСКИЙ ЗАПРОС
+════════════════════════════════════════════ */
+.deputy { background: var(--cream); padding: 90px 0; }
+.deputy-inner { display: grid; grid-template-columns: 280px 1fr; gap: 70px; align-items: start; }
+.deputy-left .section-label { display: block; }
+.deputy-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(22px, 2.5vw, 30px); font-weight: 700; line-height: 1.25; color: var(--ink);
+  margin-bottom: 10px;
+}
+.deputy-title em { font-style: italic; color: var(--gold); }
+.deputy-sub {
+  font-size: 14px; font-weight: 300; line-height: 1.75; color: var(--mid); margin-top: 4px;
+}
+.deputy-right { display: flex; flex-direction: column; gap: 20px; }
+.deputy-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--navy); color: var(--white);
+  font-family: 'Raleway', sans-serif; font-size: 10px; font-weight: 700;
+  letter-spacing: .26em; text-transform: uppercase;
+  padding: 8px 16px; border-radius: 5px; align-self: flex-start;
+  box-shadow: var(--shadow-md);
+}
+.deputy-flow { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.deputy-step {
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: 14px; padding: 26px 20px; text-align: center;
+  position: relative; overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: transform .26s, box-shadow .26s;
+}
+.deputy-step:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
+.deputy-step::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: var(--grad-gold);
+}
+.deputy-step-num {
+  font-family: 'Raleway', sans-serif; font-size: 10px; font-weight: 700;
+  letter-spacing: .3em; text-transform: uppercase; color: var(--gold);
+  margin-bottom: 12px; display: block;
+}
+.deputy-step-icon { font-size: 28px; margin-bottom: 12px; display: block; }
+.deputy-step-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 15px; font-weight: 700; color: var(--ink); margin-bottom: 6px;
+}
+.deputy-step-text { font-size: 12px; font-weight: 300; line-height: 1.6; color: var(--mid); }
+.deputy-note {
+  background: linear-gradient(135deg, rgba(14,34,68,.05), rgba(184,137,42,.04));
+  border-left: 3px solid var(--gold);
+  border-radius: 0 10px 10px 0;
+  padding: 16px 20px; font-size: 13px; font-weight: 400; color: var(--ink); line-height: 1.6;
+}
+.deputy-note strong { color: var(--navy2); }
+
+/* ════════════════════════════════════════════
+   ПОСЛЕДНИЕ ПОБЕДЫ
+════════════════════════════════════════════ */
+.wins { padding: 90px 0; background: var(--light); }
+.wins-header { text-align: center; margin-bottom: 52px; }
+.wins-header .gold-bar { margin: 18px auto; }
+.wins-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.win-card {
+  background: var(--white); border-radius: 14px; padding: 30px 26px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+  position: relative; overflow: hidden;
+  transition: transform .26s cubic-bezier(.4,0,.2,1), box-shadow .26s;
+}
+.win-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
+.win-card::after {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: var(--grad-gold);
+}
+.win-category {
+  display: inline-block;
+  font-family: 'Raleway', sans-serif;
+  font-size: 9px; font-weight: 700; letter-spacing: .24em; text-transform: uppercase;
+  color: var(--navy2); background: rgba(14,34,68,.07);
+  padding: 4px 10px; border-radius: 100px; margin-bottom: 14px;
+}
+.win-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 16px; font-weight: 700; color: var(--ink); margin-bottom: 10px; line-height: 1.35;
+}
+.win-desc { font-size: 13px; font-weight: 300; line-height: 1.7; color: var(--mid); margin-bottom: 20px; }
+.win-result {
+  display: flex; align-items: center; gap: 10px;
+  padding: 12px 14px; background: rgba(14,34,68,.04);
+  border-radius: 8px; border-left: 3px solid var(--gold);
+}
+.win-result-icon { font-size: 15px; }
+.win-result-text {
+  font-family: 'Raleway', sans-serif;
+  font-size: 12px; font-weight: 700; color: var(--navy2); line-height: 1.35;
+  letter-spacing: .02em;
+}
+.win-date {
+  font-size: 11px; color: rgba(107,114,128,.5);
+  letter-spacing: .08em; margin-top: 12px;
+  font-family: 'Raleway', sans-serif;
+}
+
+/* ════════════════════════════════════════════
+   ОТЗЫВЫ
+════════════════════════════════════════════ */
+.reviews { padding: 100px 0; background: var(--white); }
+.reviews-header { text-align: center; margin-bottom: 60px; }
+.reviews-header .gold-bar { margin: 18px auto; }
+.reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.review-card {
+  background: var(--cream); border-radius: 14px; padding: 32px 26px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+  display: flex; flex-direction: column; gap: 14px;
+  transition: transform .26s, box-shadow .26s;
+  position: relative; overflow: hidden;
+}
+.review-card::before {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(160deg, rgba(184,137,42,.03) 0%, transparent 50%);
+  pointer-events: none;
+}
+.review-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+.review-stars { display: flex; gap: 2px; font-size: 14px; color: var(--gold2); }
+.review-text { font-size: 14px; font-weight: 300; line-height: 1.8; color: var(--mid); flex: 1; }
+.review-quote { display: none; }
+.review-text::before {
+  content: '\201C';
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 56px; line-height: .75;
+  color: var(--gold); opacity: .22;
+  display: block; margin-bottom: 6px;
+}
+.review-result {
+  font-family: 'Raleway', sans-serif;
+  font-size: 11px; font-weight: 700; letter-spacing: .06em;
+  color: var(--navy2); background: rgba(14,34,68,.06);
+  padding: 8px 14px; border-radius: 6px;
+}
+.review-author {
+  display: flex; flex-direction: column; gap: 2px;
+  padding-top: 12px; border-top: 1px solid var(--border);
+}
+.review-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 14px; font-weight: 600; color: var(--ink);
+}
+.review-role { font-size: 11px; font-weight: 400; color: var(--mid); letter-spacing: .04em; }
+
+/* ════════════════════════════════════════════
+   СОВЕТЫ ЮРИСТА
+════════════════════════════════════════════ */
+.tips {
+  padding: 90px 0;
+  background: linear-gradient(160deg, var(--navy) 0%, var(--navy2) 100%);
+  position: relative; overflow: hidden;
+}
+.tips::before {
+  content: ''; position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.018) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.018) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+.tips-header { text-align: center; margin-bottom: 52px; position: relative; }
+.tips-header .gold-bar { margin: 18px auto; }
+.tips-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; position: relative; }
+.tip-card {
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.09);
+  border-radius: 14px; padding: 32px 26px;
+  backdrop-filter: blur(4px);
+  transition: background .3s, transform .26s, box-shadow .26s;
+  position: relative; overflow: hidden;
+}
+.tip-card:hover {
+  background: rgba(255,255,255,.09);
+  transform: translateY(-5px);
+  box-shadow: 0 20px 48px rgba(0,0,0,.25);
+}
+.tip-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: var(--grad-gold); opacity: 0; transition: opacity .3s;
+}
+.tip-card:hover::before { opacity: 1; }
+.tip-num {
+  font-family: 'Raleway', sans-serif; font-size: 10px; font-weight: 700;
+  letter-spacing: .32em; text-transform: uppercase; color: var(--gold);
+  margin-bottom: 14px; display: block;
+}
+.tip-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 17px; font-weight: 700; color: var(--white); margin-bottom: 12px; line-height: 1.3;
+}
+.tip-text { font-size: 13px; font-weight: 300; line-height: 1.75; color: rgba(255,255,255,.52); }
+.tip-tag {
+  display: inline-block; margin-top: 16px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 9px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase;
+  color: var(--gold2); border: 1px solid rgba(184,137,42,.3);
+  padding: 4px 10px; border-radius: 100px;
+}
+
+/* ════════════════════════════════════════════
+   FAQ
+════════════════════════════════════════════ */
+.faq { padding: 100px 0; background: var(--white); }
+.faq-inner { display: grid; grid-template-columns: 360px 1fr; gap: 80px; align-items: start; }
+.faq-left { position: sticky; top: 100px; }
+.faq-left .section-label { display: block; }
+.faq-left p { font-size: 14px; font-weight: 300; line-height: 1.75; color: var(--mid); margin-top: 16px; }
+.faq-count {
+  display: flex; align-items: center; gap: 18px;
+  margin-top: 36px; padding-top: 28px; border-top: 1px solid var(--border);
+}
+.faq-count-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 52px; font-weight: 700; line-height: 1;
+  color: var(--gold); letter-spacing: -.02em;
+}
+.faq-count-label {
+  font-size: 12px; font-weight: 300; line-height: 1.65; color: var(--mid);
+}
+.faq-tg {
+  display: inline-flex; align-items: center; gap: 10px; margin-top: 28px;
+  background: #229ED9; color: var(--white);
+  font-family: 'Raleway', sans-serif;
+  font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+  padding: 14px 22px; border-radius: var(--r);
+  transition: all .22s; box-shadow: 0 6px 20px rgba(34,158,217,.3);
+}
+.faq-tg:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(34,158,217,.4); }
+.faq-list { display: flex; flex-direction: column; gap: 0; border-top: 1px solid var(--border); }
+.faq-item {
+  border-bottom: 1px solid var(--border);
+  border-left: 3px solid transparent;
+  padding-left: 0;
+  transition: border-color .25s, padding-left .25s, background .25s;
+}
+.faq-item:hover {
+  border-left-color: var(--gold);
+  padding-left: 14px;
+  background: rgba(184,137,42,.03);
+}
+.faq-item.open {
+  border-left-color: var(--gold);
+  padding-left: 14px;
+  background: rgba(184,137,42,.05);
+}
+.faq-item.open .faq-a { color: var(--ink); }
+.faq-q {
+  width: 100%; background: none; border: none; cursor: pointer;
+  padding: 22px 0; display: flex; justify-content: space-between; align-items: center; gap: 24px;
+  text-align: left; font-family: 'Playfair Display', serif;
+  font-size: 15px; font-weight: 600; color: var(--ink);
+  transition: color .2s;
+}
+.faq-q:hover { color: var(--gold); }
+.faq-item:hover .faq-arrow { border-color: rgba(184,137,42,.5); color: var(--gold2); }
+.faq-arrow {
+  width: 30px; height: 30px; border-radius: 50%;
+  border: 1.5px solid rgba(14,34,68,.2);
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  font-size: 16px; color: var(--mid); font-family: 'Raleway', sans-serif;
+  transition: transform .3s ease, background .2s, border-color .2s, color .2s;
+}
+.faq-item.open .faq-arrow {
+  transform: rotate(45deg);
+  background: var(--grad-gold);
+  border-color: transparent;
+  color: var(--white);
+  box-shadow: var(--shadow-gold);
+}
+.faq-a {
+  max-height: 0; overflow: hidden;
+  transition: max-height .4s ease, padding .3s ease;
+  font-size: 14px; font-weight: 300; line-height: 1.8; color: var(--mid);
+}
+.faq-item.open .faq-a { max-height: 800px; padding-bottom: 22px; }
+
+/* ════════════════════════════════════════════
+   КОНТАКТ
+════════════════════════════════════════════ */
+.contact {
+  padding: 100px 0;
+  background: linear-gradient(160deg, var(--navy) 0%, var(--navy2) 100%);
+  position: relative; overflow: hidden;
+}
+.contact::before {
+  content: ''; position: absolute; left: -150px; top: 50%; transform: translateY(-50%);
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(184,137,42,.08) 0%, transparent 65%);
+  pointer-events: none;
+}
+.contact-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; position: relative; }
+.contact-left .section-label { display: block; }
+.contact-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(30px, 3.5vw, 50px); font-weight: 800; line-height: 1.1;
+  color: var(--white); margin-bottom: 12px; letter-spacing: -.02em;
+}
+.contact-sub { font-size: 15px; font-weight: 300; line-height: 1.75; color: rgba(255,255,255,.48); margin-bottom: 32px; }
+.contact-actions { display: flex; flex-direction: column; gap: 12px; }
+.contact-btn {
+  display: flex; align-items: center; gap: 14px;
+  padding: 18px 22px; border-radius: var(--r);
+  font-size: 14px; font-weight: 500;
+  transition: all .22s cubic-bezier(.4,0,.2,1);
+  cursor: pointer; border: none;
+}
+.cbtn-tg { background: #229ED9; color: var(--white); box-shadow: 0 6px 20px rgba(34,158,217,.25); }
+.cbtn-tg:hover { background: #1e8fc0; transform: translateX(5px); box-shadow: 0 10px 28px rgba(34,158,217,.35); }
+.cbtn-phone { background: rgba(255,255,255,.08); color: var(--white); border: 1px solid rgba(255,255,255,.12); }
+.cbtn-phone:hover { background: rgba(255,255,255,.13); transform: translateX(5px); }
+.cbtn-email { background: transparent; color: rgba(255,255,255,.5); border: 1px solid rgba(255,255,255,.1); font-size: 13px; }
+.cbtn-email:hover { color: rgba(255,255,255,.85); border-color: rgba(255,255,255,.25); }
+.cbtn-icon { font-size: 20px; flex-shrink: 0; }
+.cbtn-main { font-family: 'Raleway', sans-serif; font-weight: 700; letter-spacing: .04em; }
+.cbtn-hint { font-size: 11px; font-weight: 300; opacity: .6; margin-top: 1px; }
+.privacy-note {
+  display: flex; align-items: flex-start; gap: 10px; margin-top: 16px;
+  font-size: 12px; font-weight: 300; color: rgba(255,255,255,.36); line-height: 1.55;
+}
+.privacy-note svg { flex-shrink: 0; margin-top: 1px; opacity: .4; }
+
+.schedule-card {
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 16px; padding: 30px 28px;
+  backdrop-filter: blur(6px);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.07);
+}
+.schedule-title {
+  font-family: 'Raleway', sans-serif;
+  font-size: 11px; font-weight: 700; letter-spacing: .32em; text-transform: uppercase;
+  color: var(--gold2); margin-bottom: 22px;
+}
+.schedule-rows { display: flex; flex-direction: column; gap: 0; margin-bottom: 24px; }
+.schedule-row {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,.07); font-size: 14px;
+}
+.schedule-row:last-child { border-bottom: none; }
+.srow-key { font-weight: 300; color: rgba(255,255,255,.45); }
+.srow-val { font-weight: 500; color: rgba(255,255,255,.88); text-align: right; }
+.srow-val.gold { color: var(--gold2); font-weight: 600; }
+.map-embed {
+  margin-top: 18px; border-radius: 10px; overflow: hidden;
+  border: 1px solid rgba(255,255,255,.1); height: 185px;
+}
+.map-embed iframe { width: 100%; height: 100%; border: none; display: block; filter: grayscale(15%) brightness(.92); }
+
+/* ════════════════════════════════════════════
+   ФУТЕР
+════════════════════════════════════════════ */
+.footer {
+  background: #040e1c;
+  padding: 36px 0;
+  border-top: 1px solid rgba(255,255,255,.05);
+}
+.footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
+.footer-left {
+  font-family: 'Playfair Display', serif;
+  font-size: 15px; font-weight: 600; color: var(--white);
+}
+.footer-left span {
+  display: block; font-family: 'Raleway', sans-serif;
+  font-size: 9px; font-weight: 300; color: rgba(255,255,255,.25);
+  margin-top: 4px; letter-spacing: .22em; text-transform: uppercase;
+}
+.footer-socials { display: flex; gap: 10px; }
+.social-link {
+  width: 38px; height: 38px; border-radius: 8px;
+  border: 1px solid rgba(255,255,255,.1);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Raleway', sans-serif; font-size: 10px; font-weight: 800;
+  color: rgba(255,255,255,.45);
+  transition: all .2s; letter-spacing: .04em;
+}
+.social-link:hover { background: rgba(255,255,255,.07); color: var(--white); border-color: rgba(255,255,255,.22); }
+.footer-right { font-size: 11px; color: rgba(255,255,255,.18); letter-spacing: .1em; }
+
+/* ════════════════════════════════════════════
+   STICKY CTA
+════════════════════════════════════════════ */
+.sticky-cta {
+  position: fixed; bottom: 26px; right: 26px; z-index: 999;
+  display: none; flex-direction: column; align-items: flex-end; gap: 8px;
+}
+.sticky-btn {
+  display: flex; align-items: center; gap: 8px;
+  padding: 13px 20px; border-radius: 100px;
+  font-family: 'Raleway', sans-serif; font-size: 11px; font-weight: 700;
+  letter-spacing: .1em; text-transform: uppercase;
+  box-shadow: 0 8px 28px rgba(0,0,0,.28);
+  cursor: pointer; border: none;
+  transition: transform .2s, box-shadow .2s;
+  white-space: nowrap;
+}
+.sticky-btn:hover { transform: translateY(-3px); box-shadow: 0 14px 36px rgba(0,0,0,.35); }
+.sticky-btn-primary { background: var(--grad-gold); color: var(--white); }
+.sticky-btn-tg { background: #229ED9; color: var(--white); }
+
+/* ════════════════════════════════════════════
+   АНИМАЦИИ ПОЯВЛЕНИЯ
+════════════════════════════════════════════ */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity .6s cubic-bezier(.4,0,.2,1), transform .6s cubic-bezier(.4,0,.2,1);
+}
+.reveal.visible { opacity: 1; transform: none; }
+
+/* ════════════════════════════════════════════
+   МОБИЛЬНАЯ АДАПТАЦИЯ
+════════════════════════════════════════════ */
+@media (max-width: 1024px) {
+  .hero-inner { grid-template-columns: 1fr; gap: 48px; padding: 60px 28px; }
+  .hero-card { max-width: 420px; }
+  .about-inner { grid-template-columns: 1fr; gap: 48px; }
+  .about-photo-wrap { max-width: 360px; }
+  .about-photo-card { position: relative; bottom: 0; right: 0; margin-top: 16px; width: fit-content; }
+  .faq-inner { grid-template-columns: 1fr; gap: 44px; }
+  .faq-left { position: static; }
+  .faq-a { font-size: 12px; line-height: 1.65; }
+  .faq-q { font-size: 13px; padding: 18px 0; }
+  .contact-inner { grid-template-columns: 1fr; gap: 44px; }
+  .deputy-inner { grid-template-columns: 1fr; gap: 36px; }
+  .why-inner { grid-template-columns: 1fr; gap: 32px; }
+}
+
+@media (max-width: 768px) {
+  .container { padding: 0 20px; }
+  .nav-links { display: none; }
+  .nav-inner { padding: 0 20px; height: 60px; }
+  .nav-cta { padding: 8px 16px; font-size: 10px; }
+  .nav-burger { display: flex; }
+
+  .hero { padding-top: 97px; }
+  .hero-inner { padding: 40px 20px 60px; gap: 36px; }
+  .hero-title { font-size: clamp(28px, 7vw, 40px); }
+  .hero-trust { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 24px; padding-top: 20px; margin-top: 24px; }
+  .trust-num { font-size: 22px; }
+  .trust-label { font-size: 9px; letter-spacing: .06em; }
+  .next-reception { font-size: 10px; }
+
+  .authorities-inner { gap: 16px; }
+  .auth-label { display: none; }
+  .auth-items { justify-content: center; }
+
+  .stats-strip-inner { grid-template-columns: 1fr 1fr; padding: 0 20px; }
+  .stat-cell { padding: 22px 14px; }
+  .stat-cell:nth-child(2) { border-right: none; }
+  .stat-cell:nth-child(1), .stat-cell:nth-child(2) { border-bottom: 1px solid rgba(255,255,255,.07); }
+  .stat-value { font-size: 34px; }
+  .stat-suffix { font-size: 22px; }
+
+  .services { padding: 64px 0; }
+  .services-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
+
+  .why { padding: 52px 0; }
+  .why-items { grid-template-columns: 1fr; gap: 8px; }
+  .why-heading { font-size: 24px; }
+
+  .about { padding: 64px 0; }
+
+  .process { padding: 64px 0; }
+  .process-steps { grid-template-columns: 1fr; gap: 36px; }
+  .process-connector { display: none; }
+
+  .deputy { padding: 60px 0; }
+  .deputy-flow { grid-template-columns: 1fr; gap: 12px; }
+
+  .wins { padding: 60px 0; }
+  .wins-grid { grid-template-columns: 1fr; gap: 14px; }
+
+  .reviews { padding: 64px 0; }
+  .reviews-grid { grid-template-columns: 1fr; gap: 14px; }
+
+  .tips { padding: 60px 0; }
+  .tips-grid { grid-template-columns: 1fr; gap: 14px; }
+
+  .faq { padding: 64px 0; }
+  .faq-q { font-size: 14px; }
+
+  .contact { padding: 64px 0; }
+
+  .section-title { font-size: clamp(22px, 5vw, 30px); }
+
+  .sticky-cta { bottom: 16px; right: 16px; gap: 7px; }
+  .sticky-btn { font-size: 10px; padding: 11px 16px; }
+}
+
+@media (max-width: 480px) {
+  .services-grid { grid-template-columns: 1fr; }
+  .hero-actions { flex-direction: column; gap: 10px; }
+  .hero-actions .btn { width: 100%; }
+  .stats-strip-inner { grid-template-columns: 1fr 1fr; padding: 0 12px; }
+  .stat-cell { padding: 18px 10px; }
+  .stat-value { font-size: 30px; }
+  .stat-suffix { font-size: 18px; }
+  .process-steps { grid-template-columns: 1fr; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .001ms !important; transition-duration: .001ms !important; }
+}
+
+/* ════════════════════════════════════════════
+   DRUM COUNTER (slot-machine digits)
+════════════════════════════════════════════ */
+.drum-wrap {
+  display: inline-flex; align-items: baseline; gap: 0;
+  vertical-align: bottom;
+}
+.drum-col {
+  display: inline-block; overflow: hidden;
+  height: 1.15em; line-height: 1.15;
+}
+.drum-reel {
+  display: flex; flex-direction: column;
+  transition: transform 1.35s cubic-bezier(.15,.5,.08,1.08);
+  will-change: transform;
+}
+.drum-reel span {
+  display: block; height: 1.15em; line-height: 1.15;
+  text-align: center; min-width: .55em;
+}
+
+/* ════════════════════════════════════════════
+   FLOATING CONSULT BUTTON
+════════════════════════════════════════════ */
+.float-consult {
+  position: fixed; bottom: 26px; right: 26px; z-index: 998;
+  width: 130px; height: 130px;
+  cursor: pointer; -webkit-tap-highlight-color: transparent;
+  opacity: 0; transform: scale(.78) translateY(14px);
+  pointer-events: none;
+  transition: opacity .4s cubic-bezier(.4,0,.2,1), transform .4s cubic-bezier(.4,0,.2,1);
+}
+.float-consult.visible { opacity: 1; transform: none; pointer-events: all; }
+.float-ring {
+  position: absolute; inset: 0;
+  animation: fc-spin 15s linear infinite;
+}
+.float-ring-text {
+  font-family: 'Raleway', sans-serif;
+  font-size: 9px; font-weight: 700;
+  fill: rgba(184,137,42,.75); letter-spacing: 0;
+}
+@keyframes fc-spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+.float-center {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+}
+.float-avatar {
+  width: 78px; height: 78px; border-radius: 50%;
+  background: var(--navy);
+  border: 2px solid var(--gold2);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 20px; font-weight: 700; color: var(--gold2);
+  box-shadow: 0 0 0 6px rgba(184,137,42,.12), 0 8px 32px rgba(0,0,0,.38);
+  transition: transform .3s, box-shadow .3s;
+  user-select: none;
+}
+.float-consult:hover .float-avatar {
+  transform: scale(1.07);
+  box-shadow: 0 0 0 9px rgba(184,137,42,.18), 0 14px 40px rgba(0,0,0,.42);
+}
+.float-popup {
+  position: fixed; bottom: 172px; right: 26px; z-index: 999;
+  background: var(--white); border-radius: 18px;
+  padding: 26px 24px 24px; width: 272px;
+  box-shadow: 0 20px 56px rgba(0,0,0,.15), 0 4px 16px rgba(0,0,0,.08);
+  border: 1px solid var(--border);
+  opacity: 0; transform: scale(.93) translateY(14px);
+  pointer-events: none;
+  transition: opacity .26s cubic-bezier(.4,0,.2,1), transform .26s cubic-bezier(.4,0,.2,1);
+}
+.float-popup.open { opacity: 1; transform: none; pointer-events: all; }
+.popup-close {
+  position: absolute; top: 12px; right: 12px;
+  width: 26px; height: 26px; border-radius: 50%;
+  background: var(--light); border: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px; line-height: 1; color: var(--mid);
+  transition: background .2s, color .2s; font-family: sans-serif; padding: 0;
+}
+.popup-close:hover { background: var(--border); color: var(--ink); }
+.popup-badge {
+  display: inline-block;
+  background: rgba(184,137,42,.1); color: var(--gold);
+  font-family: 'Raleway', sans-serif; font-size: 9px; font-weight: 700;
+  letter-spacing: .26em; text-transform: uppercase;
+  padding: 4px 10px; border-radius: 100px;
+  border: 1px solid rgba(184,137,42,.22);
+  margin-bottom: 12px;
+}
+.popup-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px; font-weight: 700; color: var(--ink); line-height: 1.2;
+  margin-bottom: 8px;
+}
+.popup-desc {
+  font-size: 13px; font-weight: 300; color: var(--mid);
+  line-height: 1.65; margin-bottom: 20px;
+}
+.popup-cta {
+  display: block; width: 100%; text-align: center;
+  background: var(--grad-gold); color: var(--white);
+  font-family: 'Raleway', sans-serif; font-size: 11px; font-weight: 700;
+  letter-spacing: .12em; text-transform: uppercase;
+  padding: 14px 0; border-radius: var(--r);
+  box-shadow: var(--shadow-gold);
+  transition: transform .2s, box-shadow .2s; cursor: pointer;
+}
+.popup-cta:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(184,137,42,.42); }
+.popup-cta-book {
+  display: block; width: 100%; text-align: center;
+  background: transparent; color: var(--ink);
+  font-family: 'Raleway', sans-serif; font-size: 11px; font-weight: 700;
+  letter-spacing: .12em; text-transform: uppercase;
+  padding: 12px 0; border-radius: var(--r);
+  border: 1.5px solid var(--border);
+  transition: border-color .2s, color .2s; cursor: pointer;
+  margin-top: 10px;
+}
+.popup-cta-book:hover { border-color: var(--gold); color: var(--gold); }
+
+@media (max-width: 480px) {
+  .float-consult { width: 110px; height: 110px; bottom: 16px; right: 16px; }
+  .float-ring-text { font-size: 9px; }
+  .float-avatar { width: 66px; height: 66px; font-size: 17px; }
+  .float-popup { width: calc(100vw - 32px); right: 16px; bottom: 158px; }
+}
+
+/* ── win-ba stacks on very small screens ── */
+@media (max-width: 360px) {
+  .win-ba { flex-direction: column; }
+  .win-ba-col { border-left: none !important; border-top: 2px solid var(--border); }
+  .win-ba-before { border-top: 2px solid rgba(100,116,139,.18) !important; border-left: none !important; }
+  .win-ba-after  { border-top: 2px solid rgba(184,137,42,.35)  !important; border-left: none !important; }
+}
+
+/* ── a11y bar compact on mobile ── */
+@media (max-width: 640px) {
+  .a11y-inner { padding: 4px 12px; gap: 6px; }
+  .a11y-btn { font-size: 10px; padding: 3px 8px; gap: 4px; }
+  .a11y-ctrl-label { font-size: 9px; }
+  .a11y-sz { width: 24px; height: 22px; }
+  .a11y-sz[data-sz="large"]  { font-size: 12px; }
+  .a11y-sz[data-sz="xlarge"] { font-size: 15px; }
+  .a11y-scheme { width: 22px; height: 22px; font-size: 10px; }
+  .a11y-bar-close { font-size: 13px; }
+}
+@media (max-width: 480px) {
+  .a11y-inner { flex-wrap: wrap; justify-content: flex-end; }
+  .a11y-btn { order: 0; }
+  .a11y-controls { order: 1; width: 100%; justify-content: flex-end; }
+}
+
+/* ════════════════════════════════════════════
+   MARQUEE (authorities strip)
+════════════════════════════════════════════ */
+.marquee-outer {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, black 8%, black 92%, transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0%, black 8%, black 92%, transparent 100%);
+  padding: 18px 0;
+}
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll 30s linear infinite;
+}
+.marquee-track:hover { animation-play-state: paused; }
+.marquee-inner {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  flex-shrink: 0;
+}
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.auth-sep {
+  color: var(--gold);
+  opacity: 0.3;
+  font-size: 12px;
+  flex-shrink: 0;
+  padding: 0 10px;
+}
+
+/* ════════════════════════════════════════════
+   ACTIVE NAV LINK
+════════════════════════════════════════════ */
+.nav-links a.active { color: var(--white); }
+.nav-links a.active::after { width: 100%; }
+
+/* ════════════════════════════════════════════
+   TOAST NOTIFICATION
+════════════════════════════════════════════ */
+.toast {
+  position: fixed; bottom: 86px; left: 50%;
+  transform: translateX(-50%) translateY(14px);
+  background: var(--navy); color: var(--white);
+  font-family: 'Raleway', sans-serif; font-size: 12px; font-weight: 600;
+  letter-spacing: .08em; padding: 12px 24px; border-radius: 50px;
+  border: 1px solid rgba(255,255,255,.1);
+  box-shadow: 0 8px 28px rgba(0,0,0,.3);
+  opacity: 0; pointer-events: none;
+  transition: opacity .24s, transform .24s cubic-bezier(.34,1.56,.64,1);
+  z-index: 9999; white-space: nowrap;
+}
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+/* ════════════════════════════════════════════
+   SPOTLIGHT EFFECT — все карточки
+════════════════════════════════════════════ */
+.tip-card::after {
+  content: '';
+  position: absolute; inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(circle at var(--sx, -200px) var(--sy, -200px), rgba(184,137,42,.16) 0%, transparent 62%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity .35s;
+}
+.tip-card:hover::after { opacity: 1; }
+
+
+/* Stat cells */
+.stat-cell::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(circle at var(--sx, -300px) var(--sy, -300px), rgba(184,137,42,.15) 0%, transparent 55%);
+  pointer-events: none; opacity: 0;
+  transition: opacity .35s;
+}
+.stat-cell:hover::after { opacity: 1; }
+
+/* Service cards — перезаписываем статичный угловой декор на интерактивный */
+.service-card::after {
+  inset: 0; width: auto; height: auto;
+  background: radial-gradient(circle at var(--sx, -300px) var(--sy, -300px), rgba(184,137,42,.10) 0%, transparent 55%);
+  opacity: 0; transition: opacity .35s;
+}
+.service-card:hover::after { opacity: 1; }
+
+/* Win cards — золотое свечение поверх */
+.win-card {
+  --sx: -300px; --sy: -300px;
+}
+.win-card::before {
+  content: '';
+  position: absolute; inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(circle at var(--sx) var(--sy), rgba(184,137,42,.09) 0%, transparent 55%);
+  pointer-events: none; opacity: 0;
+  transition: opacity .35s; z-index: 0;
+}
+.win-card:hover::before { opacity: 1; }
+.win-card > * { position: relative; z-index: 1; }
+
+/* Review cards */
+.review-card::after {
+  content: '';
+  position: absolute; inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(circle at var(--sx, -300px) var(--sy, -300px), rgba(184,137,42,.08) 0%, transparent 55%);
+  pointer-events: none; opacity: 0;
+  transition: opacity .35s;
+}
+.review-card:hover::after { opacity: 1; }
+
+/* Why-item cards (::after used by ghost number, use ::before for spotlight) */
+.why-item::before {
+  content: '';
+  position: absolute; inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(circle at var(--sx, -300px) var(--sy, -300px), rgba(184,137,42,.14) 0%, transparent 60%);
+  pointer-events: none; opacity: 0;
+  transition: opacity .35s; z-index: 0;
+}
+.why-item:hover::before { opacity: 1; }
+.why-item > * { position: relative; z-index: 1; }
+
+/* ════════════════════════════════════════════
+   V2: SVG ICON SIZING
+════════════════════════════════════════════ */
+.deputy-step-icon { font-size: 0; display: block; margin-bottom: 12px; color: var(--gold); }
+.deputy-step-icon svg { width: 30px; height: 30px; }
+.cbtn-icon { font-size: 0; flex-shrink: 0; color: rgba(255,255,255,.7); }
+.cbtn-icon svg { width: 20px; height: 20px; }
+.auth-item svg { width: 13px; height: 13px; flex-shrink: 0; opacity: .55; vertical-align: middle; margin-right: 4px; }
+
+/* ════════════════════════════════════════════
+   V2: FOCUS-VISIBLE (accessibility)
+════════════════════════════════════════════ */
+:focus-visible {
+  outline: 2px solid var(--gold2);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+.btn:focus-visible { outline-offset: 4px; }
+.nav-links a:focus-visible { outline-offset: 4px; border-radius: 3px; }
+.carousel-dot:focus-visible { outline-offset: 4px; border-radius: 50%; }
+.float-consult:focus-visible { outline-offset: 6px; border-radius: 50%; }
+.faq-q:focus-visible { outline-offset: 2px; }
+
+/* ════════════════════════════════════════════
+   V2: CAROUSEL DOTS TOUCH TARGET
+════════════════════════════════════════════ */
+.carousel-dot {
+  /* Extend tappable area without changing visual size */
+  padding: 14px 10px;
+  margin: -14px -10px;
+  /* override previous margin from .carousel-dots gap */
+}
+.carousel-dots { gap: 28px; }
+
+/* ════════════════════════════════════════════
+   V2: PREFERS-REDUCED-MOTION (точечно)
+════════════════════════════════════════════ */
+@media (prefers-reduced-motion: reduce) {
+  /* Decorative-only — stop completely */
+  .btn-primary::before,
+  .hero-glow-name,
+  .float-ring,
+  .marquee-track { animation: none !important; }
+
+  /* Functional transitions — keep but shorten */
+  .faq-a,
+  .float-consult,
+  .float-popup,
+  .toast,
+  .review-stars span,
+  .reviews-track,
+  .tip-card::after,
+  .scroll-progress-bar { transition-duration: .01ms !important; }
+}
+
+/* ════════════════════════════════════════════
+   V2: CTA BUTTON SHIMMER SWEEP
+════════════════════════════════════════════ */
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -80%;
+  width: 50%; height: 100%;
+  background: linear-gradient(to right, transparent, rgba(255,255,255,.22), transparent);
+  transform: skewX(-18deg);
+  animation: btn-shimmer 3.6s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes btn-shimmer {
+  0%, 25% { left: -80%; }
+  65%, 100% { left: 140%; }
+}
+
+/* ════════════════════════════════════════════
+   V2: HERO TITLE GRADIENT GLOW
+════════════════════════════════════════════ */
+.hero-glow-name {
+  background: linear-gradient(
+    120deg,
+    #ffffff 0%,
+    var(--gold3) 22%,
+    #ffffff 44%,
+    var(--gold2) 66%,
+    #ffffff 88%,
+    var(--gold3) 100%
+  );
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: hero-glow-shift 7s ease-in-out infinite;
+  display: inline;
+}
+@keyframes hero-glow-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50%       { background-position: 100% 50%; }
+}
+
+/* ════════════════════════════════════════════
+   V2: REVIEWS — desktop grid / mobile carousel
+════════════════════════════════════════════ */
+.reviews-carousel-wrap { overflow: hidden; }
+.reviews-track {
+  display: flex;
+  gap: 22px;
+  transition: transform .32s cubic-bezier(.4,0,.2,1);
+  will-change: transform;
+}
+.reviews-track .review-card {
+  flex: 0 0 calc(33.333% - 15px);
+  min-width: 0;
+}
+.carousel-dots {
+  display: flex; justify-content: center;
+  gap: 10px; margin-top: 32px;
+}
+.carousel-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--border); border: none; cursor: pointer;
+  transition: background .22s, transform .22s; padding: 0;
+}
+.carousel-dot.active {
+  background: var(--gold2); transform: scale(1.35);
+}
+
+/* Desktop: всегда показываем все 6 сеткой */
+@media (min-width: 769px) {
+  .reviews-carousel-wrap { overflow: visible; }
+  .reviews-track {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr);
+    transform: none !important;
+    transition: none !important;
+    will-change: auto;
+  }
+  .reviews-track .review-card { flex: none; }
+  .carousel-dots { display: none; }
+}
+
+@media (max-width: 768px) {
+  .reviews-track .review-card { flex: 0 0 100%; }
+}
+
+/* ════════════════════════════════════════════
+   V2: STAR RATING POP-IN ANIMATION
+════════════════════════════════════════════ */
+.review-stars span {
+  display: inline-block;
+  transform: scale(0) rotate(-30deg);
+  transition: transform .32s cubic-bezier(.34,1.56,.64,1);
+}
+.review-stars.stars-animated span:nth-child(1) { transition-delay: .00s; transform: scale(1) rotate(0deg); }
+.review-stars.stars-animated span:nth-child(2) { transition-delay: .07s; transform: scale(1) rotate(0deg); }
+.review-stars.stars-animated span:nth-child(3) { transition-delay: .14s; transform: scale(1) rotate(0deg); }
+.review-stars.stars-animated span:nth-child(4) { transition-delay: .21s; transform: scale(1) rotate(0deg); }
+.review-stars.stars-animated span:nth-child(5) { transition-delay: .28s; transform: scale(1) rotate(0deg); }
+
+/* ════════════════════════════════════════════
+   V2: STICKY NAV CTA (animate in after hero)
+════════════════════════════════════════════ */
+.nav-cta {
+  opacity: 0;
+  transform: scale(0.88) translateY(2px);
+  pointer-events: none;
+}
+.nav.past-hero .nav-cta {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+  pointer-events: auto;
+}
+
+/* ════════════════════════════════════════════
+   V2: HERO TYPEWRITER
+════════════════════════════════════════════ */
+.hero-typewriter {
+  display: flex; align-items: center; gap: 6px;
+  margin: 14px 0 -4px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 13px; font-weight: 500;
+  color: rgba(255,255,255,.42);
+}
+.tw-prefix { flex-shrink: 0; }
+.tw-text { color: var(--gold2); font-weight: 600; min-width: 1px; }
+.tw-cursor {
+  color: var(--gold2); font-weight: 200; font-size: 16px; line-height: 1;
+  animation: tw-blink .85s step-end infinite;
+}
+@keyframes tw-blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+/* ════════════════════════════════════════════
+   V2: REVIEWS RATING BADGE
+════════════════════════════════════════════ */
+.reviews-rating-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(184,137,42,.08);
+  border: 1px solid rgba(184,137,42,.22);
+  border-radius: 100px; padding: 7px 18px;
+  margin-top: 8px;
+}
+.rrb-stars { color: var(--gold2); font-size: 14px; letter-spacing: 2px; }
+.rrb-text {
+  font-family: 'Raleway', sans-serif;
+  font-size: 12px; font-weight: 600;
+  color: var(--mid); letter-spacing: .04em;
+}
+
+
+/* ════════════════════════════════════════════
+   V2: WIN-CARD BEFORE/AFTER
+════════════════════════════════════════════ */
+.win-ba {
+  display: flex; align-items: stretch;
+  border-radius: 10px; overflow: hidden;
+  border: 1px solid var(--border); margin: 14px 0 16px;
+}
+.win-ba-col {
+  flex: 1; padding: 11px 14px;
+  display: flex; flex-direction: column; gap: 5px;
+}
+.win-ba-before {
+  background: rgba(100,116,139,.06);
+  border-left: 2px solid rgba(100,116,139,.18);
+}
+.win-ba-after {
+  background: rgba(184,137,42,.08);
+  border-left: 2px solid rgba(184,137,42,.35);
+}
+.win-ba-label {
+  font-family: 'Raleway', sans-serif;
+  font-size: 9px; font-weight: 700;
+  letter-spacing: .22em; text-transform: uppercase;
+  color: rgba(100,116,139,.7);
+}
+.win-ba-after .win-ba-label { color: var(--gold); }
+.win-ba-text {
+  font-size: 12.5px; font-weight: 400; line-height: 1.45; color: var(--mid);
+}
+.win-ba-after .win-ba-text { color: var(--navy2); font-weight: 700; }
+
+/* ════════════════════════════════════════════
+   V2: CAREER TIMELINE
+════════════════════════════════════════════ */
+.career-timeline {
+  display: flex; flex-direction: column;
+  margin-top: 30px; margin-bottom: 20px;
+  position: relative;
+}
+.career-timeline::before {
+  content: ''; position: absolute;
+  left: 11px; top: 6px; bottom: 6px; width: 1px;
+  background: linear-gradient(to bottom, var(--gold2), rgba(184,137,42,.15));
+}
+.ct-item {
+  display: grid;
+  grid-template-columns: 24px 62px 1fr;
+  gap: 0 10px; align-items: start;
+  padding-bottom: 20px; position: relative;
+}
+.ct-item:last-child { padding-bottom: 0; }
+.ct-dot {
+  width: 10px; height: 10px; border-radius: 50%;
+  background: var(--white); border: 2px solid var(--gold2);
+  margin-top: 3px; position: relative; z-index: 1;
+  transition: background .2s, transform .2s;
+  flex-shrink: 0;
+}
+.ct-item:hover .ct-dot,
+.ct-item--current .ct-dot { background: var(--gold2); transform: scale(1.3); }
+.ct-year {
+  font-family: 'Raleway', sans-serif;
+  font-size: 11px; font-weight: 700;
+  letter-spacing: .03em; color: var(--gold);
+  margin-top: 1px; white-space: nowrap;
+}
+.ct-text {
+  font-size: 13px; font-weight: 400; line-height: 1.5; color: var(--mid);
+}
+.ct-item--current .ct-text { color: var(--ink); font-weight: 600; }
+
+/* update reduced-motion for new animations */
+@media (prefers-reduced-motion: reduce) {
+  .tw-cursor { animation: none !important; }
+}
+
+/* ════════════════════════════════════════════
+   WHY SECTION — REDESIGN (dark)
+════════════════════════════════════════════ */
+.why {
+  background: linear-gradient(160deg, var(--navy) 0%, var(--navy2) 100%);
+  padding: 90px 0;
+  border-top: none; border-bottom: none;
+  position: relative; overflow: hidden;
+}
+.why::before {
+  content: ''; position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.02) 1px, transparent 1px);
+  background-size: 60px 60px; pointer-events: none;
+}
+.why-inner {
+  display: flex; flex-direction: column; gap: 52px;
+  position: relative;
+}
+.why-header { text-align: center; }
+.why-heading {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(28px, 3.4vw, 46px);
+  font-weight: 800; line-height: 1.15; color: var(--white);
+  letter-spacing: -.02em;
+}
+.why-heading em { font-style: italic; color: var(--gold2); }
+.why-items { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.why-item {
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.09);
+  border-radius: 16px; padding: 30px 26px;
+  display: flex; flex-direction: column; gap: 14px;
+  align-items: flex-start;
+  backdrop-filter: blur(4px);
+  transition: background .3s, transform .28s cubic-bezier(.4,0,.2,1), box-shadow .28s;
+  position: relative; overflow: hidden;
+}
+.why-item::after {
+  content: attr(data-n);
+  position: absolute; bottom: -12px; right: 16px;
+  font-family: 'Playfair Display', serif;
+  font-size: 80px; font-weight: 800; line-height: 1;
+  color: rgba(184,137,42,.08); pointer-events: none;
+  user-select: none;
+}
+.why-item:hover {
+  background: rgba(255,255,255,.09);
+  transform: translateY(-5px);
+  box-shadow: 0 24px 52px rgba(0,0,0,.3);
+}
+.why-item-num {
+  font-family: 'Raleway', sans-serif;
+  font-size: 10px; font-weight: 700; letter-spacing: .32em;
+  text-transform: uppercase; color: var(--gold); display: block;
+}
+.why-icon {
+  width: 46px; height: 46px; flex-shrink: 0;
+  background: linear-gradient(135deg, rgba(184,137,42,.18), rgba(184,137,42,.07));
+  border-radius: 12px; display: flex; align-items: center; justify-content: center;
+  border: 1px solid rgba(184,137,42,.22); color: var(--gold2);
+}
+.why-icon svg { width: 22px; height: 22px; }
+.why-text strong {
+  display: block; font-family: 'Raleway', sans-serif;
+  font-size: 14px; font-weight: 700; color: var(--white); margin-bottom: 4px;
+}
+.why-text span { font-size: 13px; font-weight: 300; color: rgba(255,255,255,.48); line-height: 1.65; }
+@media (max-width: 1024px) { .why-inner { gap: 40px; } }
+@media (max-width: 768px) {
+  .why { padding: 64px 0; }
+  .why-items { grid-template-columns: 1fr 1fr; gap: 12px; }
+}
+@media (max-width: 480px) { .why-items { grid-template-columns: 1fr; } }
+
+
+/* ── Booking modal ── */
+.bm-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(7,21,42,.75);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  z-index: 2000;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.bm-overlay.open { display: flex; }
+.bm-modal {
+  background: #151d2e;
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 16px;
+  padding: 36px 32px 28px;
+  width: 100%;
+  max-width: 480px;
+  position: relative;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+.bm-close {
+  position: absolute;
+  top: 14px; right: 18px;
+  background: none;
+  border: none;
+  color: rgba(255,255,255,.35);
+  font-size: 26px;
+  line-height: 1;
+  cursor: pointer;
+  transition: color .2s;
+  padding: 2px 6px;
+}
+.bm-close:hover { color: rgba(255,255,255,.8); }
+.bm-badge {
+  display: inline-block;
+  font-family: 'Raleway', sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  background: rgba(184,137,42,.12);
+  border: 1px solid rgba(184,137,42,.3);
+  border-radius: 4px;
+  padding: 4px 10px;
+  margin-bottom: 14px;
+}
+.bm-title {
+  font-family: 'Raleway', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 6px;
+  line-height: 1.25;
+}
+.bm-sub {
+  font-size: 13px;
+  color: rgba(255,255,255,.45);
+  margin-bottom: 24px;
+  line-height: 1.6;
+}
+.bm-form { display: flex; flex-direction: column; gap: 14px; }
+.bm-group { display: flex; flex-direction: column; gap: 5px; }
+.bm-group label {
+  font-size: 10px;
+  font-weight: 700;
+  font-family: 'Raleway', sans-serif;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.4);
+}
+.bm-input, .bm-select, .bm-textarea {
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 8px;
+  padding: 11px 14px;
+  font-size: 14px;
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  outline: none;
+  transition: border-color .2s, background .2s;
+  width: 100%;
+  -webkit-appearance: none;
+}
+.bm-input::placeholder, .bm-textarea::placeholder { color: rgba(255,255,255,.2); }
+.bm-input:focus, .bm-select:focus, .bm-textarea:focus {
+  border-color: var(--gold);
+  background: rgba(255,255,255,.07);
+}
+.bm-select { cursor: pointer; }
+.bm-select option { background: #151d2e; color: #fff; }
+.bm-textarea { resize: vertical; min-height: 88px; }
+.bm-submit {
+  margin-top: 4px;
+  padding: 13px;
+  background: var(--grad-gold);
+  border: none;
+  border-radius: 8px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: #0c0c0c;
+  cursor: pointer;
+  transition: opacity .2s, transform .2s, box-shadow .2s;
+}
+.bm-submit:hover { opacity: .88; transform: translateY(-1px); box-shadow: var(--shadow-gold); }
+.bm-privacy {
+  font-size: 11px;
+  color: rgba(255,255,255,.25);
+  text-align: center;
+  line-height: 1.55;
+}
+@media (max-width: 480px) {
+  .bm-modal { padding: 28px 18px 22px; }
+  .bm-title { font-size: 20px; }
+}
+
+/* ── Accessibility bar (ГОСТ Р 52872-2012) ── */
+.a11y-bar {
+  background: #efefef;
+  border-bottom: 1px solid #d0d0d0;
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1100;
+}
+.a11y-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 5px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.a11y-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-family: Arial, sans-serif;
+  color: #333;
+  background: none;
+  border: 1px solid #999;
+  padding: 4px 12px;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all .15s;
+  white-space: nowrap;
+  line-height: 1.4;
+}
+.a11y-btn:hover { background: #e0e0e0; }
+.a11y-btn.active { background: #1a1a1a; color: #fff; border-color: #1a1a1a; }
+.a11y-controls {
+  display: none;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.a11y-controls.visible { display: flex; }
+.a11y-ctrl-label { font-size: 10px; color: #777; font-family: Arial, sans-serif; }
+.a11y-sz {
+  width: 30px; height: 26px;
+  background: none;
+  border: 1px solid #aaa;
+  border-radius: 3px;
+  cursor: pointer;
+  font-family: Arial, sans-serif;
+  color: #444;
+  font-weight: 700;
+  transition: all .15s;
+  line-height: 1;
+  display: flex; align-items: center; justify-content: center;
+}
+.a11y-sz:hover { background: #ddd; }
+.a11y-sz.on { background: #1a1a1a; color: #fff; border-color: #1a1a1a; }
+.a11y-sz[data-sz="large"]  { font-size: 14px; }
+.a11y-sz[data-sz="xlarge"] { font-size: 17px; }
+.a11y-scheme {
+  width: 26px; height: 26px;
+  background: none; border: 1px solid #aaa; border-radius: 3px;
+  cursor: pointer; font-family: Arial, sans-serif; font-size: 11px;
+  font-weight: 700; color: #444; transition: all .15s;
+  display: flex; align-items: center; justify-content: center;
+}
+.a11y-scheme:hover { background: #ddd; }
+.a11y-scheme.on { background: #1a1a1a; color: #fff; border-color: #1a1a1a; }
+.a11y-bar-close {
+  font-size: 14px;
+  background: none;
+  border: none;
+  color: #888;
+  cursor: pointer;
+  line-height: 1;
+  padding: 2px 4px;
+}
+.a11y-bar-close:hover { color: #333; }
+
+/* ── Версия для слабовидящих (ГОСТ Р 52872-2012) ──
+   3 цветовые схемы: белый · чёрный · синий/жёлтый
+   Базовый класс .hc включает режим; схема задаётся .hc-white / .hc-black / .hc-blue
+   ──────────────────────────────────────────────── */
+
+/* ╌ СХЕМА: БЕЛЫЙ ╌ */
+html.hc-white {
+  --navy:    #f0f4f8;
+  --navy2:   #e6eaf3;
+  --navy3:   #d8dfed;
+  --gold:    #1a5ea8;
+  --gold2:   #1e6bbf;
+  --gold3:   #2280d6;
+  --mid:     #333333;
+  --border:  #aaaaaa;
+  --grad-gold: linear-gradient(135deg,#1a5ea8 0%,#1e6bbf 50%,#2280d6 100%);
+  --grad-navy: linear-gradient(160deg,#f0f4f8 0%,#e6eaf3 100%);
+  --shadow-sm: 0 1px 4px rgba(0,0,0,.1);
+  --shadow-md: 0 3px 10px rgba(0,0,0,.1);
+  --shadow-lg: 0 6px 20px rgba(0,0,0,.1);
+  --shadow-gold: 0 2px 8px rgba(26,94,168,.18);
+}
+html.hc-white body { background:#fff; color:#000; }
+html.hc-white img, html.hc-white video, html.hc-white iframe { filter:none !important; }
+html.hc-white a { color:#1a5ea8; }
+
+/* Nav / Footer hardcoded backgrounds */
+html.hc-white .nav { background:#ffffff !important; border-bottom:2px solid #1a5ea8 !important; backdrop-filter:none !important; -webkit-backdrop-filter:none !important; box-shadow:none !important; }
+html.hc-white .nav.scrolled { background:#ffffff !important; }
+html.hc-white .footer { background:#eeeeee !important; border-top:1px solid #cccccc !important; }
+
+/* Force readable text in all dark sections */
+html.hc-white .nav *,
+html.hc-white .hero *,
+html.hc-white .stats-strip *,
+html.hc-white .authorities *,
+html.hc-white .process *,
+html.hc-white .tips *,
+html.hc-white .contact *,
+html.hc-white .footer * { color:#000000 !important; }
+
+/* Restore white text on coloured buttons */
+html.hc-white .btn-primary,
+html.hc-white .cbtn-tg,
+html.hc-white .popup-cta,
+html.hc-white .sticky-btn-primary { color:#ffffff !important; }
+html.hc-white .btn-outline { border-color:#1a5ea8 !important; color:#1a5ea8 !important; background:transparent !important; }
+html.hc-white .cbtn-phone { background:#f0f4f8 !important; border-color:#1a5ea8 !important; color:#000 !important; }
+html.hc-white .cbtn-tg { background:#1a5ea8 !important; }
+
+/* Hide decorative glow/grid layers */
+html.hc-white .hero-bg-grid,
+html.hc-white .hero-bg-glow,
+html.hc-white .hero-bg-glow2 { opacity:0 !important; }
+
+/* Float widget */
+html.hc-white .float-ring-text { fill:#1a5ea8; }
+html.hc-white .float-avatar { background:#f0f4f8 !important; border-color:#1a5ea8 !important; }
+
+/* ╌ СХЕМА: ЧЁРНЫЙ ╌ */
+html.hc-black {
+  --navy:    #000000;
+  --navy2:   #111111;
+  --navy3:   #1a1a1a;
+  --gold:    #ffff00;
+  --gold2:   #ffff33;
+  --gold3:   #ffff66;
+  --white:   #ffffff;
+  --cream:   #111111;
+  --light:   #1a1a1a;
+  --mid:     #cccccc;
+  --ink:     #ffffff;
+  --border:  #555555;
+  --grad-gold: linear-gradient(135deg,#ffcc00 0%,#ffff00 100%);
+  --grad-navy: linear-gradient(160deg,#000 0%,#111 100%);
+  --shadow-sm: none; --shadow-md: none; --shadow-lg: none; --shadow-gold: none;
+}
+html.hc-black body { background:#000; color:#fff; }
+html.hc-black img, html.hc-black video, html.hc-black iframe { filter:none !important; }
+html.hc-black a { color:#ffff00; }
+html.hc-black .nav { background:#000 !important; border-bottom:2px solid #ffff00 !important; backdrop-filter:none !important; -webkit-backdrop-filter:none !important; }
+html.hc-black .nav.scrolled { background:#000 !important; }
+html.hc-black .footer { background:#111 !important; border-top:1px solid #444 !important; }
+html.hc-black .btn-primary { background:#ffff00 !important; color:#000 !important; box-shadow:none !important; }
+html.hc-black .btn-outline { border-color:#ffff00 !important; color:#ffff00 !important; background:transparent !important; }
+html.hc-black .cbtn-tg { background:#ffff00 !important; color:#000 !important; }
+html.hc-black .popup-cta { background:#ffff00 !important; color:#000 !important; box-shadow:none !important; }
+html.hc-black .win-card,
+html.hc-black .service-card,
+html.hc-black .review-card,
+html.hc-black .tip-card { background:#1a1a1a !important; border:1px solid #444 !important; box-shadow:none !important; }
+html.hc-black .float-avatar { background:#000 !important; border-color:#ffff00 !important; }
+html.hc-black .float-ring-text { fill:#ffff00; }
+
+/* ╌ СХЕМА: СИНИЙ / ЖЁЛТЫЙ ╌ */
+html.hc-blue {
+  --navy:    #063259;
+  --navy2:   #09427a;
+  --navy3:   #0c529b;
+  --gold:    #ffd700;
+  --gold2:   #ffd700;
+  --gold3:   #ffe040;
+  --white:   #ffd700;
+  --cream:   #063259;
+  --light:   #09427a;
+  --mid:     #aaddff;
+  --ink:     #ffd700;
+  --border:  #2a6db5;
+  --grad-gold: linear-gradient(135deg,#ffd700 0%,#ffe040 100%);
+  --grad-navy: linear-gradient(160deg,#063259 0%,#09427a 100%);
+  --shadow-sm: none; --shadow-md: none; --shadow-lg: none; --shadow-gold: none;
+}
+html.hc-blue body { background:#063259; color:#ffd700; }
+html.hc-blue img, html.hc-blue video, html.hc-blue iframe { filter:none !important; }
+html.hc-blue a { color:#ffd700; }
+html.hc-blue .nav { background:#063259 !important; border-bottom:2px solid #ffd700 !important; backdrop-filter:none !important; -webkit-backdrop-filter:none !important; }
+html.hc-blue .nav.scrolled { background:#063259 !important; }
+html.hc-blue .footer { background:#041e38 !important; border-top:1px solid #2a6db5 !important; }
+html.hc-blue .btn-primary { background:#ffd700 !important; color:#000 !important; box-shadow:none !important; }
+html.hc-blue .btn-outline { border-color:#ffd700 !important; color:#ffd700 !important; background:transparent !important; }
+html.hc-blue .cbtn-tg { background:#ffd700 !important; color:#000 !important; }
+html.hc-blue .popup-cta { background:#ffd700 !important; color:#000 !important; box-shadow:none !important; }
+html.hc-blue .win-card,
+html.hc-blue .service-card,
+html.hc-blue .review-card,
+html.hc-blue .tip-card { background:#09427a !important; border:1px solid #2a6db5 !important; color:#ffd700 !important; box-shadow:none !important; }
+html.hc-blue .win-card *,
+html.hc-blue .service-card *,
+html.hc-blue .review-card *,
+html.hc-blue .tip-card * { color:#ffd700 !important; }
+html.hc-blue .float-avatar { background:#063259 !important; border-color:#ffd700 !important; }
+html.hc-blue .float-ring-text { fill:#ffd700; }
+
+/* a11y-bar сама остаётся нейтральной во всех схемах */
+html.hc-white .a11y-bar,
+html.hc-black .a11y-bar,
+html.hc-blue  .a11y-bar { background:#efefef !important; filter:none !important; }
+html.hc-white .a11y-bar *,
+html.hc-black .a11y-bar *,
+html.hc-blue  .a11y-bar * { color:#333333 !important; }
+html.hc-white .a11y-scheme.on,
+html.hc-black .a11y-scheme.on,
+html.hc-blue  .a11y-scheme.on,
+html.hc-white .a11y-sz.on,
+html.hc-black .a11y-sz.on,
+html.hc-blue  .a11y-sz.on { background:#1a1a1a !important; color:#fff !important; border-color:#1a1a1a !important; }
+
+/* Font size overrides */
+html.fs-lg  { font-size: 110% !important; }
+html.fs-xl  { font-size: 125% !important; }
+
+/* ── Consent + policy ── */
+.bm-consent-group { margin-top: 2px; }
+.bm-consent-lbl {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  cursor: pointer;
+}
+.bm-consent-input {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  margin-top: 2px;
+  accent-color: var(--gold);
+  cursor: pointer;
+}
+.bm-consent-lbl span {
+  font-size: 12px;
+  color: rgba(255,255,255,.45);
+  line-height: 1.55;
+}
+.bm-policy-link {
+  background: none;
+  border: none;
+  color: var(--gold);
+  font-size: 12px;
+  font-family: inherit;
+  text-decoration: underline;
+  cursor: pointer;
+  padding: 0;
+  display: inline;
+}
+.bm-policy-link:hover { color: var(--gold2); }
+
+/* Policy modal body */
+.policy-body {
+  max-height: 55vh;
+  overflow-y: auto;
+  font-size: 12.5px;
+  color: rgba(255,255,255,.6);
+  line-height: 1.75;
+  padding-right: 10px;
+}
+.policy-body h3 {
+  font-family: 'Raleway', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.8);
+  margin: 16px 0 5px;
+}
+.policy-body h3:first-child { margin-top: 0; }
+.policy-body p { margin-bottom: 8px; }
+.policy-body::-webkit-scrollbar { width: 4px; }
+.policy-body::-webkit-scrollbar-thumb { background: rgba(255,255,255,.15); border-radius: 2px; }
+</style>
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+    (function(m,e,t,r,i,k,a){
+        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=109053713', 'ym');
+    ym(109053713, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/109053713" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+</head>
+<body>
+
+<!-- Scroll progress -->
+<div class="scroll-progress"><div class="scroll-progress-bar" id="scrollBar"></div></div>
+
+<!-- ══ ДОСТУПНОСТЬ ══ -->
+<div class="a11y-bar" id="a11yBar">
+  <div class="a11y-inner">
+    <button class="a11y-btn" id="a11yBtn" aria-pressed="false">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M2 12s4-8 10-8 10 8 10 8-4 8-10 8-10-8-10-8z"/></svg>
+      Версия для слабовидящих
+    </button>
+    <div class="a11y-controls" id="a11yCtrl">
+      <span class="a11y-ctrl-label">Цвет:</span>
+      <button class="a11y-scheme on" data-scheme="white" title="Белый фон">Б</button>
+      <button class="a11y-scheme" data-scheme="black" title="Чёрный фон">Ч</button>
+      <button class="a11y-scheme" data-scheme="blue" title="Синий фон">С</button>
+      <span class="a11y-ctrl-label" style="margin-left:6px">Шрифт:</span>
+      <button class="a11y-sz on" data-sz="normal">А</button>
+      <button class="a11y-sz" data-sz="large">А+</button>
+      <button class="a11y-sz" data-sz="xlarge">А++</button>
+      <button class="a11y-bar-close" id="a11yClose" aria-label="Закрыть панель">×</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ НАВИГАЦИЯ ══ -->
+<nav class="nav" id="mainNav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      Антон Пыхтеев
+      <span>Юрист · ЛДПР · Приморский район</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">Обо мне</a></li>
+      <li><a href="#services">Направления</a></li>
+      <li><a href="#wins">Результаты</a></li>
+      <li><a href="#reviews">Отзывы</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#contact">Контакт</a></li>
+    </ul>
+    <a href="#schedule" class="nav-cta">Записаться</a>
+    <button class="nav-burger" id="navBurger" aria-label="Меню">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+
+<!-- ══ ГЕРОЙ ══ -->
+<section class="hero">
+  <div class="hero-bg-grid"></div>
+  <div class="hero-bg-glow"></div>
+  <div class="hero-bg-glow2"></div>
+
+
+  <div class="hero-inner">
+    <div>
+      <div class="next-reception">
+        <span class="next-reception-dot"></span>
+        Ближайший приём — вторая среда месяца
+      </div>
+      <div class="hero-kicker">Юрист ЛДПР · Приморский район СПб</div>
+      <h1 class="hero-title">
+        <span class="hero-glow-name">Антон Пыхтеев</span> —<br>
+        юрист, который знает<br>
+        <em>наш район изнутри</em>
+      </h1>
+      <div class="hero-typewriter" aria-hidden="true">
+        <span class="tw-prefix">Помогаю с:</span>
+        <span class="tw-text" id="heroTyper"></span><span class="tw-cursor">|</span>
+      </div>
+      <p class="hero-sub">
+        Управляющая компания обманывает? Уволили незаконно? Проблемы с алиментами?<br>
+        <strong>Помогу разобраться</strong> с ЖКХ и управляющими компаниями, трудовыми спорами, семейными и имущественными вопросами.
+      </p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn btn-primary">Получить консультацию</a>
+        <a href="https://t.me/ursreda" target="_blank" class="btn btn-outline">Написать в Telegram</a>
+      </div>
+      <div class="hero-trust">
+        <div class="trust-item">
+          <span class="trust-num">2002</span>
+          <span class="trust-label">Год начала практики</span>
+        </div>
+        <div class="trust-item">
+          <span class="trust-num">0 ₽</span>
+          <span class="trust-label">Первый приём</span>
+        </div>
+        <div class="trust-item">
+          <span class="trust-num">200+</span>
+          <span class="trust-label">Консультаций</span>
+        </div>
+        <div class="trust-item">
+          <span class="trust-num">СПб</span>
+          <span class="trust-label">Приморский р-н</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-card" id="heroCard">
+      <div class="hero-card-photo">
+        <div class="hero-photo-badge">Юрист ЛДПР</div>
+        <img class="hero-card-img" src="img/hero-photo.png" alt="Антон Пыхтеев — юрист ЛДПР">
+      </div>
+      <div class="hero-card-body">
+        <div class="hero-card-row">
+          <span class="hcr-label">Практика с</span>
+          <span class="hcr-val gold">2002 года</span>
+        </div>
+        <div class="hero-card-row">
+          <span class="hcr-label">Специализация</span>
+          <span class="hcr-val">ЖКХ · Труд · Семья</span>
+        </div>
+        <div class="hero-card-row">
+          <span class="hcr-label">Приём</span>
+          <span class="hcr-val">2-я и 4-я среда</span>
+        </div>
+        <div class="hero-card-row">
+          <span class="hcr-label">Telegram / MAX</span>
+          <span class="hcr-val"><a href="https://t.me/ursreda" target="_blank" style="color:var(--gold2)">@ursreda</a></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ ВЗАИМОДЕЙСТВУЮ С ══ -->
+<div class="authorities" aria-label="Взаимодействую с">
+  <div class="marquee-outer">
+    <div class="marquee-track">
+      <div class="marquee-inner">
+        <span class="auth-item"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>Законодательное Собрание СПб</span>
+        <span class="auth-sep">·</span>
+        <span class="auth-item"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3L4 9v12h5v-7h6v7h5V9z"/></svg>Прокуратура СПб</span>
+        <span class="auth-sep">·</span>
+        <span class="auth-item"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Гос. Инспекция Труда</span>
+        <span class="auth-sep">·</span>
+        <span class="auth-item"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Жилищный комитет</span>
+        <span class="auth-sep">·</span>
+        <span class="auth-item"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Роспотребнадзор</span>
+        <span class="auth-sep">·</span>
+        <span class="auth-item"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>Социальные службы</span>
+        <span class="auth-sep">·</span>
+      </div>
+      <div class="marquee-inner" aria-hidden="true">
+        <span class="auth-item"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>Законодательное Собрание СПб</span>
+        <span class="auth-sep">·</span>
+        <span class="auth-item"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3L4 9v12h5v-7h6v7h5V9z"/></svg>Прокуратура СПб</span>
+        <span class="auth-sep">·</span>
+        <span class="auth-item"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Гос. Инспекция Труда</span>
+        <span class="auth-sep">·</span>
+        <span class="auth-item"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Жилищный комитет</span>
+        <span class="auth-sep">·</span>
+        <span class="auth-item"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Роспотребнадзор</span>
+        <span class="auth-sep">·</span>
+        <span class="auth-item"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>Социальные службы</span>
+        <span class="auth-sep">·</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══ СТАТИСТИКА ══ -->
+<div class="stats-strip">
+  <div class="stats-strip-inner">
+    <div class="stat-cell">
+      <div class="stat-value"><span class="counter" data-target="22">0</span><span class="stat-suffix">+</span></div>
+      <div class="stat-desc">лет юридической практики</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-value"><span class="counter" data-target="85">0</span><span class="stat-suffix">%</span></div>
+      <div class="stat-desc">дел завершено в пользу клиента</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-value"><span class="counter" data-target="200">0</span><span class="stat-suffix">+</span></div>
+      <div class="stat-desc">консультаций в год</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-value"><span class="stat-suffix">0 </span><span style="font-size:22px;color:rgba(255,255,255,.45)">₽</span></div>
+      <div class="stat-desc">первичная консультация всегда бесплатна</div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══ НАПРАВЛЕНИЯ РАБОТЫ ══ -->
+<section class="services" id="services">
+  <div class="container">
+    <div class="services-header">
+      <span class="section-label">Чем могу помочь</span>
+      <h2 class="section-title">Направления работы</h2>
+      <div class="gold-bar"></div>
+      <p>Помогаю жителям Приморского района с наиболее распространёнными гражданскими вопросами — без предоплат и юридического жаргона.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><path d="M9 22V12h6v10"/></svg></div>
+        <div class="service-title">ЖКХ и благоустройство</div>
+        <p class="service-text">Споры с управляющими компаниями и ТСЖ, ремонт подъездов, вывоз мусора, детские площадки, перерасчёты.</p>
+        <div class="service-tags"><span class="service-tag">УК · ТСЖ</span><span class="service-tag">Перерасчёт</span><span class="service-tag">Залив</span></div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>
+        <div class="service-title">Семейные и наследственные</div>
+        <p class="service-text">Раздел имущества при разводе, вопросы опеки и попечительства, споры о наследстве, алименты.</p>
+        <div class="service-tags"><span class="service-tag">Развод</span><span class="service-tag">Наследство</span><span class="service-tag">Алименты</span></div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="2" x2="12" y2="22"/><path d="M4 22h16"/><path d="M4 8l4 7H0L4 8z"/><path d="M20 8l-4 7h8l-4-7z"/><line x1="4" y1="8" x2="20" y2="8"/></svg></div>
+        <div class="service-title">Трудовые споры</div>
+        <p class="service-text">Незаконное увольнение, невыплата заработной платы, отказ в приёме на работу, нарушение условий трудового договора.</p>
+        <div class="service-tags"><span class="service-tag">Зарплата</span><span class="service-tag">Увольнение</span><span class="service-tag">Восстановление</span></div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><line x1="9" y1="12" x2="15" y2="12"/><line x1="9" y1="16" x2="13" y2="16"/></svg></div>
+        <div class="service-title">Земля и имущество</div>
+        <p class="service-text">Регистрация прав собственности, приватизация, споры с соседями и застройщиками, недвижимость.</p>
+        <div class="service-tags"><span class="service-tag">Приватизация</span><span class="service-tag">Регистрация</span><span class="service-tag">Споры</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ ПОЧЕМУ Я ══ -->
+<div class="why">
+  <div class="container">
+    <div class="why-inner">
+      <div class="why-header">
+        <span class="section-label">Моё преимущество</span>
+        <div class="why-heading">Почему обращаются <em>ко мне</em></div>
+        <div class="gold-bar"></div>
+      </div>
+      <div class="why-items">
+        <div class="why-item reveal" data-n="01">
+          <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
+          <div class="why-text"><strong>Конкретный план, не общие слова</strong><span>На консультации получите пошаговую стратегию, а не советы «обратитесь в суд».</span></div>
+        </div>
+        <div class="why-item reveal" data-n="02">
+          <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div class="why-text"><strong>Знаю район изнутри</strong><span>Работаю в Приморском районе с 2002 года. Знаю местные УК, суды и прецеденты.</span></div>
+        </div>
+        <div class="why-item reveal" data-n="03">
+          <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg></div>
+          <div class="why-text"><strong>Работа только на результат</strong><span>Берусь за дело только если есть реальная перспектива. Работаю до конца.</span></div>
+        </div>
+        <div class="why-item reveal" data-n="04">
+          <div class="why-icon"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.58.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.01L6.6 10.8z"/></svg></div>
+          <div class="why-text"><strong>Прямой контакт без посредников</strong><span>Пишете напрямую мне. Без секретарей, без перезвонов через три дня.</span></div>
+        </div>
+        <div class="why-item reveal" data-n="05">
+          <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 7 12 2 22 7"/><line x1="2" y1="7" x2="22" y2="7"/><line x1="2" y1="21" x2="22" y2="21"/><line x1="7" y1="7" x2="7" y2="21"/><line x1="12" y1="7" x2="12" y2="21"/><line x1="17" y1="7" x2="17" y2="21"/></svg></div>
+          <div class="why-text"><strong>Опыт в госструктурах</strong><span>Работал в госсекторе — понимаю, как думает чиновник и где у системы слабые места.</span></div>
+        </div>
+        <div class="why-item reveal" data-n="06">
+          <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+          <div class="why-text"><strong>Понятный язык</strong><span>Объясняю без юридического жаргона. Вы поймёте ситуацию и сможете принять решение.</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══ ОБО МНЕ ══ -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="about-inner">
+      <div class="about-photo-wrap">
+        <div class="about-photo">
+          <img src="img/about-photo.png" alt="Антон Пыхтеев — юрист, депутат ЛДПР" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;">
+        </div>
+        <div class="about-photo-card">
+          <div class="apc-num">2002</div>
+          <div class="apc-label">Начало юридической практики</div>
+        </div>
+      </div>
+      <div class="about-text">
+        <span class="section-label">Кто я</span>
+        <h2 class="section-title">Юрист с 2002 года — работаю для жителей Приморского района</h2>
+        <div class="gold-bar"></div>
+        <div class="about-body">
+          <p>Родился в 1980 году в Санкт-Петербурге. Юридическую карьеру начал в 2002 году в аудиторской компании, после чего перешёл в государственный сектор. Диплом о высшем юридическом образовании получил в 2008 году.</p>
+          <p>Работаю в Приморском районе как юрист партии ЛДПР. Специализируюсь на правовой защите обычных граждан — помогаю решать реальные бытовые и имущественные проблемы, с которыми сталкиваются жители района каждый день.</p>
+          <p>Консультации провожу лично, без бюрократии. Объясняю понятным языком, что делать и как защитить свои права.</p>
+        </div>
+        <div class="career-timeline">
+          <div class="ct-item reveal">
+            <div class="ct-dot"></div>
+            <div class="ct-year">2002</div>
+            <div class="ct-text">Начало юридической практики в аудиторской компании</div>
+          </div>
+          <div class="ct-item reveal">
+            <div class="ct-dot"></div>
+            <div class="ct-year">2008</div>
+            <div class="ct-text">Диплом о высшем юридическом образовании</div>
+          </div>
+          <div class="ct-item reveal">
+            <div class="ct-dot"></div>
+            <div class="ct-year">2015</div>
+            <div class="ct-text">Переход в государственный сектор СПб</div>
+          </div>
+          <div class="ct-item ct-item--current reveal">
+            <div class="ct-dot"></div>
+            <div class="ct-year">Сейчас</div>
+            <div class="ct-text">Юрист ЛДПР Приморского района</div>
+          </div>
+        </div>
+
+        <div class="about-creds">
+          <a class="cred-item reveal" href="docs/gramota-ldpr-razvitie.pdf" target="_blank" rel="noopener"><div class="cred-icon">🏅</div><div class="cred-text">Почётная грамота за развитие петербургского отделения ЛДПР</div></a>
+          <a class="cred-item reveal" href="docs/gramota-ldpr-zhirinovsky.pdf" target="_blank" rel="noopener"><div class="cred-icon">🏅</div><div class="cred-text">Почётная грамота за сохранение памяти о В.В. Жириновском</div></a>
+          <a class="cred-item reveal" href="#" onclick="['docs/kval-zakupki.pdf','docs/kval-korrupcia.pdf','docs/kval-gos-upravlenie.pdf'].forEach(u=>window.open(u,'_blank'));return false;"><div class="cred-icon">📜</div><div class="cred-text">Удостоверения о повышении квалификации: управление закупками, противодействие коррупции, государственное управление</div></a>
+          <a class="cred-item reveal" href="docs/blagodarnost-vybory-2024.pdf" target="_blank" rel="noopener"><div class="cred-icon">📄</div><div class="cred-text">Благодарственное письмо за организацию выборов Президента РФ</div></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ КАК ПРОХОДИТ ПРИЁМ ══ -->
+<section class="process">
+  <div class="container">
+    <div class="process-header">
+      <span class="section-label" style="display:block;text-align:center">Как это работает</span>
+      <h2 class="section-title white">Три шага до решения</h2>
+      <div class="gold-bar"></div>
+    </div>
+    <div class="process-steps">
+      <div class="process-connector"></div>
+      <div class="step reveal">
+        <div class="step-num">01</div>
+        <div class="step-title">Запишитесь</div>
+        <p class="step-text">Заполните форму обратной связи или напишите нам. Выберите удобное время — вторая или четвёртая среда месяца.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">02</div>
+        <div class="step-title">Приходите с документами</div>
+        <p class="step-text">Возьмите всё, что есть по вашей ситуации: договоры, переписку, квитанции. Приём: Богатырский пр. д.7 корп.10, вход под аркой.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">03</div>
+        <div class="step-title">Получите план действий</div>
+        <p class="step-text">На консультации разберём ситуацию, оценим перспективы и составим конкретный план: что делать, в какой последовательности и чего ожидать.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ ДЕПУТАТСКИЙ ЗАПРОС ══ -->
+<section class="deputy">
+  <div class="container">
+    <div class="deputy-inner">
+      <div class="deputy-left">
+        <span class="section-label">Только у меня</span>
+        <div class="deputy-title">Инструмент, которого нет у <em>обычного юриста</em></div>
+        <div class="gold-bar"></div>
+        <div class="deputy-sub">Как юрист ЛДПР, я могу направить официальный депутатский запрос в любое ведомство. Государственный орган обязан ответить в письменной форме в течение 30 дней. Нередко этого достаточно — без суда.</div>
+      </div>
+      <div class="deputy-right">
+        <div class="deputy-badge">🏛 Депутатский запрос</div>
+        <div class="deputy-flow">
+          <div class="deputy-step reveal">
+            <span class="deputy-step-num">Шаг 01</span>
+            <span class="deputy-step-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></span>
+            <div class="deputy-step-title">Консультация</div>
+            <div class="deputy-step-text">Разбираем ситуацию, оцениваем перспективы. Бесплатно.</div>
+          </div>
+          <div class="deputy-step reveal">
+            <span class="deputy-step-num">Шаг 02</span>
+            <span class="deputy-step-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></span>
+            <div class="deputy-step-title">Запрос в ведомство</div>
+            <div class="deputy-step-text">Направляю официальный запрос: в УК, ГИТ, прокуратуру, администрацию.</div>
+          </div>
+          <div class="deputy-step reveal">
+            <span class="deputy-step-num">Шаг 03</span>
+            <span class="deputy-step-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></span>
+            <div class="deputy-step-title">Ответ за 30 дней</div>
+            <div class="deputy-step-text">Ведомство обязано ответить письменно. Часто вопрос решается на этом этапе.</div>
+          </div>
+        </div>
+        <div class="deputy-note">
+          <strong>Из практики:</strong> управляющая компания игнорировала жалобы три месяца. После депутатского запроса перерасчёт был сделан за 18 дней.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ ПОСЛЕДНИЕ ПОБЕДЫ ══ -->
+<section class="wins" id="wins">
+  <div class="container">
+    <div class="wins-header">
+      <span class="section-label">Реальные дела</span>
+      <h2 class="section-title">Последние результаты</h2>
+      <div class="gold-bar"></div>
+    </div>
+    <div class="wins-grid">
+      <div class="win-card reveal">
+        <span class="win-category">ЖКХ · Перерасчёт</span>
+        <div class="win-title">Три года переплаты за отопление по общедомовому счётчику</div>
+        <p class="win-desc">Управляющая компания начисляла по нормативу, хотя дом оборудован ОДПУ. Три года отписок и отказов.</p>
+        <div class="win-ba">
+          <div class="win-ba-col win-ba-before">
+            <div class="win-ba-label">Было</div>
+            <div class="win-ba-text">Оплата по нормативу 3 года, УК отказывала в перерасчёте</div>
+          </div>
+          <div class="win-ba-col win-ba-after">
+            <div class="win-ba-label">Стало</div>
+            <div class="win-ba-text">Возврат 61 000 ₽ + проценты</div>
+          </div>
+        </div>
+        <div class="win-date">Май 2026</div>
+      </div>
+      <div class="win-card reveal">
+        <span class="win-category">Труд · Увольнение</span>
+        <div class="win-title">Незаконное увольнение и невыплата расчётных</div>
+        <p class="win-desc">Уволен «по статье» без оснований. Расчётные не выплачены. Трудовая инспекция отказала в защите.</p>
+        <div class="win-ba">
+          <div class="win-ba-col win-ba-before">
+            <div class="win-ba-label">Было</div>
+            <div class="win-ba-text">Уволен без оснований, долг 90 000 ₽, инспекция отказала</div>
+          </div>
+          <div class="win-ba-col win-ba-after">
+            <div class="win-ba-label">Стало</div>
+            <div class="win-ba-text">Восстановлен на работе + 90 000 ₽ взыскано</div>
+          </div>
+        </div>
+        <div class="win-date">Апрель 2026</div>
+      </div>
+      <div class="win-card reveal">
+        <span class="win-category">Семья · Алименты</span>
+        <div class="win-title">Задолженность по алиментам за три года</div>
+        <p class="win-desc">Отец скрывал доходы, менял место работы. Исполнительные листы годами не исполнялись.</p>
+        <div class="win-ba">
+          <div class="win-ba-col win-ba-before">
+            <div class="win-ba-label">Было</div>
+            <div class="win-ba-text">3 года без выплат, исполнительные листы не работали</div>
+          </div>
+          <div class="win-ba-col win-ba-after">
+            <div class="win-ba-label">Стало</div>
+            <div class="win-ba-text">Полный долг за 36 месяцев + неустойка</div>
+          </div>
+        </div>
+        <div class="win-date">Март 2026</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ ОТЗЫВЫ ══ -->
+<section class="reviews" id="reviews">
+  <div class="container">
+    <div class="reviews-header">
+      <span class="section-label">Что говорят люди</span>
+      <h2 class="section-title">Отзывы клиентов</h2>
+      <div class="gold-bar"></div>
+      <div class="reviews-rating-badge">
+        <span class="rrb-stars">★★★★★</span>
+        <span class="rrb-text">4.9 из 5 · 6 отзывов</span>
+      </div>
+    </div>
+    <div class="reviews-carousel-wrap">
+      <div class="reviews-track">
+
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <div class="review-quote">"</div>
+        <p class="review-text">После ДТП страховая выплатила копейки — втрое меньше реального ущерба. Думала, придётся смириться. В итоге получила полную сумму и неустойку за просрочку.</p>
+        <div class="review-result">✓ Полная выплата + неустойка</div>
+        <div class="review-author">
+          <span class="review-name">Ирина Викторовна</span>
+          <span class="review-role">42 года · Коломяги, спор по ОСАГО</span>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <div class="review-quote">"</div>
+        <p class="review-text">Залило квартиру, УК заявила, что ничего не должна. Три месяца отписок. После депутатского запроса всё решилось за две недели — компенсация за ремонт и моральный вред.</p>
+        <div class="review-result">✓ Ремонт + компенсация морального вреда</div>
+        <div class="review-author">
+          <span class="review-name">Елена Павловна</span>
+          <span class="review-role">Пенсионер · ул. Королёва, залив квартиры</span>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <div class="review-quote">"</div>
+        <p class="review-text">Уволили по статье без оснований, расчётные не дали — около 90 тысяч. Трудовая инспекция не помогла. Через суд взыскали всю сумму с процентами, восстановили на работе.</p>
+        <div class="review-result">✓ Восстановлен + взыскано 90 000 ₽</div>
+        <div class="review-author">
+          <span class="review-name">Дмитрий</span>
+          <span class="review-role">35 лет · Чёрная речка, трудовой спор</span>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <div class="review-quote">"</div>
+        <p class="review-text">Отказали в субсидии из-за долга в 500 рублей, которого не было. Разобрались, оспорили отказ — субсидию дали с нужной даты.</p>
+        <div class="review-result">✓ Субсидия получена задним числом</div>
+        <div class="review-author">
+          <span class="review-name">Галина Николаевна</span>
+          <span class="review-role">Одинокая мать · Коломяги, субсидия ЖКХ</span>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <div class="review-quote">"</div>
+        <p class="review-text">Три года переплачивал за отопление — дом с общедомовым счётчиком, а считали по нормативу. Не знал, что это незаконно. Вернули 48 тысяч переплаты.</p>
+        <div class="review-result">✓ Возврат 48 000 ₽ переплаты</div>
+        <div class="review-author">
+          <span class="review-name">Максим</span>
+          <span class="review-role">28 лет · Юнтолово, перерасчёт ЖКХ</span>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <div class="review-quote">"</div>
+        <p class="review-text">Оказывается, пенсионерам положена льгота на капремонт — я понятия не имела. Оформили с нуля, теперь плачу вдвое меньше каждый месяц.</p>
+        <div class="review-result">✓ Льгота оформлена, экономия 2 400 ₽/мес</div>
+        <div class="review-author">
+          <span class="review-name">Надежда Степановна</span>
+          <span class="review-role">68 лет · Лахта, льгота ЖКХ</span>
+        </div>
+      </div>
+
+      </div><!-- /reviews-track -->
+    </div><!-- /reviews-carousel-wrap -->
+    <div class="carousel-dots"></div>
+  </div>
+</section>
+
+
+<!-- ══ СОВЕТЫ ЮРИСТА ══ -->
+<section class="tips">
+  <div class="container">
+    <div class="tips-header">
+      <span class="section-label" style="display:block;text-align:center">Полезно знать</span>
+      <h2 class="section-title white">Советы жителям района</h2>
+      <div class="gold-bar"></div>
+    </div>
+    <div class="tips-grid">
+      <div class="tip-card reveal">
+        <span class="tip-num">Совет 01</span>
+        <div class="tip-title">Сфотографируйте нарушение сразу</div>
+        <p class="tip-text">Если в подъезде не делают ремонт, залита квартира или во дворе сломана детская площадка — фотографируйте с датой и геолокацией. Это ваше главное доказательство на любом этапе.</p>
+        <span class="tip-tag">ЖКХ</span>
+      </div>
+      <div class="tip-card reveal">
+        <span class="tip-num">Совет 02</span>
+        <div class="tip-title">Жалоба в трудовую инспекцию — бесплатно</div>
+        <p class="tip-text">Если работодатель задерживает зарплату или угрожает увольнением — сначала обратитесь в ГИТ онлайн (онлайнинспекция.рф). Это не требует юриста и часто срабатывает быстрее суда.</p>
+        <span class="tip-tag">Трудовые споры</span>
+      </div>
+      <div class="tip-card reveal">
+        <span class="tip-num">Совет 03</span>
+        <div class="tip-title">Срок исковой давности — 3 года. И он истекает</div>
+        <p class="tip-text">По большинству гражданских дел у вас есть три года с момента нарушения. Если пропустить — суд откажет даже в правом деле. Не откладывайте: чем раньше разберётесь с документами, тем выше шанс победить.</p>
+        <span class="tip-tag">⚠️ Важно знать</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ FAQ ══ -->
+<section class="faq" id="faq">
+  <div class="container">
+    <div class="faq-inner">
+      <div class="faq-left">
+        <span class="section-label">Частые вопросы</span>
+        <h2 class="section-title">Отвечаю на главные вопросы</h2>
+        <div class="gold-bar"></div>
+        <p>Если вашего вопроса здесь нет — заполните форму обратной связи.</p>
+        <div class="faq-count">
+          <div class="faq-count-num">6</div>
+          <div class="faq-count-label">частых вопросов<br>с прямыми ответами</div>
+        </div>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">Консультация платная?<span class="faq-arrow">+</span></button>
+          <div class="faq-a">Нет. Консультация полностью бесплатна — вы ничего не платите за встречу и разбор ситуации. Платное сопровождение обсуждается индивидуально.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">Какие документы взять на приём?<span class="faq-arrow">+</span></button>
+          <div class="faq-a">Возьмите всё, что есть по вашей ситуации: договоры, квитанции, переписку, решения, уведомления. Если не знаете, что нужно — просто приходите, разберёмся на месте.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">Как часто проходит приём?<span class="faq-arrow">+</span></button>
+          <div class="faq-a">Приём проходит каждую вторую и четвёртую среду месяца. Для записи заполните форму обратной связи.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">Работаете ли с жителями других районов?<span class="faq-arrow">+</span></button>
+          <div class="faq-a">Да. Хотя моя основная деятельность сосредоточена в Приморском районе, помогаю всем жителям Санкт-Петербурга.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">Уголовными делами занимаетесь?<span class="faq-arrow">+</span></button>
+          <div class="faq-a">Нет, уголовными делами и арбитражем не занимаюсь. Мои направления: ЖКХ, трудовые споры, семейные и имущественные вопросы. По уголовным делам могу дать первичную консультацию и направить к нужному специалисту.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">Нужно ли записываться заранее?<span class="faq-arrow">+</span></button>
+          <div class="faq-a">Рекомендую записаться — тогда вас ждут в конкретное время и вы не ждёте в очереди. Для записи заполните форму обратной связи или напишите на почту.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ КОНТАКТ И ЗАПИСЬ ══ -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="contact-inner">
+      <div class="contact-left">
+        <span class="section-label">Связаться со мной</span>
+        <h2 class="contact-title">Запишитесь<br>на приём</h2>
+        <p class="contact-sub">Первый шаг ничего не стоит. Консультация бесплатна — просто выберите удобный способ связи.</p>
+        <div class="contact-actions">
+          <a href="tel:+78122231478" class="contact-btn cbtn-phone">
+            <span class="cbtn-icon"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.58.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.01L6.6 10.8z"/></svg></span>
+            <div><div class="cbtn-main">Позвонить</div><div class="cbtn-hint">+7 812 223-14-78</div></div>
+          </a>
+        </div>
+        <div class="social-follow" style="margin-top:20px;">
+          <div style="font-family:'Raleway',sans-serif;font-size:10px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:12px;">Подписывайтесь на мои социальные сети</div>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;">
+            <a href="https://vk.ru/ldprprimorskiyspb" target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:8px;padding:10px 16px;font-family:'Raleway',sans-serif;font-size:11px;font-weight:700;color:rgba(255,255,255,.75);letter-spacing:.06em;transition:all .2s;text-decoration:none;" onmouseover="this.style.background='rgba(255,255,255,.14)'" onmouseout="this.style.background='rgba(255,255,255,.08)'">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.915 13.028c-.388-.49-.277-.708 0-1.146.005 0 3.841-5.354 4.232-7.167l.002-.001c.194-.643 0-1.114-.913-1.114h-3.019c-.766 0-1.12.403-1.313.851 0 0-1.532 3.679-3.705 6.063-.702.696-1.021.918-1.402.918-.194 0-.474-.222-.474-.865V4.714c0-.762-.221-1.114-.857-1.114H8.718c-.474 0-.758.349-.758.679 0 .712 1.076.877 1.186 2.883v4.354c0 .966-.176 1.143-.557 1.143-.702 0-2.41-2.693-3.425-5.777C4.953 5.768 4.67 4.6 3.899 4.6H.878C.021 4.6 0 5.003 0 5.451c0 .783.874 4.643 4.066 9.752 2.127 3.027 5.127 4.671 7.856 4.671 1.637 0 1.84-.364 1.84-.993v-2.299c0-.851.18-1.02.782-1.02.443 0 1.202.221 2.976 1.923 2.028 2.002 2.362 2.901 3.503 2.901h3.019c.857 0 1.285-.364 1.039-1.083-.273-.716-1.104-1.753-2.166-2.981z"/></svg>
+              ВКонтакте
+            </a>
+            <a href="https://dzen.ru/ursreda" target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:8px;padding:10px 16px;font-family:'Raleway',sans-serif;font-size:11px;font-weight:700;color:rgba(255,255,255,.75);letter-spacing:.06em;transition:all .2s;text-decoration:none;" onmouseover="this.style.background='rgba(255,255,255,.14)'" onmouseout="this.style.background='rgba(255,255,255,.08)'">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 14h-2v-4H7v-2h4V6h2v4h4v2h-4v4z"/></svg>
+              Дзен
+            </a>
+          </div>
+        </div>
+        <div class="privacy-note">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          Всё, что вы рассказываете на консультации, остаётся конфиденциальным. Юрист соблюдает адвокатскую тайну.
+        </div>
+      </div>
+
+      <div class="contact-right">
+        <div class="schedule-card" id="schedule">
           <div class="schedule-title">Расписание приёма</div>
           <div class="schedule-rows">
             <div class="schedule-row"><span class="srow-key">Дни приёма</span><span class="srow-val gold">2-я и 4-я среда</span></div>

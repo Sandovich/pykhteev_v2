@@ -700,18 +700,37 @@ a { text-decoration: none; color: inherit; }
 /* ════════════════════════════════════════════
    ПОСЛЕДНИЕ ПОБЕДЫ
 ════════════════════════════════════════════ */
-.wins { padding: 90px 0; background: var(--light); }
-.wins-header { text-align: center; margin-bottom: 52px; }
-.wins-header .gold-bar { margin: 18px auto; }
-.wins-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
-.win-card {
-  background: var(--white); border-radius: 14px; padding: 30px 26px;
-  border: 1px solid var(--border);
-  box-shadow: var(--shadow-sm);
+.wins {
+  padding: 90px 0;
+  background: linear-gradient(160deg, var(--navy) 0%, var(--navy2) 100%);
   position: relative; overflow: hidden;
-  transition: transform .26s cubic-bezier(.4,0,.2,1), box-shadow .26s;
 }
-.win-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
+.wins::before {
+  content: ''; position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.02) 1px, transparent 1px);
+  background-size: 60px 60px; pointer-events: none;
+}
+.wins-header { text-align: center; margin-bottom: 52px; position: relative; }
+.wins-header .section-title { color: var(--white); }
+.wins-header p { color: rgba(255,255,255,.55); }
+.wins-header .gold-bar { margin: 18px auto; }
+.wins-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; position: relative; }
+.win-card {
+  background: rgba(255,255,255,.05); border-radius: 14px; padding: 26px 24px;
+  border: 1px solid rgba(255,255,255,.09);
+  box-shadow: none;
+  position: relative; overflow: hidden;
+  transition: transform .28s cubic-bezier(.4,0,.2,1), background .28s, box-shadow .28s;
+  display: flex; flex-direction: column;
+  backdrop-filter: blur(4px);
+}
+.win-card:hover {
+  transform: translateY(-5px);
+  background: rgba(255,255,255,.09);
+  box-shadow: 0 24px 52px rgba(0,0,0,.28);
+}
 .win-card::after {
   content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
   background: var(--grad-gold);
@@ -720,29 +739,75 @@ a { text-decoration: none; color: inherit; }
   display: inline-block;
   font-family: 'Raleway', sans-serif;
   font-size: 9px; font-weight: 700; letter-spacing: .24em; text-transform: uppercase;
-  color: var(--navy2); background: rgba(14,34,68,.07);
+  color: rgba(255,255,255,.6); background: rgba(255,255,255,.09);
   padding: 4px 10px; border-radius: 100px; margin-bottom: 14px;
 }
 .win-title {
   font-family: 'Playfair Display', serif;
-  font-size: 16px; font-weight: 700; color: var(--ink); margin-bottom: 10px; line-height: 1.35;
+  font-size: 16px; font-weight: 700; color: var(--white); margin-bottom: 10px; line-height: 1.35;
 }
-.win-desc { font-size: 13px; font-weight: 300; line-height: 1.7; color: var(--mid); margin-bottom: 20px; }
-.win-result {
-  display: flex; align-items: center; gap: 10px;
-  padding: 12px 14px; background: rgba(14,34,68,.04);
-  border-radius: 8px; border-left: 3px solid var(--gold);
+.win-desc { font-size: 13px; font-weight: 300; line-height: 1.7; color: rgba(255,255,255,.5); margin-bottom: 20px; }
+.win-date { display: none; }
+
+/* Wins stats strip */
+.wins-stats-strip {
+  display: flex; margin-bottom: 44px;
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: var(--r); overflow: hidden;
+  background: rgba(255,255,255,.03);
 }
-.win-result-icon { font-size: 15px; }
-.win-result-text {
+.wins-stat {
+  flex: 1; padding: 22px 20px; text-align: center;
+  border-right: 1px solid rgba(255,255,255,.07);
+}
+.wins-stat:last-child { border-right: none; }
+.wins-stat-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px; font-weight: 700; line-height: 1;
+  color: var(--white); font-variant-numeric: tabular-nums; display: block;
+  margin-bottom: 6px;
+}
+.wins-stat-label {
   font-family: 'Raleway', sans-serif;
-  font-size: 12px; font-weight: 700; color: var(--navy2); line-height: 1.35;
-  letter-spacing: .02em;
+  font-size: 10px; font-weight: 600; letter-spacing: .13em; text-transform: uppercase;
+  color: rgba(255,255,255,.38); display: block;
 }
-.win-date {
-  font-size: 11px; color: rgba(107,114,128,.5);
-  letter-spacing: .08em; margin-top: 12px;
+/* Win result hero */
+.win-result-hero {
+  padding: 14px 0 16px;
+  border-bottom: 1px solid rgba(255,255,255,.07);
+  margin-bottom: 14px;
+}
+.win-rh-num {
+  display: block; font-family: 'Playfair Display', serif;
+  font-size: 32px; font-weight: 700; line-height: 1.1;
+  color: var(--gold3); font-variant-numeric: tabular-nums;
+}
+.win-rh-label {
+  display: block; font-family: 'Raleway', sans-serif;
+  font-size: 9px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase;
+  color: rgba(255,255,255,.32); margin-top: 5px;
+}
+/* Win category row */
+.win-category-row { display: flex; align-items: center; gap: 8px; margin-bottom: 14px; }
+.win-category-row .win-category { margin-bottom: 0; }
+.win-cat-icon {
+  width: 14px; height: 14px; flex-shrink: 0;
+  color: var(--gold2); opacity: .8;
+}
+.win-check {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 18px; height: 18px; border-radius: 50%; flex-shrink: 0;
+  background: rgba(184,137,42,.18); border: 1px solid rgba(184,137,42,.42);
+  color: var(--gold2); font-size: 9px; font-weight: 900;
+}
+/* Wins CTA */
+.wins-cta-wrap { text-align: center; margin-top: 52px; }
+.wins-cta-sub {
+  display: block; margin-top: 12px;
   font-family: 'Raleway', sans-serif;
+  font-size: 9px; font-weight: 700; letter-spacing: .22em; text-transform: uppercase;
+  color: rgba(255,255,255,.28);
 }
 
 /* ════════════════════════════════════════════
@@ -1118,7 +1183,15 @@ a { text-decoration: none; color: inherit; }
   .deputy-flow { grid-template-columns: 1fr; gap: 12px; }
 
   .wins { padding: 60px 0; }
-  .wins-grid { grid-template-columns: 1fr; gap: 14px; }
+  .wins-grid { grid-template-columns: 1fr; gap: 16px; }
+  .wins-stats-strip { margin-bottom: 28px; }
+  .wins-stat { padding: 14px 12px; }
+  .wins-stat-num { font-size: 22px; }
+  .wins-stat-label { font-size: 9px; letter-spacing: .08em; }
+  .win-rh-num { font-size: 28px; }
+  .win-ba { flex-direction: row-reverse; }
+  .wins-cta { font-size: 13px; padding: 15px 28px; }
+  .wins-cta-wrap { margin-top: 36px; }
 
   .reviews { padding: 64px 0; }
   .reviews-grid { grid-template-columns: 1fr; gap: 14px; }
@@ -1645,31 +1718,31 @@ a { text-decoration: none; color: inherit; }
 .win-ba {
   display: flex; align-items: stretch;
   border-radius: 10px; overflow: hidden;
-  border: 1px solid var(--border); margin: 14px 0 16px;
+  border: 1px solid rgba(255,255,255,.09); margin: 14px 0 16px;
 }
 .win-ba-col {
   flex: 1; padding: 11px 14px;
   display: flex; flex-direction: column; gap: 5px;
 }
 .win-ba-before {
-  background: rgba(100,116,139,.06);
-  border-left: 2px solid rgba(100,116,139,.18);
+  background: rgba(255,255,255,.04);
+  border-left: 2px solid rgba(255,255,255,.1);
 }
 .win-ba-after {
-  background: rgba(184,137,42,.08);
-  border-left: 2px solid rgba(184,137,42,.35);
+  background: rgba(184,137,42,.14);
+  border-left: 2px solid rgba(184,137,42,.5);
 }
 .win-ba-label {
   font-family: 'Raleway', sans-serif;
   font-size: 9px; font-weight: 700;
   letter-spacing: .22em; text-transform: uppercase;
-  color: rgba(100,116,139,.7);
+  color: rgba(255,255,255,.35);
 }
-.win-ba-after .win-ba-label { color: var(--gold); }
+.win-ba-after .win-ba-label { color: var(--gold2); }
 .win-ba-text {
-  font-size: 12.5px; font-weight: 400; line-height: 1.45; color: var(--mid);
+  font-size: 12.5px; font-weight: 400; line-height: 1.45; color: rgba(255,255,255,.5);
 }
-.win-ba-after .win-ba-text { color: var(--navy2); font-weight: 700; }
+.win-ba-after .win-ba-text { color: var(--white); font-weight: 700; }
 
 /* ════════════════════════════════════════════
    V2: CAREER TIMELINE
@@ -2622,27 +2695,56 @@ html.fs-xl  { font-size: 125% !important; }
       <h2 class="section-title">Последние результаты</h2>
       <div class="gold-bar"></div>
     </div>
+    <div class="wins-stats-strip reveal">
+      <div class="wins-stat">
+        <span class="wins-stat-num" data-countup data-target="151000" data-suffix=" ₽">151 000 ₽</span>
+        <span class="wins-stat-label">взыскано в этих делах</span>
+      </div>
+      <div class="wins-stat">
+        <span class="wins-stat-num" data-countup data-target="3">3</span>
+        <span class="wins-stat-label">выигранных дела</span>
+      </div>
+      <div class="wins-stat">
+        <span class="wins-stat-num">100%</span>
+        <span class="wins-stat-label">положительный исход</span>
+      </div>
+    </div>
     <div class="wins-grid">
       <div class="win-card reveal">
-        <span class="win-category">ЖКХ · Перерасчёт</span>
-        <div class="win-title">Три года переплаты за отопление по общедомовому счётчику</div>
-        <p class="win-desc">Управляющая компания начисляла по нормативу, хотя дом оборудован ОДПУ. Три года отписок и отказов.</p>
+        <div class="win-category-row">
+          <svg class="win-cat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><path d="M9 22V12h6v10"/></svg>
+          <span class="win-category">ЖКХ · Перерасчёт</span>
+          <span class="win-check">✓</span>
+        </div>
+        <div class="win-result-hero">
+          <span class="win-rh-num" data-countup data-target="61000" data-suffix=" ₽">61 000 ₽</span>
+          <span class="win-rh-label">возвращено клиенту</span>
+        </div>
+        <div class="win-title">Возврат переплаты за тепло по счётчику</div>
+        <p class="win-desc">Управляющая компания три года начисляла по нормативу, хотя дом оборудован ОДПУ. Три года отписок — закончились перерасчётом.</p>
         <div class="win-ba">
           <div class="win-ba-col win-ba-before">
             <div class="win-ba-label">Было</div>
-            <div class="win-ba-text">Оплата по нормативу 3 года, УК отказывала в перерасчёте</div>
+            <div class="win-ba-text">Оплата по нормативу, УК отказывала в перерасчёте</div>
           </div>
           <div class="win-ba-col win-ba-after">
             <div class="win-ba-label">Стало</div>
             <div class="win-ba-text">Возврат 61 000 ₽ + проценты</div>
           </div>
         </div>
-        <div class="win-date">Май 2026</div>
       </div>
       <div class="win-card reveal">
-        <span class="win-category">Труд · Увольнение</span>
-        <div class="win-title">Незаконное увольнение и невыплата расчётных</div>
-        <p class="win-desc">Уволен «по статье» без оснований. Расчётные не выплачены. Трудовая инспекция отказала в защите.</p>
+        <div class="win-category-row">
+          <svg class="win-cat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="2" x2="12" y2="22"/><path d="M4 22h16"/><path d="M4 8l4 7H0L4 8z"/><path d="M20 8l-4 7h8l-4-7z"/><line x1="4" y1="8" x2="20" y2="8"/></svg>
+          <span class="win-category">Труд · Увольнение</span>
+          <span class="win-check">✓</span>
+        </div>
+        <div class="win-result-hero">
+          <span class="win-rh-num" data-countup data-target="90000" data-suffix=" ₽">90 000 ₽</span>
+          <span class="win-rh-label">взыскано + восстановление</span>
+        </div>
+        <div class="win-title">Восстановление на работе после незаконного увольнения</div>
+        <p class="win-desc">Уволен «по статье» без оснований, расчётные не выплачены. Трудовая инспекция отказала — суд восстановил.</p>
         <div class="win-ba">
           <div class="win-ba-col win-ba-before">
             <div class="win-ba-label">Было</div>
@@ -2653,24 +2755,34 @@ html.fs-xl  { font-size: 125% !important; }
             <div class="win-ba-text">Восстановлен на работе + 90 000 ₽ взыскано</div>
           </div>
         </div>
-        <div class="win-date">Апрель 2026</div>
       </div>
       <div class="win-card reveal">
-        <span class="win-category">Семья · Алименты</span>
-        <div class="win-title">Задолженность по алиментам за три года</div>
-        <p class="win-desc">Отец скрывал доходы, менял место работы. Исполнительные листы годами не исполнялись.</p>
+        <div class="win-category-row">
+          <svg class="win-cat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+          <span class="win-category">Семья · Алименты</span>
+          <span class="win-check">✓</span>
+        </div>
+        <div class="win-result-hero">
+          <span class="win-rh-num">36 мес.</span>
+          <span class="win-rh-label">алиментного долга взыскано полностью</span>
+        </div>
+        <div class="win-title">Взыскание трёхлетней задолженности по алиментам</div>
+        <p class="win-desc">Отец скрывал доходы и менял место работы. Листы годами не исполнялись — добились полного взыскания долга и неустойки.</p>
         <div class="win-ba">
           <div class="win-ba-col win-ba-before">
             <div class="win-ba-label">Было</div>
-            <div class="win-ba-text">3 года без выплат, исполнительные листы не работали</div>
+            <div class="win-ba-text">3 года без выплат, листы не работали</div>
           </div>
           <div class="win-ba-col win-ba-after">
             <div class="win-ba-label">Стало</div>
             <div class="win-ba-text">Полный долг за 36 месяцев + неустойка</div>
           </div>
         </div>
-        <div class="win-date">Март 2026</div>
       </div>
+    </div>
+    <div class="wins-cta-wrap">
+      <button class="btn btn-primary" onclick="openBookingModal()">Записаться на приём</button>
+      <span class="wins-cta-sub">Бесплатная консультация · Без обязательств</span>
     </div>
   </div>
 </section>
@@ -3063,6 +3175,35 @@ document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 setTimeout(() => {
   document.querySelectorAll('.reveal:not(.visible)').forEach(el => el.classList.add('visible'));
 }, 1500);
+
+/* ── Count-up animation for wins section ── */
+(function() {
+  function animateCountUp(el) {
+    if (el.dataset.animated) return;
+    el.dataset.animated = '1';
+    const target = parseInt(el.dataset.target, 10);
+    const suffix = el.dataset.suffix || '';
+    const duration = 1300;
+    const start = performance.now();
+    function ease(t) { return 1 - Math.pow(1 - t, 3); }
+    function fmt(n) { return Math.floor(n).toLocaleString('ru-RU') + suffix; }
+    function step(now) {
+      const p = Math.min((now - start) / duration, 1);
+      el.textContent = fmt(target * ease(p));
+      if (p < 1) requestAnimationFrame(step);
+      else el.textContent = fmt(target);
+    }
+    requestAnimationFrame(step);
+  }
+  const countObs = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      animateCountUp(entry.target);
+      countObs.unobserve(entry.target);
+    });
+  }, { threshold: 0.3 });
+  document.querySelectorAll('[data-countup][data-target]').forEach(el => countObs.observe(el));
+})();
 
 /* ── Drum (slot-machine) counters ── */
 function buildDrum(counterEl) {

@@ -1147,9 +1147,23 @@ a { text-decoration: none; color: inherit; }
   .nav-burger { display: flex; }
 
   .hero { padding-top: 97px; }
-  .hero-inner { padding: 40px 20px 60px; gap: 36px; }
-  .hero-title { font-size: clamp(28px, 7vw, 40px); }
-  .hero-trust { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding-top: 20px; margin-top: 24px; }
+  .hero-inner {
+    display: flex; flex-direction: column; gap: 20px;
+    padding: 20px 20px 48px;
+  }
+  .hero-card { order: -1; border-radius: 14px; }
+  .hero-card-photo { height: 220px; min-height: 0; }
+  .hero-card-body { display: none; }
+  .hero-kicker { margin-bottom: 8px; }
+  .hero-title { font-size: clamp(26px, 7vw, 34px); line-height: 1.2; }
+  .hero-sub {
+    font-size: 14px; margin-top: 12px; line-height: 1.6;
+    display: -webkit-box; -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4; overflow: hidden;
+  }
+  .hero-actions { flex-direction: column; gap: 10px; margin-top: 18px; }
+  .hero-actions .btn { width: 100%; justify-content: center; }
+  .hero-trust { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding-top: 20px; margin-top: 20px; }
   .trust-item { padding: 12px 14px; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.11); border-radius: 10px; }
   .trust-num { font-size: 22px; }
   .trust-label { font-size: 9px; letter-spacing: .06em; color: rgba(255,255,255,.68); }

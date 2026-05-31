@@ -2,6 +2,8 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+CjxjaXJjbGUgY3g9IjMyIiBjeT0iMzIiIHI9IjMyIiBmaWxsPSIjMDcxNTJBIi8+CjxjaXJjbGUgY3g9IjMyIiBjeT0iMzIiIHI9IjMwIiBmaWxsPSJub25lIiBzdHJva2U9IiNCODg5MkEiIHN0cm9rZS13aWR0aD0iMS41IiBvcGFjaXR5PSIwLjYiLz4KPHRleHQgeD0iMzIiIHk9IjQ0IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iR2VvcmdpYSxzZXJpZiIgZm9udC1zaXplPSIyNyIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iI0Q0QTg0MCIgbGV0dGVyLXNwYWNpbmc9Ii0xIj7QkNCfPC90ZXh0Pgo8L3N2Zz4=">
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Антон Пыхтеев — Юрист Приморский район СПб | Бесплатная консультация</title>
 <meta name="description" content="Бесплатная юридическая консультация в Приморском районе Санкт-Петербурга. Юрист Антон Пыхтеев: ЖКХ, трудовые споры, семья, имущество. Приём каждую 2-ю и 4-ю среду.">
@@ -542,7 +544,7 @@ a { text-decoration: none; color: inherit; }
 .services-header { text-align: center; margin-bottom: 40px; }
 .services-header .section-label { display: flex; justify-content: center; }
 .services-header .gold-bar { margin: 18px auto; }
-.services-header p { font-size: 15px; font-weight: 300; color: var(--mid); max-width: 480px; margin: 0 auto; line-height: 1.7; }
+.services-header p { font-size: 15px; font-weight: 300; color: var(--mid); max-width: 480px; margin: 18px auto 0; line-height: 1.7; }
 .services-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
 .service-card {
   background: var(--white); border-radius: 14px; padding: 34px 26px;
@@ -1323,6 +1325,8 @@ a { text-decoration: none; color: inherit; }
   .contact { padding: 64px 0; }
 
   .section-title { font-size: clamp(22px, 5vw, 30px); }
+  .services-header .section-title { margin-bottom: 14px; }
+  .faq-left .section-title { margin-bottom: 14px; }
 
   .sticky-cta { bottom: 16px; right: 16px; gap: 7px; }
   .sticky-btn { font-size: 10px; padding: 11px 16px; }
@@ -1337,6 +1341,22 @@ a { text-decoration: none; color: inherit; }
   .stat-value { font-size: 30px; }
   .stat-suffix { font-size: 18px; }
   .process-steps { max-width: 100%; }
+}
+
+@media (max-width: 768px) {
+  .reviews-auto {
+    grid-template-columns: 1fr;
+    max-height: none;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+  .reviews-col {
+    animation: none !important;
+  }
+  .reviews-col:nth-child(2),
+  .reviews-col:nth-child(3) {
+    display: none;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -2620,7 +2640,7 @@ html.fs-xl  { font-size: 125% !important; }
 <section class="services" id="services">
   <div class="container">
     <div class="services-header">
-      <span class="section-label">Чем могу помочь</span>
+      
       <h2 class="section-title">Направления работы</h2>
       <p>Помогаю жителям Приморского района с наиболее распространёнными гражданскими вопросами — без предоплат и юридического жаргона.</p>
     </div>
@@ -2659,7 +2679,7 @@ html.fs-xl  { font-size: 125% !important; }
   <div class="container">
     <div class="why-inner">
       <div class="why-header">
-        <span class="section-label">Моё преимущество</span>
+        
         <div class="why-heading">Почему обращаются <em>ко мне</em></div>
       </div>
       <div class="why-items">
@@ -2754,7 +2774,7 @@ html.fs-xl  { font-size: 125% !important; }
 <section class="process">
   <div class="container">
     <div class="process-header">
-      <span class="section-label" style="display:block;text-align:center">Как это работает</span>
+      
       <h2 class="section-title white">Три шага до решения</h2>
       <div class="gold-bar"></div>
     </div>
@@ -2791,7 +2811,7 @@ html.fs-xl  { font-size: 125% !important; }
   <div class="container">
     <div class="deputy-inner">
       <div class="deputy-left">
-        <span class="section-label">Только у меня</span>
+        
         <div class="deputy-title">Инструмент, которого нет у <em>обычного юриста</em></div>
         <div class="deputy-sub">Как юрист ЛДПР, я могу направить официальный депутатский запрос в любое ведомство. Государственный орган обязан ответить в письменной форме в течение 30 дней. Нередко этого достаточно — без суда.</div>
       </div>
@@ -2831,7 +2851,7 @@ html.fs-xl  { font-size: 125% !important; }
 <section class="wins" id="wins">
   <div class="container">
     <div class="wins-header">
-      <span class="section-label">Реальные дела</span>
+      
       <h2 class="section-title">Последние результаты</h2>
       <div class="gold-bar"></div>
     </div>
@@ -2932,7 +2952,7 @@ html.fs-xl  { font-size: 125% !important; }
 <section class="reviews" id="reviews">
   <div class="container">
     <div class="reviews-header">
-      <span class="section-label">Что говорят люди</span>
+      
       <h2 class="section-title">Отзывы клиентов</h2>
       <div class="reviews-rating-badge">
         <span class="rrb-stars">★★★★★</span>
@@ -3076,7 +3096,7 @@ html.fs-xl  { font-size: 125% !important; }
 <section class="tips">
   <div class="container">
     <div class="tips-header">
-      <span class="section-label" style="display:block;text-align:center">Полезно знать</span>
+      
       <h2 class="section-title white">Советы жителям района</h2>
     </div>
     <div class="tips-grid">
@@ -3108,7 +3128,7 @@ html.fs-xl  { font-size: 125% !important; }
   <div class="container">
     <div class="faq-inner">
       <div class="faq-left">
-        <span class="section-label">Частые вопросы</span>
+        
         <h2 class="section-title">Отвечаю на главные вопросы</h2>
         <div class="gold-bar"></div>
         <p>Если вашего вопроса здесь нет — заполните форму обратной связи.</p>
@@ -3153,7 +3173,7 @@ html.fs-xl  { font-size: 125% !important; }
   <div class="container">
     <div class="contact-inner">
       <div class="contact-left">
-        <span class="section-label">Связаться со мной</span>
+        
         <h2 class="contact-title">Запишитесь<br>на приём</h2>
         <p class="contact-sub">Консультация бесплатна — просто выберите удобный способ связи.</p>
         <div class="contact-actions">

@@ -221,6 +221,7 @@ a { text-decoration: none; color: inherit; }
   font-size: 10px; font-weight: 400; letter-spacing: .32em;
   text-transform: uppercase; color: rgba(255,255,255,.62); margin-top: 2px;
 }
+.nav-logo .nav-sub-mobile { display: none; }
 .nav-links { display: flex; gap: 28px; list-style: none; }
 .nav-links a {
   font-family: 'Raleway', sans-serif;
@@ -1252,8 +1253,10 @@ a { text-decoration: none; color: inherit; }
   .container { padding: 0 20px; }
   .nav-links { display: none; }
   .nav-inner { padding: 0 20px; height: 60px; }
-  .nav-cta { padding: 8px 16px; font-size: 10px; opacity: 1 !important; transform: none !important; pointer-events: auto !important; }
-  .nav-burger { display: flex; }
+  .nav-cta { padding: 8px 14px; font-size: 10px; opacity: 1 !important; transform: none !important; pointer-events: auto !important; }
+  .nav-burger { display: flex; margin-left: 12px; }
+  .nav-logo .nav-sub-desktop { display: none; }
+  .nav-logo .nav-sub-mobile { display: block; }
 
   .hero { padding-top: 97px; }
   .hero-inner { padding: 40px 20px 60px; gap: 36px; }
@@ -2479,7 +2482,8 @@ html.fs-xl  { font-size: 125% !important; }
   <div class="nav-inner">
     <a href="#" class="nav-logo">
       Антон Пыхтеев
-      <span>Юрист · ЛДПР · Приморский район</span>
+      <span class="nav-sub-desktop">Юрист · ЛДПР · Приморский район</span>
+      <span class="nav-sub-mobile">Юрист · ЛДПР</span>
     </a>
     <ul class="nav-links">
       <li><a href="#about">Обо мне</a></li>

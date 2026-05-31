@@ -11,7 +11,7 @@
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400;1,600&family=Raleway:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400;1,600;1,700&family=Raleway:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <script type="application/ld+json">
 {
@@ -47,6 +47,36 @@
     }
   ]
 }
+</script>
+<script>
+/* ── BorderBeam RAФ — останавливается при отсутствии hover ── */
+(function(){
+  var cards = document.querySelectorAll('.beam-card');
+  cards.forEach(function(card){
+    var el = document.createElement('div');
+    el.className = 'beam-el';
+    card.appendChild(el);
+  });
+  var angle = 0, active = new Set(), rafId = null;
+  function tick(){
+    angle = (angle + 1.8) % 360;
+    active.forEach(function(c){
+      var el = c.querySelector('.beam-el');
+      if (el) el.style.setProperty('--ba', angle + 'deg');
+    });
+    if (active.size > 0) rafId = requestAnimationFrame(tick);
+    else rafId = null;
+  }
+  cards.forEach(function(c){
+    c.addEventListener('mouseenter', function(){
+      active.add(c);
+      if (!rafId) rafId = requestAnimationFrame(tick);
+    });
+    c.addEventListener('mouseleave', function(){ active.delete(c); });
+  });
+})();
+
+})();
 </script>
 
 <style>
@@ -98,14 +128,14 @@ a { text-decoration: none; color: inherit; }
 .display {
   font-family: 'Playfair Display', serif;
   font-size: clamp(38px, 5vw, 68px);
-  font-weight: 800;
+  font-weight: 700;
   line-height: 1.1;
   letter-spacing: -.02em;
 }
 .section-label {
   font-family: 'Raleway', sans-serif;
   font-size: 11px; font-weight: 700;
-  letter-spacing: .42em; text-transform: uppercase;
+  letter-spacing: .18em; text-transform: uppercase;
   color: var(--gold); display: block; margin-bottom: 14px;
 }
 .section-title {
@@ -115,7 +145,7 @@ a { text-decoration: none; color: inherit; }
   color: var(--ink); letter-spacing: -.01em;
 }
 .section-title.white { color: var(--white); }
-.gold-bar { width: 40px; height: 2px; background: var(--grad-gold); border-radius: 2px; margin: 18px 0; }
+.gold-bar { width: 32px; height: 1px; background: var(--grad-gold); border-radius: 1px; margin: 16px 0; opacity: .8; }
 
 /* ════════════════════════════════════════════
    КНОПКИ
@@ -124,8 +154,8 @@ a { text-decoration: none; color: inherit; }
   display: inline-flex; align-items: center; justify-content: center; gap: 8px;
   font-family: 'Raleway', sans-serif; font-size: 12px; font-weight: 700;
   letter-spacing: .12em; text-transform: uppercase;
-  padding: 17px 34px; border-radius: var(--r); cursor: pointer; border: none;
-  transition: all .24s cubic-bezier(.4,0,.2,1);
+  padding: 17px 34px; border-radius: 4px; cursor: pointer; border: none;
+  transition: transform .24s cubic-bezier(.23,1,.32,1), box-shadow .24s cubic-bezier(.23,1,.32,1), opacity .24s ease-out, background .24s ease-out, border-color .24s ease-out;
   position: relative; overflow: hidden;
 }
 .btn::after {
@@ -140,7 +170,8 @@ a { text-decoration: none; color: inherit; }
   box-shadow: var(--shadow-gold);
 }
 .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(184,137,42,.4); }
-.btn-primary:active { transform: translateY(0); }
+.btn-primary:active { transform: scale(0.97); transition-duration: .08s; }
+.btn-outline:active { transform: scale(0.97); transition-duration: .08s; }
 .btn-outline {
   background: rgba(255,255,255,.07);
   color: rgba(255,255,255,.96);
@@ -185,8 +216,8 @@ a { text-decoration: none; color: inherit; }
 }
 .nav-logo span {
   display: block; font-family: 'Raleway', sans-serif;
-  font-size: 9px; font-weight: 400; letter-spacing: .32em;
-  text-transform: uppercase; color: rgba(255,255,255,.38); margin-top: 2px;
+  font-size: 10px; font-weight: 400; letter-spacing: .32em;
+  text-transform: uppercase; color: rgba(255,255,255,.62); margin-top: 2px;
 }
 .nav-links { display: flex; gap: 28px; list-style: none; }
 .nav-links a {
@@ -248,7 +279,7 @@ a { text-decoration: none; color: inherit; }
 }
 .hero-inner {
   max-width: 1180px; margin: 0 auto; padding: 80px 40px;
-  display: grid; grid-template-columns: 1fr 380px; gap: 80px; align-items: center;
+  display: grid; grid-template-columns: 1fr 430px; gap: 80px; align-items: center;
   position: relative; z-index: 1; width: 100%;
 }
 .hero-kicker {
@@ -259,18 +290,18 @@ a { text-decoration: none; color: inherit; }
 }
 .hero-kicker::before {
   content: ''; display: block;
-  width: 20px; height: 1px; background: var(--gold2);
+  width: 20px; height: 1px; background: rgba(255,255,255,.35);
 }
 .hero-title {
   font-family: 'Playfair Display', serif;
   font-size: clamp(34px, 4.2vw, 58px);
-  font-weight: 800; line-height: 1.1;
+  font-weight: 700; line-height: 1.1;
   color: var(--white); letter-spacing: -.02em;
 }
 .hero-title em { font-style: italic; color: var(--gold2); }
 .hero-sub {
   font-size: 16px; font-weight: 300; line-height: 1.8;
-  color: rgba(255,255,255,.58); margin-top: 20px; max-width: 500px;
+  color: rgba(255,255,255,.76); margin-top: 20px; max-width: 500px;
 }
 .hero-sub strong { color: rgba(255,255,255,.85); font-weight: 500; }
 .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 36px; }
@@ -285,7 +316,7 @@ a { text-decoration: none; color: inherit; }
 }
 .trust-label {
   font-size: 10px; font-weight: 400; letter-spacing: .1em;
-  color: rgba(255,255,255,.38); text-transform: uppercase;
+  color: rgba(255,255,255,.62); text-transform: uppercase;
 }
 
 /* Next reception badge */
@@ -315,13 +346,11 @@ a { text-decoration: none; color: inherit; }
   box-shadow:
     0 32px 64px rgba(0,0,0,.3),
     inset 0 1px 0 rgba(255,255,255,.08),
-    0 0 0 1px rgba(184,137,42,.1),
-    0 0 36px rgba(184,137,42,.1);
+    0 0 0 1px rgba(184,137,42,.12);
   transition: transform .3s, box-shadow .3s;
   position: relative;
 }
 .hero-card:hover {
-  transform: translateY(-4px);
   box-shadow:
     0 40px 80px rgba(0,0,0,.35),
     inset 0 1px 0 rgba(255,255,255,.08),
@@ -329,7 +358,7 @@ a { text-decoration: none; color: inherit; }
     0 0 48px rgba(184,137,42,.18);
 }
 .hero-card-photo {
-  min-height: 240px;
+  min-height: 300px;
   background: linear-gradient(145deg, rgba(184,137,42,.14) 0%, rgba(7,21,42,.7) 100%);
   display: flex; align-items: center; justify-content: center;
   position: relative; overflow: hidden;
@@ -405,6 +434,57 @@ a { text-decoration: none; color: inherit; }
 .auth-item:hover { background: rgba(255,255,255,.1); color: rgba(255,255,255,.9); }
 
 /* ════════════════════════════════════════════
+   BORDER BEAM + PROGRESS + GRAIN + CUT-REVEAL + REVIEWS-AUTO
+════════════════════════════════════════════ */
+@keyframes stat-pulse { 0%,100% { text-shadow: 0 0 12px rgba(184,137,42,.25); } 50% { text-shadow: 0 0 28px rgba(212,168,64,.55), 0 0 8px rgba(240,196,106,.3); } }
+
+.beam-card { position: relative; isolation: isolate; }
+.beam-el {
+  position: absolute; inset: -1.5px; border-radius: inherit;
+  background: conic-gradient(from var(--ba,0deg), transparent 60%, rgba(184,137,42,.8) 73%, rgba(240,196,106,1) 80%, rgba(184,137,42,.8) 87%, transparent 100%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude;
+  padding: 1.5px; opacity: 0; transition: opacity .35s;
+  pointer-events: none; z-index: -1;
+}
+.beam-card:hover .beam-el { opacity: 1; }
+
+#scroll-progress {
+  position: fixed; top: 0; left: 0; height: 3px; width: 0%;
+  background: linear-gradient(90deg, var(--gold) 0%, var(--gold3) 50%, var(--gold2) 100%);
+  z-index: 10000; transition: width .08s linear;
+  box-shadow: 0 0 8px rgba(240,196,106,.6);
+}
+
+.cut-line { display: block; overflow: hidden; }
+.cut-inner {
+  display: block;
+  transform: translateY(110%);
+  animation: cut-up .75s cubic-bezier(.16,1,.3,1) forwards;
+}
+@keyframes cut-up { to { transform: translateY(0); } }
+
+#hero-grain {
+  position: absolute; inset: 0; pointer-events: none;
+  opacity: .045; z-index: 2;
+}
+
+.reviews-auto {
+  display: grid; grid-template-columns: repeat(3,1fr); gap: 16px;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 12%, black 88%, transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 0%, black 12%, black 88%, transparent 100%);
+  max-height: 560px; overflow: hidden;
+}
+.reviews-col { display: flex; flex-direction: column; gap: 16px; }
+.reviews-col:nth-child(1) { animation: rcol 20s linear infinite; }
+.reviews-col:nth-child(2) { animation: rcol 26s linear infinite reverse; }
+.reviews-col:nth-child(3) { animation: rcol 22s linear infinite; }
+.reviews-col:hover, .reviews-auto:hover .reviews-col { animation-play-state: paused; }
+@keyframes rcol { 0% { transform: translateY(0); } 100% { transform: translateY(-50%); } }
+
+.deputy-flow-hint { display: none; }
+
+/* ════════════════════════════════════════════
    СТАТИСТИКА
 ════════════════════════════════════════════ */
 .stats-strip {
@@ -431,14 +511,15 @@ a { text-decoration: none; color: inherit; }
   transition: width .45s ease;
 }
 .stat-cell:hover::before { width: 100%; }
+.stat-cell:hover .stat-value { animation: stat-pulse 1.8s ease-in-out infinite; }
 .stat-value {
   font-family: 'Playfair Display', serif;
-  font-size: 44px; font-weight: 800; color: var(--gold2); line-height: 1;
+  font-size: 44px; font-weight: 700; color: var(--gold2); line-height: 1;
 }
 .stat-suffix { font-size: 26px; }
 .stat-desc {
   font-size: 12px; font-weight: 300;
-  color: rgba(255,255,255,.45); letter-spacing: .04em; line-height: 1.45;
+  color: rgba(255,255,255,.65); letter-spacing: .04em; line-height: 1.45;
 }
 
 /* ════════════════════════════════════════════
@@ -472,9 +553,9 @@ a { text-decoration: none; color: inherit; }
   cursor: default;
 }
 .service-card::before {
-  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
-  background: var(--grad-gold);
-  opacity: .38;
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: rgba(255,255,255,.1);
+  opacity: 1;
   transition: opacity .28s cubic-bezier(.4,0,.2,1);
 }
 .service-card::after {
@@ -489,7 +570,7 @@ a { text-decoration: none; color: inherit; }
   border-color: rgba(184,137,42,.28);
   background: #fffdf8;
 }
-.service-card:hover::before { opacity: 1; }
+.service-card:hover::before { background: var(--grad-gold); opacity: .6; }
 .service-icon {
   width: 50px; height: 50px;
   background: linear-gradient(135deg, rgba(184,137,42,.12), rgba(184,137,42,.05));
@@ -609,37 +690,59 @@ a { text-decoration: none; color: inherit; }
 }
 .process-header { text-align: center; margin-bottom: 64px; position: relative; }
 .process-header .gold-bar { margin: 18px auto; }
+/* Glassmorphism Timeline */
 .process-steps {
-  display: grid; grid-template-columns: repeat(3, 1fr);
-  gap: 0; position: relative;
+  display: flex; flex-direction: column; gap: 0;
+  position: relative; max-width: 680px; margin: 0 auto;
 }
-.process-connector {
-  position: absolute; top: 44px;
-  left: calc(100% / 6 + 20px); right: calc(100% / 6 + 20px);
-  height: 1px;
-  background: linear-gradient(90deg, rgba(184,137,42,.5), rgba(184,137,42,.15), rgba(184,137,42,.5));
+.process-connector { display: none; }
+.process-steps::before {
+  content: ''; position: absolute;
+  left: 27px; top: 28px; bottom: 28px; width: 1px;
+  background: linear-gradient(180deg,
+    rgba(184,137,42,0) 0%,
+    rgba(184,137,42,.6) 15%,
+    rgba(184,137,42,.3) 50%,
+    rgba(184,137,42,.6) 85%,
+    rgba(184,137,42,0) 100%);
 }
-.step { padding: 0 36px; text-align: center; position: relative; }
+.step {
+  display: flex; align-items: flex-start; gap: 28px;
+  padding: 28px 32px 28px 0; text-align: left; position: relative;
+}
 .step-num {
-  width: 88px; height: 88px; border-radius: 50%;
-  border: 1px solid rgba(184,137,42,.3);
-  display: flex; align-items: center; justify-content: center; margin: 0 auto 28px;
+  width: 56px; height: 56px; border-radius: 50%; flex-shrink: 0;
+  border: 1px solid rgba(184,137,42,.45);
+  display: flex; align-items: center; justify-content: center;
   font-family: 'Playfair Display', serif;
-  font-size: 28px; font-weight: 700; color: var(--gold2);
-  background: rgba(184,137,42,.07);
+  font-size: 18px; font-weight: 700; color: var(--gold2);
+  background: rgba(7,21,42,.9);
   position: relative; z-index: 1;
-  box-shadow: 0 0 0 8px rgba(184,137,42,.04), 0 0 32px rgba(184,137,42,.1);
-  transition: box-shadow .3s, background .3s;
+  box-shadow: 0 0 0 6px rgba(184,137,42,.05), 0 0 24px rgba(184,137,42,.15);
+  transition: box-shadow .35s, background .35s;
+}
+.step-body {
+  flex: 1;
+  background: rgba(255,255,255,.04);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(184,137,42,.12);
+  border-radius: 12px; padding: 20px 24px;
+  transition: background .35s, border-color .35s, transform .35s;
 }
 .step:hover .step-num {
-  background: rgba(184,137,42,.14);
-  box-shadow: 0 0 0 8px rgba(184,137,42,.07), 0 0 32px rgba(184,137,42,.2);
+  background: rgba(184,137,42,.12);
+  box-shadow: 0 0 0 6px rgba(184,137,42,.08), 0 0 32px rgba(184,137,42,.25);
+}
+.step:hover .step-body {
+  background: rgba(255,255,255,.07);
+  border-color: rgba(184,137,42,.28);
+  transform: translateX(4px);
 }
 .step-title {
   font-family: 'Playfair Display', serif;
-  font-size: 19px; font-weight: 700; color: var(--white); margin-bottom: 12px;
+  font-size: 18px; font-weight: 700; color: var(--white); margin-bottom: 8px;
 }
-.step-text { font-size: 14px; font-weight: 300; line-height: 1.75; color: rgba(255,255,255,.48); }
+.step-text { font-size: 14px; font-weight: 300; line-height: 1.75; color: rgba(255,255,255,.55); }
 
 /* ════════════════════════════════════════════
    ДЕПУТАТСКИЙ ЗАПРОС
@@ -667,17 +770,24 @@ a { text-decoration: none; color: inherit; }
 }
 .deputy-flow { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
 .deputy-step {
-  background: var(--white); border: 1px solid var(--border);
+  background: rgba(7,21,42,.05); border: 1px solid rgba(184,137,42,.15);
   border-radius: 14px; padding: 26px 20px; text-align: center;
   position: relative; overflow: hidden;
-  box-shadow: var(--shadow-sm);
-  transition: transform .26s, box-shadow .26s;
+  box-shadow: 0 2px 16px rgba(14,34,68,.06);
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+  transition: transform .3s, box-shadow .3s, background .3s, border-color .3s;
 }
-.deputy-step:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
+.deputy-step:hover {
+  transform: translateY(-6px);
+  background: rgba(7,21,42,.09);
+  border-color: rgba(184,137,42,.35);
+  box-shadow: 0 16px 40px rgba(14,34,68,.1), 0 0 20px rgba(184,137,42,.08);
+}
 .deputy-step::before {
-  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
-  background: var(--grad-gold);
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: rgba(255,255,255,.15); opacity: 1; transition: opacity .3s;
 }
+.deputy-step:hover::before { background: var(--grad-gold); opacity: .5; }
 .deputy-step-num {
   font-family: 'Raleway', sans-serif; font-size: 10px; font-weight: 700;
   letter-spacing: .3em; text-transform: uppercase; color: var(--gold);
@@ -731,10 +841,7 @@ a { text-decoration: none; color: inherit; }
   background: rgba(255,255,255,.09);
   box-shadow: 0 24px 52px rgba(0,0,0,.28);
 }
-.win-card::after {
-  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
-  background: var(--grad-gold);
-}
+/* win-card top bar removed */
 .win-category {
   display: inline-block;
   font-family: 'Raleway', sans-serif;
@@ -746,7 +853,7 @@ a { text-decoration: none; color: inherit; }
   font-family: 'Playfair Display', serif;
   font-size: 16px; font-weight: 700; color: var(--white); margin-bottom: 10px; line-height: 1.35;
 }
-.win-desc { font-size: 13px; font-weight: 300; line-height: 1.7; color: rgba(255,255,255,.5); margin-bottom: 20px; }
+.win-desc { font-size: 13px; font-weight: 300; line-height: 1.7; color: rgba(255,255,255,.70); margin-bottom: 20px; }
 .win-date { display: none; }
 
 /* Wins stats strip */
@@ -770,7 +877,7 @@ a { text-decoration: none; color: inherit; }
 .wins-stat-label {
   font-family: 'Raleway', sans-serif;
   font-size: 10px; font-weight: 600; letter-spacing: .13em; text-transform: uppercase;
-  color: rgba(255,255,255,.38); display: block;
+  color: rgba(255,255,255,.62); display: block;
 }
 /* Win result hero */
 .win-result-hero {
@@ -806,8 +913,8 @@ a { text-decoration: none; color: inherit; }
 .wins-cta-sub {
   display: block; margin-top: 12px;
   font-family: 'Raleway', sans-serif;
-  font-size: 9px; font-weight: 700; letter-spacing: .22em; text-transform: uppercase;
-  color: rgba(255,255,255,.28);
+  font-size: 12px; font-weight: 700; letter-spacing: .22em; text-transform: uppercase;
+  color: rgba(255,255,255,.55);
 }
 
 /* ════════════════════════════════════════════
@@ -902,7 +1009,7 @@ a { text-decoration: none; color: inherit; }
   font-family: 'Playfair Display', serif;
   font-size: 17px; font-weight: 700; color: var(--white); margin-bottom: 12px; line-height: 1.3;
 }
-.tip-text { font-size: 13px; font-weight: 300; line-height: 1.75; color: rgba(255,255,255,.52); }
+.tip-text { font-size: 13px; font-weight: 300; line-height: 1.75; color: rgba(255,255,255,.72); }
 .tip-tag {
   display: inline-block; margin-top: 16px;
   font-family: 'Raleway', sans-serif;
@@ -1009,7 +1116,7 @@ a { text-decoration: none; color: inherit; }
   font-size: clamp(30px, 3.5vw, 50px); font-weight: 800; line-height: 1.1;
   color: var(--white); margin-bottom: 12px; letter-spacing: -.02em;
 }
-.contact-sub { font-size: 15px; font-weight: 300; line-height: 1.75; color: rgba(255,255,255,.48); margin-bottom: 32px; }
+.contact-sub { font-size: 15px; font-weight: 300; line-height: 1.75; color: rgba(255,255,255,.72); margin-bottom: 32px; }
 .contact-actions { display: flex; flex-direction: column; gap: 12px; }
 .contact-btn {
   display: flex; align-items: center; gap: 14px;
@@ -1051,12 +1158,12 @@ a { text-decoration: none; color: inherit; }
   padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,.07); font-size: 14px;
 }
 .schedule-row:last-child { border-bottom: none; }
-.srow-key { font-weight: 300; color: rgba(255,255,255,.45); }
+.srow-key { font-weight: 300; color: rgba(255,255,255,.65); }
 .srow-val { font-weight: 500; color: rgba(255,255,255,.88); text-align: right; }
 .srow-val.gold { color: var(--gold2); font-weight: 600; }
 .map-embed {
   margin-top: 18px; border-radius: 10px; overflow: hidden;
-  border: 1px solid rgba(255,255,255,.1); height: 185px;
+  border: 1px solid rgba(255,255,255,.1); height: 260px;
 }
 .map-embed iframe { width: 100%; height: 100%; border: none; display: block; filter: grayscale(15%) brightness(.92); }
 
@@ -1080,11 +1187,11 @@ a { text-decoration: none; color: inherit; }
 }
 .footer-socials { display: flex; gap: 10px; }
 .social-link {
-  width: 38px; height: 38px; border-radius: 8px;
+  width: 44px; height: 44px; border-radius: 8px;
   border: 1px solid rgba(255,255,255,.1);
   display: flex; align-items: center; justify-content: center;
   font-family: 'Raleway', sans-serif; font-size: 10px; font-weight: 800;
-  color: rgba(255,255,255,.45);
+  color: rgba(255,255,255,.65);
   transition: all .2s; letter-spacing: .04em;
 }
 .social-link:hover { background: rgba(255,255,255,.07); color: var(--white); border-color: rgba(255,255,255,.22); }
@@ -1117,7 +1224,7 @@ a { text-decoration: none; color: inherit; }
 .reveal {
   opacity: 0;
   transform: translateY(28px);
-  transition: opacity .6s cubic-bezier(.4,0,.2,1), transform .6s cubic-bezier(.4,0,.2,1);
+  transition: opacity .5s cubic-bezier(.16,1,.3,1), transform .5s cubic-bezier(.16,1,.3,1);
 }
 .reveal.visible { opacity: 1; transform: none; }
 
@@ -1176,11 +1283,22 @@ a { text-decoration: none; color: inherit; }
   .about { padding: 64px 0; }
 
   .process { padding: 64px 0; }
-  .process-steps { grid-template-columns: 1fr; gap: 36px; }
-  .process-connector { display: none; }
+  .process-steps { max-width: 100%; }
+  .step { gap: 16px; padding: 20px 0 20px 0; }
+  .step-num { width: 44px; height: 44px; font-size: 15px; }
+  .step-body { padding: 16px 18px; }
+  .process-steps::before { left: 21px; }
 
   .deputy { padding: 60px 0; }
-  .deputy-flow { grid-template-columns: 1fr; gap: 12px; }
+  .deputy-flow {
+    display: flex; gap: 14px;
+    overflow-x: auto; scroll-snap-type: x mandatory;
+    scrollbar-width: none; -ms-overflow-style: none;
+    grid-template-columns: unset;
+  }
+  .deputy-flow::-webkit-scrollbar { display: none; }
+  .deputy-step { flex: 0 0 80vw; scroll-snap-align: start; }
+  .deputy-flow-hint { display: block; }
 
   .wins { padding: 60px 0; }
   .wins-grid { grid-template-columns: 1fr; gap: 16px; }
@@ -1218,7 +1336,7 @@ a { text-decoration: none; color: inherit; }
   .stat-cell { padding: 18px 10px; }
   .stat-value { font-size: 30px; }
   .stat-suffix { font-size: 18px; }
-  .process-steps { grid-template-columns: 1fr; }
+  .process-steps { max-width: 100%; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1666,10 +1784,7 @@ a { text-decoration: none; color: inherit; }
    V2: STICKY NAV CTA (animate in after hero)
 ════════════════════════════════════════════ */
 .nav-cta {
-  opacity: 0;
-  transform: scale(0.88) translateY(2px);
-  pointer-events: none;
-}
+  }
 .nav.past-hero .nav-cta {
   opacity: 1;
   transform: scale(1) translateY(0);
@@ -1868,7 +1983,7 @@ a { text-decoration: none; color: inherit; }
 
 /* ── Booking modal ── */
 .bm-overlay {
-  display: none;
+  display: flex; visibility: hidden; pointer-events: none; transition: opacity .22s, visibility 0s .22s;
   position: fixed;
   inset: 0;
   background: rgba(7,21,42,.75);
@@ -1879,7 +1994,7 @@ a { text-decoration: none; color: inherit; }
   justify-content: center;
   padding: 20px;
 }
-.bm-overlay.open { display: flex; }
+.bm-overlay.open { display: flex;  visibility: visible; pointer-events: auto; transition: opacity .22s, visibility 0s 0s;}
 .bm-modal {
   background: #151d2e;
   border: 1px solid rgba(255,255,255,.1);
@@ -1928,7 +2043,7 @@ a { text-decoration: none; color: inherit; }
 }
 .bm-sub {
   font-size: 13px;
-  color: rgba(255,255,255,.45);
+  color: rgba(255,255,255,.65);
   margin-bottom: 24px;
   line-height: 1.6;
 }
@@ -1949,7 +2064,7 @@ a { text-decoration: none; color: inherit; }
   padding: 11px 14px;
   font-size: 14px;
   color: #fff;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Raleway', sans-serif;
   outline: none;
   transition: border-color .2s, background .2s;
   width: 100%;
@@ -2240,7 +2355,7 @@ html.fs-xl  { font-size: 125% !important; }
 }
 .bm-consent-lbl span {
   font-size: 12px;
-  color: rgba(255,255,255,.45);
+  color: rgba(255,255,255,.65);
   line-height: 1.55;
 }
 .bm-policy-link {
@@ -2278,6 +2393,27 @@ html.fs-xl  { font-size: 125% !important; }
 .policy-body p { margin-bottom: 8px; }
 .policy-body::-webkit-scrollbar { width: 4px; }
 .policy-body::-webkit-scrollbar-thumb { background: rgba(255,255,255,.15); border-radius: 2px; }
+
+
+
+/* Scroll margin for sticky nav */
+#about, #services, #wins, #reviews, #faq, #contact, #process { scroll-margin-top: 115px; }
+
+/* Floating consult — только на мобилке */
+@media (min-width: 769px) {
+  #floatConsult, #floatPopup { display: none !important; }
+}
+
+
+/* Gold на светлых фонах — WCAG AA */
+.about .section-label,
+.why .section-label,
+.services-header .section-label,
+.deputy-left .section-label,
+.faq-left .section-label {
+  color: #7a4e12;
+}
+
 </style>
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
@@ -2331,7 +2467,7 @@ html.fs-xl  { font-size: 125% !important; }
       <li><a href="#wins">Результаты</a></li>
       <li><a href="#reviews">Отзывы</a></li>
       <li><a href="#faq">FAQ</a></li>
-      <li><a href="#contact">Контакт</a></li>
+      <li><a href="#contact" onclick="event.preventDefault();openBookingModal()">Контакт</a></li>
     </ul>
     <a href="#schedule" class="nav-cta">Записаться</a>
     <button class="nav-burger" id="navBurger" aria-label="Меню">
@@ -2356,9 +2492,9 @@ html.fs-xl  { font-size: 125% !important; }
       </div>
       <div class="hero-kicker">Юрист ЛДПР · Приморский район СПб</div>
       <h1 class="hero-title">
-        <span class="hero-glow-name">Антон Пыхтеев</span> —<br>
-        юрист, который знает<br>
-        <em>наш район изнутри</em>
+        <span class="cut-line"><span class="cut-inner" style="animation-delay:.1s"><span class="hero-glow-name">Антон Пыхтеев</span> —</span></span>
+        <span class="cut-line"><span class="cut-inner" style="animation-delay:.22s">юрист, который знает</span></span>
+        <span class="cut-line"><span class="cut-inner" style="animation-delay:.34s"><em>наш район изнутри</em></span></span>
       </h1>
       <div class="hero-typewriter" aria-hidden="true">
         <span class="tw-prefix">Помогаю с:</span>
@@ -2369,7 +2505,7 @@ html.fs-xl  { font-size: 125% !important; }
         <strong>Помогу разобраться</strong> с ЖКХ и управляющими компаниями, трудовыми спорами, семейными и имущественными вопросами.
       </p>
       <div class="hero-actions">
-        <a href="#contact" class="btn btn-primary">Получить консультацию</a>
+        <a href="#contact" onclick="event.preventDefault();openBookingModal()" class="btn btn-primary">Получить консультацию</a>
         <a href="https://t.me/ursreda" target="_blank" class="btn btn-outline">Написать в Telegram</a>
       </div>
       <div class="hero-trust">
@@ -2473,7 +2609,7 @@ html.fs-xl  { font-size: 125% !important; }
       <div class="stat-desc">консультаций в год</div>
     </div>
     <div class="stat-cell">
-      <div class="stat-value"><span class="stat-suffix">0 </span><span style="font-size:22px;color:rgba(255,255,255,.45)">₽</span></div>
+      <div class="stat-value"><span class="stat-suffix">0 </span><span style="font-size:22px;color:var(--gold2)">₽</span></div>
       <div class="stat-desc">консультация всегда бесплатна</div>
     </div>
   </div>
@@ -2486,29 +2622,28 @@ html.fs-xl  { font-size: 125% !important; }
     <div class="services-header">
       <span class="section-label">Чем могу помочь</span>
       <h2 class="section-title">Направления работы</h2>
-      <div class="gold-bar"></div>
       <p>Помогаю жителям Приморского района с наиболее распространёнными гражданскими вопросами — без предоплат и юридического жаргона.</p>
     </div>
     <div class="services-grid">
-      <div class="service-card reveal">
+      <div class="service-card beam-card reveal">
         <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><path d="M9 22V12h6v10"/></svg></div>
         <div class="service-title">ЖКХ и благоустройство</div>
         <p class="service-text">Споры с управляющими компаниями и ТСЖ, ремонт подъездов, вывоз мусора, детские площадки, перерасчёты.</p>
         <div class="service-tags"><span class="service-tag">УК · ТСЖ</span><span class="service-tag">Перерасчёт</span><span class="service-tag">Залив</span></div>
       </div>
-      <div class="service-card reveal">
+      <div class="service-card beam-card reveal">
         <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>
         <div class="service-title">Семейные и наследственные</div>
         <p class="service-text">Раздел имущества при разводе, вопросы опеки и попечительства, споры о наследстве, алименты.</p>
         <div class="service-tags"><span class="service-tag">Развод</span><span class="service-tag">Наследство</span><span class="service-tag">Алименты</span></div>
       </div>
-      <div class="service-card reveal">
+      <div class="service-card beam-card reveal">
         <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="2" x2="12" y2="22"/><path d="M4 22h16"/><path d="M4 8l4 7H0L4 8z"/><path d="M20 8l-4 7h8l-4-7z"/><line x1="4" y1="8" x2="20" y2="8"/></svg></div>
         <div class="service-title">Трудовые споры</div>
         <p class="service-text">Незаконное увольнение, невыплата заработной платы, отказ в приёме на работу, нарушение условий трудового договора.</p>
         <div class="service-tags"><span class="service-tag">Зарплата</span><span class="service-tag">Увольнение</span><span class="service-tag">Восстановление</span></div>
       </div>
-      <div class="service-card reveal">
+      <div class="service-card beam-card reveal">
         <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><line x1="9" y1="12" x2="15" y2="12"/><line x1="9" y1="16" x2="13" y2="16"/></svg></div>
         <div class="service-title">Земля и имущество</div>
         <p class="service-text">Регистрация прав собственности, приватизация, споры с соседями и застройщиками, недвижимость.</p>
@@ -2526,7 +2661,6 @@ html.fs-xl  { font-size: 125% !important; }
       <div class="why-header">
         <span class="section-label">Моё преимущество</span>
         <div class="why-heading">Почему обращаются <em>ко мне</em></div>
-        <div class="gold-bar"></div>
       </div>
       <div class="why-items">
         <div class="why-item reveal" data-n="01">
@@ -2559,6 +2693,7 @@ html.fs-xl  { font-size: 125% !important; }
 </div>
 
 
+
 <!-- ══ ОБО МНЕ ══ -->
 <section class="about" id="about">
   <div class="container">
@@ -2575,7 +2710,6 @@ html.fs-xl  { font-size: 125% !important; }
       <div class="about-text">
         <span class="section-label">Кто я</span>
         <h2 class="section-title">Юрист с 2002 года — работаю для жителей Приморского района</h2>
-        <div class="gold-bar"></div>
         <div class="about-body">
           <p>Родился в 1980 году в Санкт-Петербурге. Юридическую карьеру начал в 2002 году в аудиторской компании, после чего перешёл в государственный сектор. Диплом о высшем юридическом образовании получил в 2008 году.</p>
           <p>Работаю в Приморском районе как юрист партии ЛДПР. Специализируюсь на правовой защите обычных граждан — помогаю решать реальные бытовые и имущественные проблемы, с которыми сталкиваются жители района каждый день.</p>
@@ -2605,10 +2739,10 @@ html.fs-xl  { font-size: 125% !important; }
         </div>
 
         <div class="about-creds">
-          <a class="cred-item reveal" href="docs/gramota-ldpr-razvitie.pdf" target="_blank" rel="noopener"><div class="cred-icon">🏅</div><div class="cred-text">Почётная грамота за развитие петербургского отделения ЛДПР</div></a>
-          <a class="cred-item reveal" href="docs/gramota-ldpr-zhirinovsky.pdf" target="_blank" rel="noopener"><div class="cred-icon">🏅</div><div class="cred-text">Почётная грамота за сохранение памяти о В.В. Жириновском</div></a>
-          <a class="cred-item reveal" href="#" onclick="['docs/kval-zakupki.pdf','docs/kval-korrupcia.pdf','docs/kval-gos-upravlenie.pdf'].forEach(u=>window.open(u,'_blank'));return false;"><div class="cred-icon">📜</div><div class="cred-text">Удостоверения о повышении квалификации: управление закупками, противодействие коррупции, государственное управление</div></a>
-          <a class="cred-item reveal" href="docs/blagodarnost-vybory-2024.pdf" target="_blank" rel="noopener"><div class="cred-icon">📄</div><div class="cred-text">Благодарственное письмо за организацию выборов Президента РФ</div></a>
+          <a class="cred-item reveal" href="docs/gramota-ldpr-razvitie.pdf" target="_blank" rel="noopener"><div class="cred-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="18" height="18"><circle cx="12" cy="8" r="6"/><path d="M9 21l3-3 3 3M12 15v3"/></svg></div><div class="cred-text">Почётная грамота за развитие петербургского отделения ЛДПР</div></a>
+          <a class="cred-item reveal" href="docs/gramota-ldpr-zhirinovsky.pdf" target="_blank" rel="noopener"><div class="cred-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="18" height="18"><circle cx="12" cy="8" r="6"/><path d="M9 21l3-3 3 3M12 15v3"/></svg></div><div class="cred-text">Почётная грамота за сохранение памяти о В.В. Жириновском</div></a>
+          <a class="cred-item reveal" href="#" onclick="['docs/kval-zakupki.pdf','docs/kval-korrupcia.pdf','docs/kval-gos-upravlenie.pdf'].forEach(u=>window.open(u,'_blank'));return false;"><div class="cred-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="18" height="18"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div><div class="cred-text">Удостоверения о повышении квалификации: управление закупками, противодействие коррупции, государственное управление</div></a>
+          <a class="cred-item reveal" href="docs/blagodarnost-vybory-2024.pdf" target="_blank" rel="noopener"><div class="cred-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="18" height="18"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div><div class="cred-text">Благодарственное письмо за организацию выборов Президента РФ</div></a>
         </div>
       </div>
     </div>
@@ -2628,18 +2762,24 @@ html.fs-xl  { font-size: 125% !important; }
       <div class="process-connector"></div>
       <div class="step reveal">
         <div class="step-num">01</div>
-        <div class="step-title">Запишитесь</div>
-        <p class="step-text">Заполните форму обратной связи или напишите нам. Выберите удобное время — вторая или четвёртая среда месяца.</p>
+        <div class="step-body">
+          <div class="step-title">Запишитесь</div>
+          <p class="step-text">Заполните форму обратной связи или напишите нам. Выберите удобное время — вторая или четвёртая среда месяца.</p>
+        </div>
       </div>
       <div class="step reveal">
         <div class="step-num">02</div>
-        <div class="step-title">Приходите с документами</div>
-        <p class="step-text">Возьмите всё, что есть по вашей ситуации: договоры, переписку, квитанции. Приём: Богатырский пр. д.7 корп.10, вход под аркой.</p>
+        <div class="step-body">
+          <div class="step-title">Приходите с документами</div>
+          <p class="step-text">Возьмите всё, что есть по вашей ситуации: договоры, переписку, квитанции. Приём: Богатырский пр. д.7 корп.10, вход под аркой.</p>
+        </div>
       </div>
       <div class="step reveal">
         <div class="step-num">03</div>
-        <div class="step-title">Получите план действий</div>
-        <p class="step-text">На консультации разберём ситуацию, оценим перспективы и составим конкретный план: что делать, в какой последовательности и чего ожидать.</p>
+        <div class="step-body">
+          <div class="step-title">Получите план действий</div>
+          <p class="step-text">На консультации разберём ситуацию, оценим перспективы и составим конкретный план: что делать, в какой последовательности и чего ожидать.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -2653,11 +2793,10 @@ html.fs-xl  { font-size: 125% !important; }
       <div class="deputy-left">
         <span class="section-label">Только у меня</span>
         <div class="deputy-title">Инструмент, которого нет у <em>обычного юриста</em></div>
-        <div class="gold-bar"></div>
         <div class="deputy-sub">Как юрист ЛДПР, я могу направить официальный депутатский запрос в любое ведомство. Государственный орган обязан ответить в письменной форме в течение 30 дней. Нередко этого достаточно — без суда.</div>
       </div>
       <div class="deputy-right">
-        <div class="deputy-badge">🏛 Депутатский запрос</div>
+        <div class="deputy-badge">Депутатский запрос</div>
         <div class="deputy-flow">
           <div class="deputy-step reveal">
             <span class="deputy-step-num">Шаг 01</span>
@@ -2678,6 +2817,7 @@ html.fs-xl  { font-size: 125% !important; }
             <div class="deputy-step-text">Ведомство обязано ответить письменно. Часто вопрос решается на этом этапе.</div>
           </div>
         </div>
+        <div class="deputy-flow-hint">← свайп →</div>
         <div class="deputy-note">
           <strong>Из практики:</strong> управляющая компания игнорировала жалобы три месяца. После депутатского запроса перерасчёт был сделан за 18 дней.
         </div>
@@ -2710,7 +2850,7 @@ html.fs-xl  { font-size: 125% !important; }
       </div>
     </div>
     <div class="wins-grid">
-      <div class="win-card reveal">
+      <div class="win-card beam-card reveal">
         <div class="win-category-row">
           <svg class="win-cat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><path d="M9 22V12h6v10"/></svg>
           <span class="win-category">ЖКХ · Перерасчёт</span>
@@ -2733,7 +2873,7 @@ html.fs-xl  { font-size: 125% !important; }
           </div>
         </div>
       </div>
-      <div class="win-card reveal">
+      <div class="win-card beam-card reveal">
         <div class="win-category-row">
           <svg class="win-cat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="2" x2="12" y2="22"/><path d="M4 22h16"/><path d="M4 8l4 7H0L4 8z"/><path d="M20 8l-4 7h8l-4-7z"/><line x1="4" y1="8" x2="20" y2="8"/></svg>
           <span class="win-category">Труд · Увольнение</span>
@@ -2756,7 +2896,7 @@ html.fs-xl  { font-size: 125% !important; }
           </div>
         </div>
       </div>
-      <div class="win-card reveal">
+      <div class="win-card beam-card reveal">
         <div class="win-category-row">
           <svg class="win-cat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
           <span class="win-category">Семья · Алименты</span>
@@ -2794,16 +2934,14 @@ html.fs-xl  { font-size: 125% !important; }
     <div class="reviews-header">
       <span class="section-label">Что говорят люди</span>
       <h2 class="section-title">Отзывы клиентов</h2>
-      <div class="gold-bar"></div>
       <div class="reviews-rating-badge">
         <span class="rrb-stars">★★★★★</span>
         <span class="rrb-text">4.9 из 5 · 6 отзывов</span>
       </div>
     </div>
-    <div class="reviews-carousel-wrap">
-      <div class="reviews-track">
-
-      <div class="review-card">
+        <div class="reviews-auto">
+      <div class="reviews-col">
+      <div class="review-card beam-card">
         <div class="review-stars">★★★★★</div>
         <div class="review-quote">"</div>
         <p class="review-text">После ДТП страховая выплатила копейки — втрое меньше реального ущерба. Думала, придётся смириться. В итоге получила полную сумму и неустойку за просрочку.</p>
@@ -2813,30 +2951,7 @@ html.fs-xl  { font-size: 125% !important; }
           <span class="review-role">42 года · Коломяги, спор по ОСАГО</span>
         </div>
       </div>
-
-      <div class="review-card">
-        <div class="review-stars">★★★★★</div>
-        <div class="review-quote">"</div>
-        <p class="review-text">Залило квартиру, УК заявила, что ничего не должна. Три месяца отписок. После депутатского запроса всё решилось за две недели — компенсация за ремонт и моральный вред.</p>
-        <div class="review-result">✓ Ремонт + компенсация морального вреда</div>
-        <div class="review-author">
-          <span class="review-name">Елена Павловна</span>
-          <span class="review-role">Пенсионер · ул. Королёва, залив квартиры</span>
-        </div>
-      </div>
-
-      <div class="review-card">
-        <div class="review-stars">★★★★★</div>
-        <div class="review-quote">"</div>
-        <p class="review-text">Уволили по статье без оснований, расчётные не дали — около 90 тысяч. Трудовая инспекция не помогла. Через суд взыскали всю сумму с процентами, восстановили на работе.</p>
-        <div class="review-result">✓ Восстановлен + взыскано 90 000 ₽</div>
-        <div class="review-author">
-          <span class="review-name">Дмитрий</span>
-          <span class="review-role">35 лет · Чёрная речка, трудовой спор</span>
-        </div>
-      </div>
-
-      <div class="review-card">
+      <div class="review-card beam-card">
         <div class="review-stars">★★★★★</div>
         <div class="review-quote">"</div>
         <p class="review-text">Отказали в субсидии из-за долга в 500 рублей, которого не было. Разобрались, оспорили отказ — субсидию дали с нужной даты.</p>
@@ -2846,8 +2961,39 @@ html.fs-xl  { font-size: 125% !important; }
           <span class="review-role">Одинокая мать · Коломяги, субсидия ЖКХ</span>
         </div>
       </div>
-
-      <div class="review-card">
+      <div class="review-card beam-card">
+        <div class="review-stars">★★★★★</div>
+        <div class="review-quote">"</div>
+        <p class="review-text">После ДТП страховая выплатила копейки — втрое меньше реального ущерба. Думала, придётся смириться. В итоге получила полную сумму и неустойку за просрочку.</p>
+        <div class="review-result">✓ Полная выплата + неустойка</div>
+        <div class="review-author">
+          <span class="review-name">Ирина Викторовна</span>
+          <span class="review-role">42 года · Коломяги, спор по ОСАГО</span>
+        </div>
+      </div>
+      <div class="review-card beam-card">
+        <div class="review-stars">★★★★★</div>
+        <div class="review-quote">"</div>
+        <p class="review-text">Отказали в субсидии из-за долга в 500 рублей, которого не было. Разобрались, оспорили отказ — субсидию дали с нужной даты.</p>
+        <div class="review-result">✓ Субсидия получена задним числом</div>
+        <div class="review-author">
+          <span class="review-name">Галина Николаевна</span>
+          <span class="review-role">Одинокая мать · Коломяги, субсидия ЖКХ</span>
+        </div>
+      </div>
+      </div>
+      <div class="reviews-col">
+      <div class="review-card beam-card">
+        <div class="review-stars">★★★★★</div>
+        <div class="review-quote">"</div>
+        <p class="review-text">Залило квартиру, УК заявила, что ничего не должна. Три месяца отписок. После депутатского запроса всё решилось за две недели — компенсация за ремонт и моральный вред.</p>
+        <div class="review-result">✓ Ремонт + компенсация морального вреда</div>
+        <div class="review-author">
+          <span class="review-name">Елена Павловна</span>
+          <span class="review-role">Пенсионер · ул. Королёва, залив квартиры</span>
+        </div>
+      </div>
+      <div class="review-card beam-card">
         <div class="review-stars">★★★★★</div>
         <div class="review-quote">"</div>
         <p class="review-text">Три года переплачивал за отопление — дом с общедомовым счётчиком, а считали по нормативу. Не знал, что это незаконно. Вернули 48 тысяч переплаты.</p>
@@ -2857,8 +3003,39 @@ html.fs-xl  { font-size: 125% !important; }
           <span class="review-role">28 лет · Юнтолово, перерасчёт ЖКХ</span>
         </div>
       </div>
-
-      <div class="review-card">
+      <div class="review-card beam-card">
+        <div class="review-stars">★★★★★</div>
+        <div class="review-quote">"</div>
+        <p class="review-text">Залило квартиру, УК заявила, что ничего не должна. Три месяца отписок. После депутатского запроса всё решилось за две недели — компенсация за ремонт и моральный вред.</p>
+        <div class="review-result">✓ Ремонт + компенсация морального вреда</div>
+        <div class="review-author">
+          <span class="review-name">Елена Павловна</span>
+          <span class="review-role">Пенсионер · ул. Королёва, залив квартиры</span>
+        </div>
+      </div>
+      <div class="review-card beam-card">
+        <div class="review-stars">★★★★★</div>
+        <div class="review-quote">"</div>
+        <p class="review-text">Три года переплачивал за отопление — дом с общедомовым счётчиком, а считали по нормативу. Не знал, что это незаконно. Вернули 48 тысяч переплаты.</p>
+        <div class="review-result">✓ Возврат 48 000 ₽ переплаты</div>
+        <div class="review-author">
+          <span class="review-name">Максим</span>
+          <span class="review-role">28 лет · Юнтолово, перерасчёт ЖКХ</span>
+        </div>
+      </div>
+      </div>
+      <div class="reviews-col">
+      <div class="review-card beam-card">
+        <div class="review-stars">★★★★★</div>
+        <div class="review-quote">"</div>
+        <p class="review-text">Уволили по статье без оснований, расчётные не дали — около 90 тысяч. Трудовая инспекция не помогла. Через суд взыскали всю сумму с процентами, восстановили на работе.</p>
+        <div class="review-result">✓ Восстановлен + взыскано 90 000 ₽</div>
+        <div class="review-author">
+          <span class="review-name">Дмитрий</span>
+          <span class="review-role">35 лет · Чёрная речка, трудовой спор</span>
+        </div>
+      </div>
+      <div class="review-card beam-card">
         <div class="review-stars">★★★★★</div>
         <div class="review-quote">"</div>
         <p class="review-text">Оказывается, пенсионерам положена льгота на капремонт — я понятия не имела. Оформили с нуля, теперь плачу вдвое меньше каждый месяц.</p>
@@ -2868,10 +3045,29 @@ html.fs-xl  { font-size: 125% !important; }
           <span class="review-role">68 лет · Лахта, льгота ЖКХ</span>
         </div>
       </div>
+      <div class="review-card beam-card">
+        <div class="review-stars">★★★★★</div>
+        <div class="review-quote">"</div>
+        <p class="review-text">Уволили по статье без оснований, расчётные не дали — около 90 тысяч. Трудовая инспекция не помогла. Через суд взыскали всю сумму с процентами, восстановили на работе.</p>
+        <div class="review-result">✓ Восстановлен + взыскано 90 000 ₽</div>
+        <div class="review-author">
+          <span class="review-name">Дмитрий</span>
+          <span class="review-role">35 лет · Чёрная речка, трудовой спор</span>
+        </div>
+      </div>
+      <div class="review-card beam-card">
+        <div class="review-stars">★★★★★</div>
+        <div class="review-quote">"</div>
+        <p class="review-text">Оказывается, пенсионерам положена льгота на капремонт — я понятия не имела. Оформили с нуля, теперь плачу вдвое меньше каждый месяц.</p>
+        <div class="review-result">✓ Льгота оформлена, экономия 2 400 ₽/мес</div>
+        <div class="review-author">
+          <span class="review-name">Надежда Степановна</span>
+          <span class="review-role">68 лет · Лахта, льгота ЖКХ</span>
+        </div>
+      </div>
+      </div>
+    </div>
 
-      </div><!-- /reviews-track -->
-    </div><!-- /reviews-carousel-wrap -->
-    <div class="carousel-dots"></div>
   </div>
 </section>
 
@@ -2882,7 +3078,6 @@ html.fs-xl  { font-size: 125% !important; }
     <div class="tips-header">
       <span class="section-label" style="display:block;text-align:center">Полезно знать</span>
       <h2 class="section-title white">Советы жителям района</h2>
-      <div class="gold-bar"></div>
     </div>
     <div class="tips-grid">
       <div class="tip-card reveal">
@@ -2901,7 +3096,7 @@ html.fs-xl  { font-size: 125% !important; }
         <span class="tip-num">Совет 03</span>
         <div class="tip-title">Срок исковой давности — 3 года. И он истекает</div>
         <p class="tip-text">По большинству гражданских дел у вас есть три года с момента нарушения. Если пропустить — суд откажет даже в правом деле. Не откладывайте: чем раньше разберётесь с документами, тем выше шанс победить.</p>
-        <span class="tip-tag">⚠️ Важно знать</span>
+        <span class="tip-tag">Важно знать</span>
       </div>
     </div>
   </div>

@@ -2792,7 +2792,7 @@ html.fs-xl  { font-size: 125% !important; }
         <div class="step-num">01</div>
         <div class="step-body">
           <div class="step-title">Запишитесь</div>
-          <p class="step-text">Заполните форму обратной связи или напишите нам. Выберите удобное время — вторая или четвёртая среда месяца.</p>
+          <p class="step-text">Позвоните или напишите на почту. Выберите удобное время — вторая или четвёртая среда месяца.</p>
         </div>
       </div>
       <div class="step reveal">
@@ -3139,7 +3139,7 @@ html.fs-xl  { font-size: 125% !important; }
         
         <h2 class="section-title">Отвечаю на главные вопросы</h2>
         <div class="gold-bar"></div>
-        <p>Если вашего вопроса здесь нет — заполните форму обратной связи.</p>
+        <p>Если вашего вопроса здесь нет — позвоните или напишите на почту.</p>
         <div class="faq-count">
           <div class="faq-count-num">6</div>
           <div class="faq-count-label">частых вопросов<br>с прямыми ответами</div>
@@ -3156,7 +3156,7 @@ html.fs-xl  { font-size: 125% !important; }
         </div>
         <div class="faq-item">
           <button class="faq-q" onclick="toggleFaq(this)">Как часто проходит приём?<span class="faq-arrow">+</span></button>
-          <div class="faq-a">Приём проходит каждую вторую и четвёртую среду месяца. Для записи заполните форму обратной связи.</div>
+          <div class="faq-a">Приём проходит каждую вторую и четвёртую среду месяца. Для записи позвоните или напишите на почту.</div>
         </div>
         <div class="faq-item">
           <button class="faq-q" onclick="toggleFaq(this)">Работаете ли с жителями других районов?<span class="faq-arrow">+</span></button>
@@ -3168,7 +3168,7 @@ html.fs-xl  { font-size: 125% !important; }
         </div>
         <div class="faq-item">
           <button class="faq-q" onclick="toggleFaq(this)">Нужно ли записываться заранее?<span class="faq-arrow">+</span></button>
-          <div class="faq-a">Рекомендую записаться — тогда вас ждут в конкретное время и вы не ждёте в очереди. Для записи заполните форму обратной связи или напишите на почту.</div>
+          <div class="faq-a">Рекомендую записаться — тогда вас ждут в конкретное время и вы не ждёте в очереди. Для записи позвоните или напишите на почту.</div>
         </div>
       </div>
     </div>
@@ -3188,6 +3188,10 @@ html.fs-xl  { font-size: 125% !important; }
           <a href="tel:+78122331478" class="contact-btn cbtn-phone">
             <span class="cbtn-icon"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.58.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.01L6.6 10.8z"/></svg></span>
             <div><div class="cbtn-main">Позвонить</div><div class="cbtn-hint">+7 812 233-14-78</div></div>
+          </a>
+          <a href="mailto:spb@ldpr.ru" class="contact-btn cbtn-email">
+            <span class="cbtn-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span>
+            <div><div class="cbtn-main">Написать на почту</div><div class="cbtn-hint">spb@ldpr.ru</div></div>
           </a>
         </div>
         <div class="social-follow" style="margin-top:20px;">
@@ -3261,7 +3265,8 @@ html.fs-xl  { font-size: 125% !important; }
 
 
 <!-- ══ BOOKING MODAL ══ -->
-<div id="bookingOverlay" class="bm-overlay" role="dialog" aria-modal="true" aria-labelledby="bm-title-h">
+<!-- TEMP: форма обратной связи временно скрыта (display:none). Убрать стиль, чтобы вернуть. -->
+<div id="bookingOverlay" class="bm-overlay" role="dialog" aria-modal="true" aria-labelledby="bm-title-h" style="display:none !important">
   <div class="bm-modal">
     <button class="bm-close" id="bmClose" aria-label="Закрыть">×</button>
     <div class="bm-badge">Запись на приём</div>
@@ -3782,9 +3787,18 @@ document.addEventListener('keydown', e => {
 });
 
 /* ── Booking modal ── */
+/* TEMP: форма обратной связи временно скрыта. Кнопки записи ведут на почту (mailto).
+   Чтобы вернуть форму: восстановить тело функции ниже + убрать style="display:none" у #bookingOverlay. */
 function openBookingModal() {
-  document.getElementById('bookingOverlay').classList.add('open');
-  document.body.style.overflow = 'hidden';
+  const subject = encodeURIComponent('Запись на приём');
+  const body = encodeURIComponent(
+    'Здравствуйте! Хочу записаться на приём.\n\n' +
+    'Имя:\n' +
+    'Телефон:\n' +
+    'Тема обращения:\n' +
+    'Кратко о ситуации:\n'
+  );
+  window.location.href = 'mailto:spb@ldpr.ru?subject=' + subject + '&body=' + body;
 }
 document.getElementById('bmClose')?.addEventListener('click', () => {
   document.getElementById('bookingOverlay').classList.remove('open');
